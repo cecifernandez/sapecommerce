@@ -1,0 +1,79 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    controllerName="ui5.starwarsecommerce.controller.Account"
+>
+    <core:Fragment
+        fragmentName="ui5.starwarsecommerce.fragments.Toolbar"
+        type="XML"
+    />
+    <Page title="Account">
+        <content>
+            <!-- PERFIL DEL USUARIO -->
+            <VBox class="sapUiSmallMargin sapUiAlignCenter sapUiContentPadding">
+                <HBox
+                    alignItems="Center"
+                    justifyContent="Center"
+                >
+                    <Image
+                        src="{userModel>/avatar}"
+                        width="5rem"
+                        class="sapUiSmallMarginEnd"
+                    />
+                    <VBox>
+                        <Text
+                            text="{userModel>/name}"
+                            class="sapUiTinyMarginBottom"
+                        />
+                        <Text
+                            text="{userModel>/username}"
+                            class="sapUiTinyMarginBottom"
+                        />
+                        <Text text="{userModel>/mail}" />
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <!-- FAVORITOS -->
+            <Panel
+                headerText="⭐ Favoritos"
+                expandable="true"
+                expanded="true"
+                class="sapUiSmallMarginBottom"
+            >
+                <List
+                    items="{userModel>/favorites}"
+                    id="favoritesList"
+                >
+                    <StandardListItem
+                        title="{userModel>name}"
+                        description="{userModel>price}"
+                    />
+                </List>
+            </Panel>
+
+            <!-- COMPRAS RECIENTES -->
+            <Panel
+                headerText="🛍️ Compras Recientes"
+                expandable="true"
+                expanded="true"
+            >
+                <List items="{userModel>/purchaseHistory}">
+                    <CustomListItem>
+                        <VBox>
+                            <List items="{userModel>items}">
+                                <StandardListItem
+                                    title="{userModel>name}"
+                                    description="Cantidad: {userModel>quantity} - Precio: $ {userModel>price}"
+                                />
+                            </List>
+                            <Text text="Fecha: {userModel>date}" />
+                            <Text text="Total: $ {userModel>total}" />
+                        </VBox>
+                    </CustomListItem>
+                </List>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>

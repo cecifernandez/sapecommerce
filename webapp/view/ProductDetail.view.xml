@@ -1,0 +1,95 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    controllerName="ui5.starwarsecommerce.controller.ProductDetail"
+>
+    <core:Fragment
+        fragmentName="ui5.starwarsecommerce.fragments.Toolbar"
+        type="XML"
+    />
+
+    <Page title="Producto">
+        <content>
+            <HBox class="sapUiSmallMargin">
+                <!-- Imagen del producto -->
+                <VBox
+                    width="50%"
+                    class="sapUiMediumMarginEnd"
+                >
+                    <Image
+                        id="productImage"
+                        width="100%"
+                        height="auto"
+                        src="{productDetail>image}"
+                        alt="{productDetail>name}"
+                        class="sapUiResponsiveMargin sapUiLargeMarginBottom"
+                    />
+                </VBox>
+
+                <!-- Detalles del producto -->
+                <VBox
+                    width="50%"
+                    class="sapUiSmallMargin"
+                >
+                    <Title
+                        text="{productDetail>name}"
+                        level="H1"
+                    />
+                    <Text
+                        text="{productDetail>description}"
+                        wrapping="true"
+                    />
+                    <Text text="Categoría: {productDetail>category}" />
+                    <Text text="Precio: ${productDetail>price}" />
+                    <RatingIndicator
+                        value="{productDetail>rating}"
+                        maxValue="5"
+                        enabled="true"
+                        iconSize="2rem"
+                        class="sapUiTinyMarginBegin"
+                    />
+                    <Button
+                        text="Agregar al carrito"
+                        press="onAddToCart"
+                        class="sapUiSmallMarginTop"
+                    />
+                </VBox>
+            </HBox>
+            <!-- Reseñas del producto -->
+            <VBox class="sapUiSmallMarginTop sapUiMediumMarginBegin">
+                <Title
+                    text="Reseñas"
+                    level="H2"
+                />
+                <List
+                    items="{productDetail>/reviews}"
+                    class="sapUiResponsiveMargin"
+                >
+                    <CustomListItem>
+                        <VBox class="sapUiSmallMarginBottom">
+                            <HBox alignItems="Center">
+                                <Title
+                                    text="{productDetail>username}"
+                                    level="H3"
+                                />
+                                <RatingIndicator
+                                    value="{productDetail>rating}"
+                                    maxValue="5"
+                                    enabled="false"
+                                    iconSize="1rem"
+                                    class="sapUiSmallMarginBegin"
+                                />
+                            </HBox>
+                            <Text
+                                text="{productDetail>comment}"
+                                wrapping="true"
+                                class="sapUiTinyMarginTop"
+                            />
+                        </VBox>
+                    </CustomListItem>
+                </List>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

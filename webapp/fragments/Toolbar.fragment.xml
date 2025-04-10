@@ -1,0 +1,32 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Toolbar
+        width="100%"
+        class="toolbar"
+    >
+        <Button
+            text="Home"
+            press="onNavToHome"
+        />
+        <Button
+            id="productsText"
+            text="Products"
+            press="onNavToProducts"
+        />
+        <SearchField
+            width="50%"
+            placeholder="Search..."
+            liveChange="onSearch"
+        />
+        <Button
+            text="Account"
+            press="onNavToAccount"
+        />
+        <Button
+            text="Cart"
+            press="openCart"
+        />
+    </Toolbar>
+</core:FragmentDefinition>

@@ -1,0 +1,14 @@
+{
+  "name": "ui5.starwarsecommerce",
+  "version": "1.0.0",
+  "description": "E-commerce con temática Star Wars",
+  "scripts": {
+    "start": "ui5 serve -o index.html"
+  },
+  "devDependencies": {
+    "@ui5/cli": "^4.0.14"
+  },
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
+}

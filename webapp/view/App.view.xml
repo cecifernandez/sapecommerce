@@ -1,0 +1,35 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    controllerName="ui5.starwarsecommerce.controller.App"
+>
+    <App id="app">
+        <!-- <headerContent>
+                <Toolbar width="100%">
+                    <Button
+                        text="Home"
+                        press="onNavToHome"
+                    />
+                    <Button
+                        text="Products"
+                        press="onNavToProducts"
+                    />
+                    <SearchField
+                        placeholder="Search..."
+                        liveChange="onSearch"
+                    />
+                    <Button
+                        text="Account"
+                        press="onNavToAccount"
+                    />
+                </Toolbar>
+            </headerContent> -->
+        <!-- <headerContent>
+                <core:Fragment
+                    fragmentName="ui5.starwarsecommerce.fragments.Toolbar"
+                    type="XML"
+                />
+            </headerContent> -->
+    </App>
+</mvc:View>

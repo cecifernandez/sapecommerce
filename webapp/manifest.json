@@ -1,0 +1,81 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "ui5.starwarsecommerce"
+  },
+  "sap.ui5": {
+    "models": {
+      "productModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "./model/Products.json"
+      }
+    },
+    "rootView": {
+      "viewName": "ui5.starwarsecommerce.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "viewType": "XML",
+        "viewPath": "ui5.starwarsecommerce.view",
+        "async": true
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "home",
+          "target": "home"
+        },
+        {
+          "pattern": "products",
+          "name": "productsList",
+          "target": "products"
+        },
+        {
+          "pattern": "products/{category}",
+          "name": "productsByCategory",
+          "target": "products"
+        },
+        {
+          "pattern": "products/{category}/{subcategory}",
+          "name": "productsBySubcategory",
+          "target": "products"
+        },
+        {
+          "pattern": "product/{productId}",
+          "name": "productDetail",
+          "target": "productDetail"
+        },
+        {
+          "pattern": "account",
+          "name": "account",
+          "target": "account"
+        }
+      ],
+      "targets": {
+        "home": {
+          "viewName": "Home",
+          "viewLevel": 1
+        },
+        "products": {
+          "viewName": "ProductList",
+          "viewLevel": 2
+        },
+        "productDetail": {
+          "viewName": "ProductDetail",
+          "viewLevel": 2
+        },
+        "account": {
+          "viewName": "Account",
+          "viewLevel": 3
+        }
+      }
+    }
+  }
+}

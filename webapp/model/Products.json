@@ -1,0 +1,1238 @@
+{
+  "catalog": {
+    "categories": [
+      {
+        "id": "figuras",
+        "name": "Figuras de Acción",
+        "subcategories": [
+          {
+            "id": "personajes",
+            "name": "Personajes Principales",
+            "products": [
+              {
+                "id": "prod1",
+                "name": "Luke Skywalker",
+                "category": "Figuras de Acción",
+                "subcategory": "Personajes Principales",
+                "price": 79.99,
+                "currency": "USD",
+                "description": "Figura de acción detallada de Luke Skywalker con múltiples puntos de movilidad y accesorios intercambiables.",
+                "image": "assets/images/luke.png",
+                "stock": 25,
+                "rating": 4.5,
+                "details": {
+                  "height": "20 cm",
+                  "material": "PVC",
+                  "manufacturer": "Star Wars Collectibles",
+                  "weight": "0.5 kg"
+                },
+                "tags": ["figura", "Luke", "Star Wars", "coleccionable"],
+                "variants": [
+                  {
+                    "variantId": "prod1-v1",
+                    "color": "Original",
+                    "price": 79.99,
+                    "stock": 15
+                  },
+                  {
+                    "variantId": "prod1-v2",
+                    "color": "Limited Edition",
+                    "price": 99.99,
+                    "stock": 10
+                  }
+                ],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user1.png",
+                    "username": "JediMasterLuke",
+                    "rating": 3.5,
+                    "comment": "Está buena, pero medio saladita para lo que es"
+                  },
+                  {
+                    "avatar": "imgs/avatars/user2.png",
+                    "username": "HothSurvivor",
+                    "rating": 4,
+                    "comment": "Zafa bastante. Me esperaba algo más pesado pero igual re cumple. Va como piña"
+                  },
+                  {
+                    "avatar": "imgs/avatars/user3.png",
+                    "username": "XWingAce",
+                    "rating": 4.5,
+                    "comment": "Me llegó en dos días, una bestia. La figura está re bien hecha"
+                  }
+                ]
+              },
+              {
+                "id": "prod2",
+                "name": "Leia Organa",
+                "category": "Figuras de Acción",
+                "subcategory": "Personajes Principales",
+                "price": 79.99,
+                "currency": "USD",
+                "description": "Figura de acción de Leia Organa con detalle en vestuario y accesorios característicos.",
+                "image": "assets/images/leia.png",
+                "stock": 30,
+                "rating": 4.7,
+                "details": {
+                  "height": "20 cm",
+                  "material": "PVC",
+                  "manufacturer": "Star Wars Collectibles",
+                  "weight": "0.45 kg"
+                },
+                "tags": ["figura", "Leia", "Star Wars", "coleccionable"],
+                "variants": [
+                  {
+                    "variantId": "prod2-v1",
+                    "color": "Edición Clásica",
+                    "price": 79.99,
+                    "stock": 20
+                  },
+                  {
+                    "variantId": "prod2-v2",
+                    "color": "Edición Fan",
+                    "price": 89.99,
+                    "stock": 10
+                  }
+                ],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user4.png",
+                    "username": "Leia_Lover77",
+                    "rating": 4.5,
+                    "comment": "Muy fachera, me encantó. Le doy 4.5 nomás porque la base no encastra del todo bien, pero re va igual."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user5.png",
+                    "username": "AlderaanVibes",
+                    "rating": 5,
+                    "comment": "Una masa."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user6.png",
+                    "username": "BlasterMaster",
+                    "rating": 4,
+                    "comment": "Muy bien lograda. Me vino con un detallecito en la pintura pero nada grave."
+                  }
+                ]
+              },
+              {
+                "id": "prod13",
+                "name": "Han Solo",
+                "category": "Figuras de Acción",
+                "subcategory": "Personajes Principales",
+                "price": 74.99,
+                "currency": "USD",
+                "description": "Figura articulada de Han Solo con su clásica vestimenta y bláster.",
+                "image": "assets/images/han_solo.png",
+                "stock": 20,
+                "rating": 4.6,
+                "details": {
+                  "height": "20 cm",
+                  "material": "PVC",
+                  "manufacturer": "Star Wars Collectibles",
+                  "weight": "0.5 kg"
+                },
+                "tags": ["figura", "Han Solo", "coleccionable"],
+                "variants": [
+                  {
+                    "variantId": "prod13-v1",
+                    "color": "Original",
+                    "price": 74.99,
+                    "stock": 15
+                  }
+                ],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user7.png",
+                    "username": "SoloHanNotAlone",
+                    "rating": 4.5,
+                    "comment": "Lo compré con la idea de regalarlo y terminé quedándomelo jaja. La cara está re bien lograda."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user8.png",
+                    "username": "CoruscantKing",
+                    "rating": 5,
+                    "comment": "Una locura esta figura. Me llegó rapidísimo y re bien embalada."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user9.png",
+                    "username": "ForceUser_01",
+                    "rating": 3,
+                    "comment": "Flojo. La articulación está dura y la cara parece más Harrison Ford después de un asado que en Star Wars. Zafa si no sos muy detallista."
+                  }
+                ]
+              },
+              {
+                "id": "prod22",
+                "name": "Ahsoka Tano",
+                "category": "Figuras de Acción",
+                "subcategory": "Personajes Principales",
+                "price": 84.99,
+                "currency": "USD",
+                "description": "Figura de Ahsoka Tano con sables de luz blancos y vestimenta detallada inspirada en The Mandalorian.",
+                "image": "assets/images/ahsoka.png",
+                "stock": 18,
+                "rating": 4.8,
+                "details": {
+                  "height": "20 cm",
+                  "material": "PVC",
+                  "manufacturer": "Galactic Heroes",
+                  "weight": "0.48 kg"
+                },
+                "tags": ["figura", "Ahsoka", "Star Wars", "coleccionable"],
+                "variants": [
+                  {
+                    "variantId": "prod22-v1",
+                    "color": "Vestimenta Gris",
+                    "price": 84.99,
+                    "stock": 10
+                  },
+                  {
+                    "variantId": "prod22-v2",
+                    "color": "Edición Mandalorian",
+                    "price": 99.99,
+                    "stock": 8
+                  }
+                ],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user10.png",
+                    "username": "CloneTrooperX",
+                    "rating": 5,
+                    "comment": "Una locura esta figura. Los detalles están re bien logrados y los sables blancos se ven de lujo."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user11.png",
+                    "username": "BobaFlex",
+                    "rating": 2,
+                    "comment": "No me gustó."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user12.png",
+                    "username": "EndorExplorer",
+                    "rating": 3,
+                    "comment": "Muy buena figura, aunque el sable vino un poquito doblado."
+                  }
+                ]
+              },
+              {
+                "id": "prod23",
+                "name": "Anakin Skywalker",
+                "category": "Figuras de Acción",
+                "subcategory": "Personajes Principales",
+                "price": 79.99,
+                "currency": "USD",
+                "description": "Figura de acción de Anakin Skywalker con capa removible y sable azul.",
+                "image": "assets/images/anakin.png",
+                "stock": 22,
+                "rating": 4.5,
+                "details": {
+                  "height": "21 cm",
+                  "material": "PVC",
+                  "manufacturer": "Skywalker Editions",
+                  "weight": "0.5 kg"
+                },
+                "tags": ["figura", "Anakin", "Star Wars", "coleccionable"],
+                "variants": [],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user13.png",
+                    "username": "JediDelSubte",
+                    "rating": 5,
+                    "comment": "*'I brought peace, freedom, justice… y una figura espectacular a mi vitrina.'* Alta compra, no me arrepiento de nada."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user14.png",
+                    "username": "NoSoyDarth",
+                    "rating": 4,
+                    "comment": "Anakin es mi personaje favorito, así que esta figura no podía faltar. La capa removible es un detalle hermoso."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user15.png",
+                    "username": "SeparatistaArrepentido",
+                    "rating": 4.5,
+                    "comment": "Detalles increíbles."
+                  }
+                ]
+              },
+              {
+                "id": "prod24",
+                "name": "Obi-Wan Kenobi",
+                "category": "Figuras de Acción",
+                "subcategory": "Personajes Principales",
+                "price": 82.99,
+                "currency": "USD",
+                "description": "Figura detallada de Obi-Wan con su clásico atuendo Jedi y sable de luz azul.",
+                "image": "assets/images/obiwan.png",
+                "stock": 16,
+                "rating": 4.6,
+                "details": {
+                  "height": "21 cm",
+                  "material": "PVC",
+                  "manufacturer": "Jedi Collectibles",
+                  "weight": "0.52 kg"
+                },
+                "tags": ["figura", "Obi-Wan", "Star Wars", "Jedi"],
+                "variants": [
+                  {
+                    "variantId": "prod24-v1",
+                    "color": "Atuendo Jedi",
+                    "price": 82.99,
+                    "stock": 16
+                  }
+                ],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user16.png",
+                    "username": "MaestroDelMate",
+                    "rating": 5,
+                    "comment": "Re fachero el Obi-Wan."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user17.png",
+                    "username": "HelloThere94",
+                    "rating": 4,
+                    "comment": "Excelente figura. La puse al lado de la de Anakin solo para revivir Mustafar."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user18.png",
+                    "username": "AnakinSinObraSocial",
+                    "rating": 4.5,
+                    "comment": "Lo compré para mi nene pero me lo quedé yo."
+                  }
+                ]
+              },
+              {
+                "id": "prod25",
+                "name": "Rey Skywalker",
+                "category": "Figuras de Acción",
+                "subcategory": "Personajes Principales",
+                "price": 76.99,
+                "currency": "USD",
+                "description": "Figura de Rey con su bastón de combate y sable de luz, ideal para fans de la nueva trilogía.",
+                "image": "assets/images/rey.png",
+                "stock": 19,
+                "rating": 4.4,
+                "details": {
+                  "height": "20 cm",
+                  "material": "PVC",
+                  "manufacturer": "New Republic Toys",
+                  "weight": "0.47 kg"
+                },
+                "tags": ["figura", "Rey", "Star Wars", "coleccionable"],
+                "variants": [],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user20.png",
+                    "username": "MateYMidiclorianos",
+                    "rating": 5,
+                    "comment": "No soy fan de la nueva trilogía, pero esta figura me encantó. Me hizo querer volver a ver las pelis. Buen material, buen tamaño, y no pesa nada."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user21.png",
+                    "username": "JediEnSandalias",
+                    "rating": 4,
+                    "comment": "La tengo arriba del escritorio custodiando el mate."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user22.png",
+                    "username": "PalpatineNN",
+                    "rating": 4.5,
+                    "comment": "Tremenda. Parece que está por salir corriendo a cagarse a piñas."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "droides",
+            "name": "Droides",
+            "products": [
+              {
+                "id": "prod14",
+                "name": "R2-D2",
+                "category": "Figuras de Acción",
+                "subcategory": "Droides",
+                "price": 59.99,
+                "currency": "USD",
+                "description": "Mini figura altamente detallada del droide astromecánico R2-D2.",
+                "image": "assets/images/r2d2.png",
+                "stock": 30,
+                "rating": 4.9,
+                "details": {
+                  "height": "10 cm",
+                  "material": "PVC",
+                  "manufacturer": "Star Droid Toys",
+                  "weight": "0.2 kg"
+                },
+                "tags": ["droide", "R2-D2", "figura"],
+                "variants": [],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user23.png",
+                    "username": "JabbaTheButt",
+                    "rating": 4,
+                    "comment": "Es chiquito, sí, pero está lleno de detalles."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user24.png",
+                    "username": "DroideEnEsteroides",
+                    "rating": 5,
+                    "comment": "Mi primera figura de Star Wars fue R2 y esta es como una versión mejorada. Me trajo lindos recuerdos."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user25.png",
+                    "username": "DroideConfundido",
+                    "rating": 4.5,
+                    "comment": "La figura no hace ruidos ni nada, pero posta que no hace falta. La terminación es impecable."
+                  }
+                ]
+              },
+              {
+                "id": "prod19",
+                "name": "C-3PO",
+                "category": "Figuras de Acción",
+                "subcategory": "Droides",
+                "price": 62.99,
+                "currency": "USD",
+                "description": "Figura articulada del droide de protocolo C-3PO con acabado metálico dorado.",
+                "image": "assets/images/c3po.png",
+                "stock": 18,
+                "rating": 4.8,
+                "details": {
+                  "height": "22 cm",
+                  "material": "PVC",
+                  "manufacturer": "Galactic Figures Inc.",
+                  "weight": "0.4 kg"
+                },
+                "tags": ["droide", "C-3PO", "figura"],
+                "variants": [],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user26.png",
+                    "username": "C3POyMate",
+                    "rating": 3.5,
+                    "comment": "Muy buena figura, aunque las articulaciones son medio duras al principio."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user27.png",
+                    "username": "BeepBoopUser",
+                    "rating": 5,
+                    "comment": "El dorado brilla una locura, y los detalles están re bien hechos. Lo tengo al lado de R2 y quedan joya."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user28.png",
+                    "username": "DroideDeBarrio",
+                    "rating": 4.5,
+                    "comment": "Muy buena compra."
+                  }
+                ]
+              },
+              {
+                "id": "prod20",
+                "name": "BB-8",
+                "category": "Figuras de Acción",
+                "subcategory": "Droides",
+                "price": 49.99,
+                "currency": "USD",
+                "description": "Figura coleccionable de BB-8 con base giratoria.",
+                "image": "assets/images/bb8.png",
+                "stock": 22,
+                "rating": 4.7,
+                "details": {
+                  "height": "12 cm",
+                  "material": "PVC",
+                  "manufacturer": "Astro Droid Toys",
+                  "weight": "0.25 kg"
+                },
+                "tags": ["droide", "BB-8", "figura"],
+                "variants": [],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user29.png",
+                    "username": "BB-ATE",
+                    "rating": 4.5,
+                    "comment": "Amo al robot gordito."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user30.png",
+                    "username": "BeepBoopUser",
+                    "rating": 5,
+                    "comment": "Me lo regalaron y fue amor a primera vista."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user31.png",
+                    "username": "DroideDeBarrio",
+                    "rating": 4.5,
+                    "comment": "Me encantó, amo que puede girar"
+                  }
+                ]
+              },
+              {
+                "id": "prod21",
+                "name": "Chopper (C1-10P)",
+                "category": "Figuras de Acción",
+                "subcategory": "Droides",
+                "price": 54.99,
+                "currency": "USD",
+                "description": "Figura de acción de Chopper, el leal y malhumorado droide de la serie Star Wars Rebels.",
+                "image": "assets/images/chopper.png",
+                "stock": 20,
+                "rating": 4.6,
+                "details": {
+                  "height": "9 cm",
+                  "material": "PVC",
+                  "manufacturer": "Rebel Galaxy Toys",
+                  "weight": "0.18 kg"
+                },
+                "tags": ["droide", "Chopper", "Rebels", "figura"],
+                "variants": [],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user29.png",
+                    "username": "DroideBardero",
+                    "rating": 4.5,
+                    "comment": "Lo tengo en la estantería y cada vez que lo miro me imagino que me está puteando en binario."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user30.png",
+                    "username": "AstroInsano",
+                    "rating": 4,
+                    "comment": "Está buenísima la figura, aunque me hubiera encantado que viniera con alguna herramienta extra o efecto de movimiento. Pero igual garpa."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "villanos",
+            "name": "Antagonistas y Villanos",
+            "products": [
+              {
+                "id": "prod3",
+                "name": "Darth Vader",
+                "category": "Figuras de Acción",
+                "subcategory": "Antagonistas y Villanos",
+                "price": 99.99,
+                "currency": "USD",
+                "description": "Figura imponente de Darth Vader con capa, máscara articulada y espada de luz.",
+                "image": "assets/images/darth_vader.png",
+                "stock": 20,
+                "rating": 4.8,
+                "details": {
+                  "height": "22 cm",
+                  "material": "PVC",
+                  "manufacturer": "Imperial Toys",
+                  "weight": "0.55 kg"
+                },
+                "tags": ["figura", "Vader", "villano", "Star Wars"],
+                "variants": [
+                  {
+                    "variantId": "prod3-v1",
+                    "color": "Negro clásico",
+                    "price": 99.99,
+                    "stock": 12
+                  },
+                  {
+                    "variantId": "prod3-v2",
+                    "color": "Edición Especial",
+                    "price": 119.99,
+                    "stock": 8
+                  }
+                ],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user32.png",
+                    "username": "LadoOscuro22",
+                    "rating": 5,
+                    "comment": "Imponente como el mismísimo Vader."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user33.png",
+                    "username": "DarkMate",
+                    "rating": 4,
+                    "comment": "La calidad es buenísima, pero por ese precio esperaba que viniera con efectos de sonido o algo más."
+                  }
+                ]
+              },
+              {
+                "id": "prod4",
+                "name": "Kylo Ren",
+                "category": "Figuras de Acción",
+                "subcategory": "Antagonistas y Villanos",
+                "price": 89.99,
+                "currency": "USD",
+                "description": "Figura de acción de Kylo Ren con detalles en su casco y capa, confeccionada con gran realismo.",
+                "image": "assets/images/kylo_ren.png",
+                "stock": 15,
+                "rating": 4.3,
+                "details": {
+                  "height": "20 cm",
+                  "material": "PVC",
+                  "manufacturer": "Imperial Toys",
+                  "weight": "0.5 kg"
+                },
+                "tags": ["figura", "Kylo", "villano", "Star Wars"],
+                "variants": [
+                  {
+                    "variantId": "prod4-v1",
+                    "color": "Estándar",
+                    "price": 89.99,
+                    "stock": 10
+                  },
+                  {
+                    "variantId": "prod4-v2",
+                    "color": "Glow Edition",
+                    "price": 99.99,
+                    "stock": 5
+                  }
+                ],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user33.png",
+                    "username": "BenNoRen",
+                    "rating": 4,
+                    "comment": "Está buena, pero el precio me pareció un poco salado. Por lo menos viene con facha"
+                  },
+                  {
+                    "avatar": "imgs/avatars/user34.png",
+                    "username": "NietoDeVader",
+                    "rating": 5,
+                    "comment": "La figura está buenísima, el casco tiene unos detalles que parecen sacados de la peli."
+                  }
+                ]
+              },
+              {
+                "id": "prod27",
+                "name": "Darth Maul",
+                "category": "Figuras de Acción",
+                "subcategory": "Villanos",
+                "price": 84.5,
+                "currency": "USD",
+                "description": "Figura de Darth Maul con sable doble desmontable y diseño fiel al Episodio I.",
+                "image": "assets/images/maul.png",
+                "stock": 14,
+                "rating": 4.7,
+                "details": {
+                  "height": "20 cm",
+                  "material": "PVC",
+                  "manufacturer": "Phantom Menace Series",
+                  "weight": "0.45 kg"
+                },
+                "tags": ["figura", "Maul", "Star Wars", "Sith", "villano"],
+                "variants": [],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user35.png",
+                    "username": "HornsAndSith",
+                    "rating": 5,
+                    "comment": "La mejor figura que tengo, posta."
+                  }
+                ]
+              },
+              {
+                "id": "prod28",
+                "name": "Gran Almirante Thrawn",
+                "category": "Figuras de Acción",
+                "subcategory": "Villanos",
+                "price": 79.99,
+                "currency": "USD",
+                "description": "Figura de Thrawn con uniforme del Imperio, basada en su aparición en Rebels.",
+                "image": "assets/images/thrawn.png",
+                "stock": 10,
+                "rating": 4.6,
+                "details": {
+                  "height": "21 cm",
+                  "material": "PVC",
+                  "manufacturer": "Imperial Legacy",
+                  "weight": "0.43 kg"
+                },
+                "tags": ["figura", "Thrawn", "Star Wars", "Imperio", "villano"],
+                "variants": [],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user36.png",
+                    "username": "PlanBDeThrawn",
+                    "rating": 5,
+                    "comment": "Thrawn se ve impecable, la calidad es de otro planeta."
+                  }
+                ]
+              },
+              {
+                "id": "prod30",
+                "name": "Emperador Palpatine",
+                "category": "Figuras de Acción",
+                "subcategory": "Villanos",
+                "price": 89.99,
+                "currency": "USD",
+                "description": "Figura del Emperador Palpatine con capa oscura real y rayos de Fuerza intercambiables.",
+                "image": "assets/images/palpatine.png",
+                "stock": 12,
+                "rating": 4.8,
+                "details": {
+                  "height": "19 cm",
+                  "material": "PVC y tela",
+                  "manufacturer": "Galactic Throne Series",
+                  "weight": "0.5 kg"
+                },
+                "tags": [
+                  "figura",
+                  "Palpatine",
+                  "Star Wars",
+                  "Sith",
+                  "villano",
+                  "emperador"
+                ],
+                "variants": [
+                  {
+                    "variantId": "prod30-v1",
+                    "color": "Trono incluido",
+                    "price": 99.99,
+                    "stock": 5
+                  },
+                  {
+                    "variantId": "prod30-v2",
+                    "color": "Clásico con rayos",
+                    "price": 89.99,
+                    "stock": 7
+                  }
+                ],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user37.png",
+                    "username": "SithLord_77",
+                    "rating": 4.5,
+                    "comment": "¡PODER ILIMITADOOOO! Cuando le ponés los rayitos en las manos es imposible no gritarlo. La capa tiene una caída perfecta. El trono le suma un +100 en maldad."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user37.png",
+                    "username": "OscuroPeroElegante",
+                    "rating": 4,
+                    "comment": "Figura top. El rostro está tan bien hecho que cada vez que paso por al lado me da miedo. Literalmente siento que me está manipulando."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user38.png",
+                    "username": "ExecutorFan",
+                    "rating": 3.5,
+                    "comment": "Perfecta para recrear escenas de pura traición y rayos. No sé por qué, pero desde que la tengo me peleo más con mi familia."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user39.png",
+                    "username": "Orden66Activo",
+                    "rating": 4,
+                    "comment": "Lo compré y automáticamente se me cayó una estatua de los Jedi. Coincidencia… no lo creo. Detalles excelentes, especialmente los ojos malignos."
+                  }
+                ]
+              },
+              {
+                "id": "prod31",
+                "name": "General Grievous",
+                "category": "Figuras de Acción",
+                "subcategory": "Villanos",
+                "price": 94.99,
+                "currency": "USD",
+                "description": "Figura articulada del General Grievous con sus 4 brazos extendibles y sables incluidos.",
+                "image": "assets/images/grievous.png",
+                "stock": 8,
+                "rating": 4.9,
+                "details": {
+                  "height": "24 cm",
+                  "material": "PVC",
+                  "manufacturer": "Clone Wars Legends",
+                  "weight": "0.7 kg"
+                },
+                "tags": [
+                  "figura",
+                  "Grievous",
+                  "Star Wars",
+                  "villano",
+                  "droid",
+                  "cyborg"
+                ],
+                "variants": [
+                  {
+                    "variantId": "prod31-v1",
+                    "color": "Batalla Jedi",
+                    "price": 94.99,
+                    "stock": 4
+                  },
+                  {
+                    "variantId": "prod31-v2",
+                    "color": "Desmontable",
+                    "price": 97.99,
+                    "stock": 4
+                  }
+                ],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user40.png",
+                    "username": "MultiBrazo",
+                    "rating": 4,
+                    "comment": "La figura es tan precisa que hasta siento que se va a poner a toser. La edición desmontable es brutal. Parece que va a liderar una invasión de estanterías."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user41.png",
+                    "username": "SableCollector",
+                    "rating": 5,
+                    "comment": "Ideal para ponerlo en una pose intimidante con los cuatro sables. Mis otras figuras Jedi están reconsiderando sus decisiones."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sables",
+        "name": "Réplicas de Sables de Luz",
+        "subcategories": [
+          {
+            "id": "sables-luz",
+            "name": "Sables de Luz",
+            "products": [
+              {
+                "id": "prod5",
+                "name": "Sable de Luz de Luke Skywalker",
+                "category": "Réplicas de Sables de Luz",
+                "subcategory": "Sables de Luz",
+                "price": 199.99,
+                "currency": "USD",
+                "description": "Réplica de sable de luz inspirada en el de Luke Skywalker, ideal para exhibición o coleccionismo.",
+                "image": "assets/images/sable_luke.png",
+                "stock": 10,
+                "rating": 4.6,
+                "details": {
+                  "length": "90 cm",
+                  "material": "Metal y plástico",
+                  "manufacturer": "Galactic Replicas",
+                  "weight": "0.8 kg"
+                },
+                "tags": ["sable", "Luke", "Star Wars", "réplica"],
+                "variants": [
+                  {
+                    "variantId": "prod5-v1",
+                    "color": "Verde",
+                    "price": 199.99,
+                    "stock": 7
+                  },
+                  {
+                    "variantId": "prod5-v2",
+                    "color": "Dorado",
+                    "price": 219.99,
+                    "stock": 3
+                  }
+                ],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user42.png",
+                    "username": "SkywalkerFan",
+                    "rating": 5,
+                    "comment": "La mejor réplica que tengo. La calidad es impresionante y el brillo del sable es espectacular."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user43.png",
+                    "username": "SableLover",
+                    "rating": 4,
+                    "comment": "Me encanta, pero el precio es un poco elevado. Aún así, vale la pena."
+                  }
+                ]
+              },
+              {
+                "id": "prod6",
+                "name": "Sable de Luz de Darth Vader",
+                "category": "Réplicas de Sables de Luz",
+                "subcategory": "Sables de Luz",
+                "price": 209.99,
+                "currency": "USD",
+                "description": "Réplica de sable de luz rojo, emblemática en la figura de Darth Vader.",
+                "image": "assets/images/sable_vader.png",
+                "stock": 8,
+                "rating": 4.7,
+                "details": {
+                  "length": "90 cm",
+                  "material": "Metal reforzado y plástico",
+                  "manufacturer": "Galactic Replicas",
+                  "weight": "0.85 kg"
+                },
+                "tags": ["sable", "Vader", "Star Wars", "réplica"],
+                "variants": [
+                  {
+                    "variantId": "prod6-v1",
+                    "color": "Rojo",
+                    "price": 209.99,
+                    "stock": 8
+                  }
+                ],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user44.png",
+                    "username": "DarthFan",
+                    "rating": 5,
+                    "comment": "Increíble réplica. La calidad es impresionante y el sonido es genial."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user45.png",
+                    "username": "SithLord",
+                    "rating": 4,
+                    "comment": "Me encanta, pero me gustaría que tuviera más efectos de sonido."
+                  }
+                ]
+              },
+              {
+                "id": "prod32",
+                "name": "Sable Giratorio del Gran Inquisidor",
+                "category": "Réplicas de Sables de Luz",
+                "subcategory": "Sables de Luz",
+                "price": 159.99,
+                "currency": "USD",
+                "description": "Réplica del sable giratorio del Gran Inquisidor con luces LED rojas y efecto de rotación real.",
+                "image": "assets/images/inquisitor_saber.png",
+                "stock": 6,
+                "rating": 4.7,
+                "details": {
+                  "length": "92 cm",
+                  "material": "Aleación metálica y policarbonato",
+                  "manufacturer": "Sith Legacy Props",
+                  "weight": "1.2 kg"
+                },
+                "tags": [
+                  "sable",
+                  "inquisidor",
+                  "girar",
+                  "Star Wars",
+                  "villano",
+                  "colección"
+                ],
+                "variants": [
+                  {
+                    "variantId": "prod32-v1",
+                    "style": "Rotación activada",
+                    "price": 159.99,
+                    "stock": 3
+                  },
+                  {
+                    "variantId": "prod32-v2",
+                    "style": "Estático (coleccionista)",
+                    "price": 129.99,
+                    "stock": 3
+                  }
+                ],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user46.png",
+                    "username": "InquisidorFan",
+                    "rating": 5,
+                    "comment": "La mejor réplica que tengo. La rotación es impresionante y el sonido es genial."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user47.png",
+                    "username": "SithCollector",
+                    "rating": 4,
+                    "comment": "Me encanta, pero me gustaría que tuviera más efectos de sonido."
+                  }
+                ]
+              },
+              {
+                "id": "prod34",
+                "name": "Darksaber",
+                "category": "Réplicas de Sables de Luz",
+                "subcategory": "Sables de Luz",
+                "price": 179.99,
+                "currency": "USD",
+                "description": "Réplica del mítico Darksaber con hoja negra LED, mango detallado y efectos de sonido auténticos.",
+                "image": "assets/images/darksaber.png",
+                "stock": 10,
+                "rating": 5.0,
+                "details": {
+                  "length": "98 cm",
+                  "material": "Metal pulido y policarbonato",
+                  "manufacturer": "Mandalore Relics",
+                  "weight": "1.3 kg"
+                },
+                "tags": [
+                  "darksaber",
+                  "mandaloriano",
+                  "sable negro",
+                  "Bo-Katan",
+                  "Din Djarin",
+                  "Star Wars"
+                ],
+                "variants": [
+                  {
+                    "variantId": "prod34-v1",
+                    "style": "Edición Estándar",
+                    "price": 179.99,
+                    "stock": 6
+                  },
+                  {
+                    "variantId": "prod34-v2",
+                    "style": "Coleccionista con base",
+                    "price": 199.99,
+                    "stock": 4
+                  }
+                ],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user48.png",
+                    "username": "MandalorianFan",
+                    "rating": 5,
+                    "comment": "Excelente réplica, se siente sólida y bien construida."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user49.png",
+                    "username": "DarksaberCollector",
+                    "rating": 4,
+                    "comment": "Me encanta, el sonido es increible."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "accesorios",
+        "name": "Accesorios y Merchandising",
+        "subcategories": [
+          {
+            "id": "posters",
+            "name": "Posters y Arte",
+            "products": [
+              {
+                "id": "prod7",
+                "name": "Poster de Batalla Espacial",
+                "category": "Accesorios y Merchandising",
+                "subcategory": "Posters y Arte",
+                "price": 29.99,
+                "currency": "USD",
+                "description": "Poster de alta calidad con impresión de una épica batalla espacial en el universo Star Wars.",
+                "image": "assets/images/poster_batalla.png",
+                "stock": 50,
+                "rating": 4.2,
+                "details": {
+                  "dimensions": "60x90 cm",
+                  "material": "Papel fotográfico",
+                  "manufacturer": "Star Art",
+                  "weight": "0.3 kg"
+                },
+                "tags": ["poster", "arte", "Star Wars", "coleccionable"],
+                "variants": []
+              },
+              {
+                "id": "prod8",
+                "name": "Poster de Iconos Star Wars",
+                "category": "Accesorios y Merchandising",
+                "subcategory": "Posters y Arte",
+                "price": 24.99,
+                "currency": "USD",
+                "description": "Vibrante collage con los personajes más icónicos de la saga.",
+                "image": "assets/images/poster_iconos.png",
+                "stock": 70,
+                "rating": 4.4,
+                "details": {
+                  "dimensions": "50x70 cm",
+                  "material": "Papel de alta calidad",
+                  "manufacturer": "Star Art",
+                  "weight": "0.25 kg"
+                },
+                "tags": ["poster", "Star Wars", "arte"],
+                "variants": [],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user50.png",
+                    "username": "ArteStarFan",
+                    "rating": 5,
+                    "comment": "El poster es increíble, los colores son vibrantes y la calidad es excelente."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user51.png",
+                    "username": "ColeccionistaDeArte",
+                    "rating": 4,
+                    "comment": "Me encanta, pero me gustaría que viniera enmarcado."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "accesorios-varios",
+            "name": "Accesorios Varios",
+            "products": [
+              {
+                "id": "prod9",
+                "name": "Taza de Star Wars",
+                "category": "Accesorios y Merchandising",
+                "subcategory": "Accesorios Varios",
+                "price": 14.99,
+                "currency": "USD",
+                "description": "Taza temática con diseños icónicos de Star Wars para los fans más apasionados.",
+                "image": "assets/images/taza.png",
+                "stock": 100,
+                "rating": 4.0,
+                "details": {
+                  "capacity": "350 ml",
+                  "material": "Cerámica",
+                  "manufacturer": "Galactic Mugs",
+                  "weight": "0.4 kg"
+                },
+                "tags": ["taza", "Star Wars", "accesorio"],
+                "variants": [
+                  {
+                    "variantId": "prod9-v1",
+                    "color": "Blanco",
+                    "price": 14.99,
+                    "stock": 70
+                  },
+                  {
+                    "variantId": "prod9-v2",
+                    "color": "Negro",
+                    "price": 15.99,
+                    "stock": 30
+                  }
+                ],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user52.png",
+                    "username": "TazaFan",
+                    "rating": 4,
+                    "comment": "La taza es genial, pero me gustaría que tuviera más diseños."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user53.png",
+                    "username": "CaféConFuerza",
+                    "rating": 5,
+                    "comment": "Perfecta para mis mañanas de café y Star Wars."
+                  }
+                ]
+              },
+              {
+                "id": "prod10",
+                "name": "Llavero Imperial",
+                "category": "Accesorios y Merchandising",
+                "subcategory": "Accesorios Varios",
+                "price": 9.99,
+                "currency": "USD",
+                "description": "Llavero con el emblema del Imperio. Un accesorio pequeño pero lleno de identidad.",
+                "image": "assets/images/llavero.png",
+                "stock": 150,
+                "rating": 4.3,
+                "details": {
+                  "material": "Metal y plástico",
+                  "manufacturer": "Imperial Accessories"
+                },
+                "tags": ["llavero", "Star Wars", "accesorio"],
+                "variants": [],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user54.png",
+                    "username": "LlaveroFan",
+                    "rating": 4,
+                    "comment": "El llavero es genial, pero me gustaría que tuviera más detalles."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user55.png",
+                    "username": "ImperialCollector",
+                    "rating": 5,
+                    "comment": "Perfecto para mis llaves. ¡Imperio al poder!"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "naves",
+        "name": "Naves y Modelos",
+        "subcategories": [
+          {
+            "id": "cazas",
+            "name": "Cazas Estelares",
+            "products": [
+              {
+                "id": "prod11",
+                "name": "Modelo X-Wing",
+                "category": "Naves y Modelos",
+                "subcategory": "Cazas Estelares",
+                "price": 299.99,
+                "currency": "USD",
+                "description": "Modelo a escala del icónico caza estelar X-Wing con detalles precisos y partes móviles.",
+                "image": "assets/images/xwing.png",
+                "stock": 5,
+                "rating": 4.8,
+                "details": {
+                  "scale": "1:72",
+                  "material": "Plástico de alta calidad",
+                  "manufacturer": "Starship Models",
+                  "weight": "2 kg"
+                },
+                "tags": ["modelo", "X-Wing", "Star Wars", "coleccionable"],
+                "variants": [],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user22.png",
+                    "username": "XWingFan",
+                    "rating": 5,
+                    "comment": "Increíble detalle y calidad. Perfecto para mi colección."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user23.png",
+                    "username": "StarshipLover",
+                    "rating": 4.5,
+                    "comment": "El modelo es genial, pero el ensamblaje fue un poco complicado."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "imperiales",
+            "name": "Naves Imperiales",
+            "products": [
+              {
+                "id": "prod12",
+                "name": "Modelo Destructor Estelar",
+                "category": "Naves y Modelos",
+                "subcategory": "Naves Imperiales",
+                "price": 499.99,
+                "currency": "USD",
+                "description": "Magnífico modelo a escala del Destructor Estelar con múltiples detalles, ideal para los coleccionistas.",
+                "image": "assets/images/destructor.png",
+                "stock": 3,
+                "rating": 4.9,
+                "details": {
+                  "scale": "1:144",
+                  "material": "Plástico y metal",
+                  "manufacturer": "Starship Models",
+                  "weight": "3.5 kg"
+                },
+                "tags": [
+                  "modelo",
+                  "Destructor Estelar",
+                  "Star Wars",
+                  "coleccionable"
+                ],
+                "variants": [],
+                "reviews": [
+                  {
+                    "avatar": "imgs/avatars/user24.png",
+                    "username": "ImperialFan",
+                    "rating": 5,
+                    "comment": "El modelo es impresionante, los detalles son increíbles."
+                  },
+                  {
+                    "avatar": "imgs/avatars/user25.png",
+                    "username": "StarshipCollector",
+                    "rating": 4,
+                    "comment": "Me encanta, pero el precio es un poco elevado."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "cart": []
+}

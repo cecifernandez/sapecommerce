@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Popover
+        placement="Bottom"
+        showHeader="false"
+    >
+        <VBox class="sapUiSmallMargin">
+            <List
+                id="CategoriesList"
+                items="{productModel>/catalog/categories}"
+                mode="None"
+            >
+                <StandardListItem
+                    title="{productModel>name}"
+                    type="Active"
+                    press="onCategorySelect"
+                />
+            </List>
+        </VBox>
+    </Popover>
+</core:FragmentDefinition>

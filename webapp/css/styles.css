@@ -1,0 +1,11 @@
+/* .banner_img {
+    display: "flex";
+    justify-content: "center";
+    margin: auto
+} */
+
+.toolbar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;s
+}
