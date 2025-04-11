@@ -17,7 +17,25 @@
                 "price": 79.99,
                 "currency": "USD",
                 "description": "Figura de acción detallada de Luke Skywalker con múltiples puntos de movilidad y accesorios intercambiables.",
-                "image": "assets/images/luke.png",
+                "images": [],
+                "variants": [
+                  {
+                    "name": "Traje Blanco",
+                    "images": [
+                      "assets/imgs/luke/luke-skywalker-v1-1.png",
+                      "assets/imgs/luke/luke-skywalker-v1-2.png",
+                      "assets/imgs/luke/luke-skywalker-v1-3.png"
+                    ]
+                  },
+                  {
+                    "name": "Traje Negro",
+                    "images": [
+                      "assets/imgs/luke/luke-skywalker-v2-1.png",
+                      "assets/imgs/luke/luke-skywalker-v2-2.png",
+                      "assets/imgs/luke/luke-skywalker-v2-3.png"
+                    ]
+                  }
+                ],
                 "stock": 25,
                 "rating": 4.5,
                 "details": {
@@ -27,20 +45,7 @@
                   "weight": "0.5 kg"
                 },
                 "tags": ["figura", "Luke", "Star Wars", "coleccionable"],
-                "variants": [
-                  {
-                    "variantId": "prod1-v1",
-                    "color": "Original",
-                    "price": 79.99,
-                    "stock": 15
-                  },
-                  {
-                    "variantId": "prod1-v2",
-                    "color": "Limited Edition",
-                    "price": 99.99,
-                    "stock": 10
-                  }
-                ],
+
                 "reviews": [
                   {
                     "avatar": "imgs/avatars/user1.png",
@@ -70,7 +75,6 @@
                 "price": 79.99,
                 "currency": "USD",
                 "description": "Figura de acción de Leia Organa con detalle en vestuario y accesorios característicos.",
-                "image": "assets/images/leia.png",
                 "stock": 30,
                 "rating": 4.7,
                 "details": {
@@ -80,18 +84,23 @@
                   "weight": "0.45 kg"
                 },
                 "tags": ["figura", "Leia", "Star Wars", "coleccionable"],
+                "images": [],
                 "variants": [
                   {
-                    "variantId": "prod2-v1",
-                    "color": "Edición Clásica",
-                    "price": 79.99,
-                    "stock": 20
+                    "name": "Edición Vintage",
+                    "images": [
+                      "assets/imgs/leia/leia-v1-1.png",
+                      "assets/imgs/leia/leia-v1-2.png",
+                      "assets/imgs/leia/leia-v1-3.png"
+                    ]
                   },
                   {
-                    "variantId": "prod2-v2",
-                    "color": "Edición Fan",
-                    "price": 89.99,
-                    "stock": 10
+                    "name": "Edición Estandar",
+                    "images": [
+                      "assets/imgs/leia/leia-v2-1.png",
+                      "assets/imgs/leia/leia-v2-2.png",
+                      "assets/imgs/leia/leia-v2-3.png"
+                    ]
                   }
                 ],
                 "reviews": [
@@ -123,7 +132,6 @@
                 "price": 74.99,
                 "currency": "USD",
                 "description": "Figura articulada de Han Solo con su clásica vestimenta y bláster.",
-                "image": "assets/images/han_solo.png",
                 "stock": 20,
                 "rating": 4.6,
                 "details": {
@@ -133,12 +141,23 @@
                   "weight": "0.5 kg"
                 },
                 "tags": ["figura", "Han Solo", "coleccionable"],
+                "images": [],
                 "variants": [
                   {
-                    "variantId": "prod13-v1",
-                    "color": "Original",
-                    "price": 74.99,
-                    "stock": 15
+                    "name": "Edición The Force Awakens",
+                    "images": [
+                      "assets/imgs/han/han-v1-1.png",
+                      "assets/imgs/han/han-v1-2.png",
+                      "assets/imgs/han/han-v1-3.png"
+                    ]
+                  },
+                  {
+                    "name": "Edición A Star Wars Story",
+                    "images": [
+                      "assets/imgs/han/han-v2-1.png",
+                      "assets/imgs/han/han-v2-2.png",
+                      "assets/imgs/han/han-v2-3.png"
+                    ]
                   }
                 ],
                 "reviews": [
@@ -170,7 +189,6 @@
                 "price": 84.99,
                 "currency": "USD",
                 "description": "Figura de Ahsoka Tano con sables de luz blancos y vestimenta detallada inspirada en The Mandalorian.",
-                "image": "assets/images/ahsoka.png",
                 "stock": 18,
                 "rating": 4.8,
                 "details": {
@@ -180,18 +198,23 @@
                   "weight": "0.48 kg"
                 },
                 "tags": ["figura", "Ahsoka", "Star Wars", "coleccionable"],
+                "images": [],
                 "variants": [
                   {
-                    "variantId": "prod22-v1",
-                    "color": "Vestimenta Gris",
-                    "price": 84.99,
-                    "stock": 10
+                    "name": "Edición The Mandalorian",
+                    "images": [
+                      "assets/imgs/ahsoka/ahsoka-v1-1.png",
+                      "assets/imgs/ahsoka/ahsoka-v1-2.png",
+                      "assets/imgs/ahsoka/ahsoka-v1-3.png"
+                    ]
                   },
                   {
-                    "variantId": "prod22-v2",
-                    "color": "Edición Mandalorian",
-                    "price": 99.99,
-                    "stock": 8
+                    "name": "Edición Clone Wars",
+                    "images": [
+                      "assets/imgs/ahsoka/ahsoka-v2-1.png",
+                      "assets/imgs/ahsoka/ahsoka-v2-2.png",
+                      "assets/imgs/ahsoka/ahsoka-v2-3.png"
+                    ]
                   }
                 ],
                 "reviews": [
@@ -223,7 +246,6 @@
                 "price": 79.99,
                 "currency": "USD",
                 "description": "Figura de acción de Anakin Skywalker con capa removible y sable azul.",
-                "image": "assets/images/anakin.png",
                 "stock": 22,
                 "rating": 4.5,
                 "details": {
@@ -233,7 +255,25 @@
                   "weight": "0.5 kg"
                 },
                 "tags": ["figura", "Anakin", "Star Wars", "coleccionable"],
-                "variants": [],
+                "images": [],
+                "variants": [
+                  {
+                    "name": "Edición Vintage",
+                    "images": [
+                      "assets/imgs/anakin/anakin-v1-1.png",
+                      "assets/imgs/anakin/anakin-v1-2.png",
+                      "assets/imgs/anakin/anakin-v1-3.png"
+                    ]
+                  },
+                  {
+                    "name": "Edición Clone Wars",
+                    "images": [
+                      "assets/imgs/anakin/anakin-v2-1.png",
+                      "assets/imgs/anakin/anakin-v2-2.png",
+                      "assets/imgs/anakin/anakin-v2-3.png"
+                    ]
+                  }
+                ],
                 "reviews": [
                   {
                     "avatar": "imgs/avatars/user13.png",
@@ -263,7 +303,6 @@
                 "price": 82.99,
                 "currency": "USD",
                 "description": "Figura detallada de Obi-Wan con su clásico atuendo Jedi y sable de luz azul.",
-                "image": "assets/images/obiwan.png",
                 "stock": 16,
                 "rating": 4.6,
                 "details": {
@@ -273,12 +312,29 @@
                   "weight": "0.52 kg"
                 },
                 "tags": ["figura", "Obi-Wan", "Star Wars", "Jedi"],
+                "images": [],
                 "variants": [
                   {
-                    "variantId": "prod24-v1",
-                    "color": "Atuendo Jedi",
-                    "price": 82.99,
-                    "stock": 16
+                    "name": "Edición Ben",
+                    "images": [
+                      "assets/imgs/obi/obi-v1-1.png",
+                      "assets/imgs/obi/obi-v1-2.png"
+                    ]
+                  },
+                  {
+                    "name": "Edición Wandering Jedi",
+                    "images": [
+                      "assets/imgs/obi/obi-v2-1.png",
+                      "assets/imgs/obi/obi-v2-2.png",
+                      "assets/imgs/obi/obi-v2-3.png"
+                    ]
+                  },
+                  {
+                    "name": "Edición Comandante Clon",
+                    "images": [
+                      "assets/imgs/obi/obi-v3-1.png",
+                      "assets/imgs/obi/obi-v3-2.png"
+                    ]
                   }
                 ],
                 "reviews": [
@@ -320,7 +376,25 @@
                   "weight": "0.47 kg"
                 },
                 "tags": ["figura", "Rey", "Star Wars", "coleccionable"],
-                "variants": [],
+                "images": [],
+                "variants": [
+                  {
+                    "name": "Edición D-O",
+                    "images": [
+                      "assets/imgs/rey/rey-v1-1.png",
+                      "assets/imgs/rey/rey-v1-2.png",
+                      "assets/imgs/rey/rey-v1-3.png"
+                    ]
+                  },
+                  {
+                    "name": "Edición Rise of Skywalker",
+                    "images": [
+                      "assets/imgs/rey/rey-v2-1.png",
+                      "assets/imgs/rey/rey-v2-2.png",
+                      "assets/imgs/rey/rey-v2-3.png"
+                    ]
+                  }
+                ],
                 "reviews": [
                   {
                     "avatar": "imgs/avatars/user20.png",
@@ -366,7 +440,17 @@
                   "weight": "0.2 kg"
                 },
                 "tags": ["droide", "R2-D2", "figura"],
-                "variants": [],
+                "images": [],
+                "variants": [
+                  {
+                    "name": "Edición Mandalorian",
+                    "images": [
+                      "assets/imgs/r2d2/r2-v1-1.png",
+                      "assets/imgs/r2d2/r2-v1-2.png",
+                      "assets/imgs/r2d2/r2-v1-3.png"
+                    ]
+                  }
+                ],
                 "reviews": [
                   {
                     "avatar": "imgs/avatars/user23.png",
@@ -396,7 +480,6 @@
                 "price": 62.99,
                 "currency": "USD",
                 "description": "Figura articulada del droide de protocolo C-3PO con acabado metálico dorado.",
-                "image": "assets/images/c3po.png",
                 "stock": 18,
                 "rating": 4.8,
                 "details": {
@@ -406,7 +489,17 @@
                   "weight": "0.4 kg"
                 },
                 "tags": ["droide", "C-3PO", "figura"],
-                "variants": [],
+                "images": [],
+                "variants": [
+                  {
+                    "name": "Edición The Force Awakens",
+                    "images": [
+                      "assets/imgs/c3po/c3po-v1-1.png",
+                      "assets/imgs/c3po/c3po-v1-2.png",
+                      "assets/imgs/c3po/c3po-v1-3.png"
+                    ]
+                  }
+                ],
                 "reviews": [
                   {
                     "avatar": "imgs/avatars/user26.png",
@@ -446,7 +539,16 @@
                   "weight": "0.25 kg"
                 },
                 "tags": ["droide", "BB-8", "figura"],
-                "variants": [],
+                "images": [],
+                "variants": [
+                  {
+                    "name": "Edición The Force Awakens",
+                    "images": [
+                      "assets/imgs/bb-8/bb8-v1-1.png",
+                      "assets/imgs/bb-8/bb8-v1-2.png"
+                    ]
+                  }
+                ],
                 "reviews": [
                   {
                     "avatar": "imgs/avatars/user29.png",
@@ -486,7 +588,17 @@
                   "weight": "0.18 kg"
                 },
                 "tags": ["droide", "Chopper", "Rebels", "figura"],
-                "variants": [],
+                "images": [],
+                "variants": [
+                  {
+                    "name": "Edición Rebels",
+                    "images": [
+                      "assets/imgs/chopper/chop-v1-1.png",
+                      "assets/imgs/chopper/chop-v1-2.png",
+                      "assets/imgs/chopper/chop-v1-3.png"
+                    ]
+                  }
+                ],
                 "reviews": [
                   {
                     "avatar": "imgs/avatars/user29.png",
@@ -526,18 +638,23 @@
                   "weight": "0.55 kg"
                 },
                 "tags": ["figura", "Vader", "villano", "Star Wars"],
+                "images": [],
                 "variants": [
                   {
-                    "variantId": "prod3-v1",
-                    "color": "Negro clásico",
-                    "price": 99.99,
-                    "stock": 12
+                    "name": "Edición Vintage",
+                    "images": [
+                      "assets/imgs/vader/vader-v1-1.png",
+                      "assets/imgs/vader/vader-v1-2.png",
+                      "assets/imgs/vader/vader-v1-3.png"
+                    ]
                   },
                   {
-                    "variantId": "prod3-v2",
-                    "color": "Edición Especial",
-                    "price": 119.99,
-                    "stock": 8
+                    "name": "Edición Return of the Jedi",
+                    "images": [
+                      "assets/imgs/vader/vader-v2-1.png",
+                      "assets/imgs/vader/vader-v2-2.png",
+                      "assets/imgs/vader/vader-v2-3.png"
+                    ]
                   }
                 ],
                 "reviews": [
@@ -573,18 +690,15 @@
                   "weight": "0.5 kg"
                 },
                 "tags": ["figura", "Kylo", "villano", "Star Wars"],
+                "images": [],
                 "variants": [
                   {
-                    "variantId": "prod4-v1",
-                    "color": "Estándar",
-                    "price": 89.99,
-                    "stock": 10
-                  },
-                  {
-                    "variantId": "prod4-v2",
-                    "color": "Glow Edition",
-                    "price": 99.99,
-                    "stock": 5
+                    "name": "Edición Clásica",
+                    "images": [
+                      "assets/imgs/kylo/kylo-v1-1.png",
+                      "assets/imgs/kylo/kylo-v1-2.png",
+                      "assets/imgs/kylo/kylo-v1-3.png"
+                    ]
                   }
                 ],
                 "reviews": [
@@ -620,7 +734,17 @@
                   "weight": "0.45 kg"
                 },
                 "tags": ["figura", "Maul", "Star Wars", "Sith", "villano"],
-                "variants": [],
+                "images": [],
+                "variants": [
+                  {
+                    "name": "Edición Clásica",
+                    "images": [
+                      "assets/imgs/maul/maul-v1-1.png",
+                      "assets/imgs/maul/maul-v1-2.png",
+                      "assets/imgs/maul/maul-v1-3.png"
+                    ]
+                  }
+                ],
                 "reviews": [
                   {
                     "avatar": "imgs/avatars/user35.png",
@@ -648,7 +772,17 @@
                   "weight": "0.43 kg"
                 },
                 "tags": ["figura", "Thrawn", "Star Wars", "Imperio", "villano"],
-                "variants": [],
+                "images": [],
+                "variants": [
+                  {
+                    "name": "Edición Rebels",
+                    "images": [
+                      "assets/imgs/thrawn/thrawn-v1-1.png",
+                      "assets/imgs/thrawn/thrawn-v1-2.png",
+                      "assets/imgs/thrawn/thrawn-v1-3.png"
+                    ]
+                  }
+                ],
                 "reviews": [
                   {
                     "avatar": "imgs/avatars/user36.png",
@@ -683,18 +817,24 @@
                   "villano",
                   "emperador"
                 ],
+                "images": [],
                 "variants": [
                   {
-                    "variantId": "prod30-v1",
-                    "color": "Trono incluido",
-                    "price": 99.99,
-                    "stock": 5
+                    "name": "Edición Trono",
+                    "images": [
+                      "assets/imgs/palpatine/palps-v1-1.png",
+                      "assets/imgs/palpatine/palps-v1-2.png",
+                      "assets/imgs/palpatine/palps-v1-3.png",
+                      "assets/imgs/palpatine/palps-v1-4.png"
+                    ]
                   },
                   {
-                    "variantId": "prod30-v2",
-                    "color": "Clásico con rayos",
-                    "price": 89.99,
-                    "stock": 7
+                    "name": "Edición Return of the Jedi",
+                    "images": [
+                      "assets/imgs/palpatine/palps-v2-1.png",
+                      "assets/imgs/palpatine/palps-v2-2.png",
+                      "assets/imgs/palpatine/palps-v2-3.png"
+                    ]
                   }
                 ],
                 "reviews": [
@@ -749,18 +889,15 @@
                   "droid",
                   "cyborg"
                 ],
+                "images": [],
                 "variants": [
                   {
-                    "variantId": "prod31-v1",
-                    "color": "Batalla Jedi",
-                    "price": 94.99,
-                    "stock": 4
-                  },
-                  {
-                    "variantId": "prod31-v2",
-                    "color": "Desmontable",
-                    "price": 97.99,
-                    "stock": 4
+                    "name": "Edición Deluxe",
+                    "images": [
+                      "assets/imgs/grievous/griev-v1-1.png",
+                      "assets/imgs/grievous/griev-v1-2.png",
+                      "assets/imgs/grievous/griev-v1-3.png"
+                    ]
                   }
                 ],
                 "reviews": [
@@ -808,18 +945,14 @@
                   "weight": "0.8 kg"
                 },
                 "tags": ["sable", "Luke", "Star Wars", "réplica"],
+                "images": [],
                 "variants": [
                   {
-                    "variantId": "prod5-v1",
-                    "color": "Verde",
-                    "price": 199.99,
-                    "stock": 7
-                  },
-                  {
-                    "variantId": "prod5-v2",
-                    "color": "Dorado",
-                    "price": 219.99,
-                    "stock": 3
+                    "name": "Edición Estandar",
+                    "images": [
+                      "assets/imgs/sable-luke/luke-sable-v1-1.png",
+                      "assets/imgs/sable-luke/luke-sable-v1-2.png"
+                    ]
                   }
                 ],
                 "reviews": [
@@ -855,12 +988,15 @@
                   "weight": "0.85 kg"
                 },
                 "tags": ["sable", "Vader", "Star Wars", "réplica"],
+                "images": [],
                 "variants": [
                   {
-                    "variantId": "prod6-v1",
-                    "color": "Rojo",
-                    "price": 209.99,
-                    "stock": 8
+                    "name": "Edición Desmontable",
+                    "images": [
+                      "assets/imgs/sable-vader/vader-sable-v1-1.png",
+                      "assets/imgs/sable-vader/vader-sable-v1-2.png",
+                      "assets/imgs/sable-vader/vader-sable-v1-3.png"
+                    ]
                   }
                 ],
                 "reviews": [
@@ -903,18 +1039,15 @@
                   "villano",
                   "colección"
                 ],
+                "images": [],
                 "variants": [
                   {
-                    "variantId": "prod32-v1",
-                    "style": "Rotación activada",
-                    "price": 159.99,
-                    "stock": 3
-                  },
-                  {
-                    "variantId": "prod32-v2",
-                    "style": "Estático (coleccionista)",
-                    "price": 129.99,
-                    "stock": 3
+                    "name": "Edición Giratoria",
+                    "images": [
+                      "assets/imgs/sable-inq/inq-sable-v1-1.png",
+                      "assets/imgs/sable-inq/inq-sable-v1-2.png",
+                      "assets/imgs/sable-inq/inq-sable-v1-3.png"
+                    ]
                   }
                 ],
                 "reviews": [
@@ -957,18 +1090,15 @@
                   "Din Djarin",
                   "Star Wars"
                 ],
+                "images": [],
                 "variants": [
                   {
-                    "variantId": "prod34-v1",
-                    "style": "Edición Estándar",
-                    "price": 179.99,
-                    "stock": 6
-                  },
-                  {
-                    "variantId": "prod34-v2",
-                    "style": "Coleccionista con base",
-                    "price": 199.99,
-                    "stock": 4
+                    "name": "Edición con Stand",
+                    "images": [
+                      "assets/imgs/sable-dark/darksaber-v1-1.png",
+                      "assets/imgs/sable-dark/darksaber-v1-2.png",
+                      "assets/imgs/sable-dark/darksaber-v1-3.png"
+                    ]
                   }
                 ],
                 "reviews": [
@@ -1000,7 +1130,7 @@
             "products": [
               {
                 "id": "prod7",
-                "name": "Poster de Batalla Espacial",
+                "name": "Poster de Peliculas",
                 "category": "Accesorios y Merchandising",
                 "subcategory": "Posters y Arte",
                 "price": 29.99,
@@ -1016,11 +1146,37 @@
                   "weight": "0.3 kg"
                 },
                 "tags": ["poster", "arte", "Star Wars", "coleccionable"],
-                "variants": []
+                "images": [],
+                "variants": [
+                  {
+                    "name": "Edición A New Hope",
+                    "images": ["assets/imgs/poster-peli/poster-v1.png"]
+                  },
+                  {
+                    "name": "Edición Empire Strikes Back",
+                    "images": ["assets/imgs/poster-peli/poster-v5.png"]
+                  },
+                  {
+                    "name": "Edición Return of the Jedi",
+                    "images": ["assets/imgs/poster-peli/poster-v6.png"]
+                  },
+                  {
+                    "name": "Edición Phantom Menace",
+                    "images": ["assets/imgs/poster-peli/poster-v4.png"]
+                  },
+                  {
+                    "name": "Edición Attack of the Clones",
+                    "images": ["assets/imgs/poster-peli/poster-v2.png"]
+                  },
+                  {
+                    "name": "Edición Revenge of the Sith",
+                    "images": ["assets/imgs/poster-peli/poster-v3.png"]
+                  }
+                ]
               },
               {
                 "id": "prod8",
-                "name": "Poster de Iconos Star Wars",
+                "name": "Cuadros Star Wars",
                 "category": "Accesorios y Merchandising",
                 "subcategory": "Posters y Arte",
                 "price": 24.99,
@@ -1036,7 +1192,29 @@
                   "weight": "0.25 kg"
                 },
                 "tags": ["poster", "Star Wars", "arte"],
-                "variants": [],
+                "images": [],
+                "variants": [
+                  {
+                    "name": "Edición AT-AT",
+                    "images": ["assets/imgs/arte/art-1.png"]
+                  },
+                  {
+                    "name": "Edición Vader",
+                    "images": ["assets/imgs/arte/art-2.png"]
+                  },
+                  {
+                    "name": "Edición C3PO",
+                    "images": ["assets/imgs/arte/art-3.png"]
+                  },
+                  {
+                    "name": "Edición Death Star",
+                    "images": ["assets/imgs/arte/art-4.png"]
+                  },
+                  {
+                    "name": "Edición Cloud City",
+                    "images": ["assets/imgs/arte/art-5.png"]
+                  }
+                ],
                 "reviews": [
                   {
                     "avatar": "imgs/avatars/user50.png",
@@ -1076,18 +1254,19 @@
                   "weight": "0.4 kg"
                 },
                 "tags": ["taza", "Star Wars", "accesorio"],
+                "images": [],
                 "variants": [
                   {
-                    "variantId": "prod9-v1",
-                    "color": "Blanco",
-                    "price": 14.99,
-                    "stock": 70
+                    "name": "Edición Stormtrooper",
+                    "images": ["assets/imgs/tazas/taza-v1.png"]
                   },
                   {
-                    "variantId": "prod9-v2",
-                    "color": "Negro",
-                    "price": 15.99,
-                    "stock": 30
+                    "name": "Edición Cascos",
+                    "images": ["assets/imgs/tazas/taza-v2.png"]
+                  },
+                  {
+                    "name": "Edición Vader",
+                    "images": ["assets/imgs/tazas/taza-v3.png"]
                   }
                 ],
                 "reviews": [
@@ -1107,7 +1286,7 @@
               },
               {
                 "id": "prod10",
-                "name": "Llavero Imperial",
+                "name": "Llaveros Star Wars",
                 "category": "Accesorios y Merchandising",
                 "subcategory": "Accesorios Varios",
                 "price": 9.99,
@@ -1121,7 +1300,25 @@
                   "manufacturer": "Imperial Accessories"
                 },
                 "tags": ["llavero", "Star Wars", "accesorio"],
-                "variants": [],
+                "images": [],
+                "variants": [
+                  {
+                    "name": "Edición Casco Vader",
+                    "images": ["assets/imgs/llaveros/v1.png"]
+                  },
+                  {
+                    "name": "Edición Grogu",
+                    "images": ["assets/imgs/llaveros/v2.png"]
+                  },
+                  {
+                    "name": "Edición Mando",
+                    "images": ["assets/imgs/llaveros/v3.png"]
+                  },
+                  {
+                    "name": "Edición Boba Fett",
+                    "images": ["assets/imgs/llaveros/v4.png"]
+                  }
+                ],
                 "reviews": [
                   {
                     "avatar": "imgs/avatars/user54.png",
@@ -1167,7 +1364,16 @@
                   "weight": "2 kg"
                 },
                 "tags": ["modelo", "X-Wing", "Star Wars", "coleccionable"],
-                "variants": [],
+                "images": [],
+                "variants": [
+                  {
+                    "name": "Edición Clásica",
+                    "images": [
+                      "assets/imgs/xwing/x-v1.png",
+                      "assets/imgs/xwing/x-v2.png"
+                    ]
+                  }
+                ],
                 "reviews": [
                   {
                     "avatar": "imgs/avatars/user22.png",
@@ -1212,7 +1418,15 @@
                   "Star Wars",
                   "coleccionable"
                 ],
-                "variants": [],
+                "variants": [
+                  {
+                    "name": "Edición The Last Jedi",
+                    "images": [
+                      "assets/imgs/destructor/d-v1.png",
+                      "assets/imgs/destructor/d-v2.png"
+                    ]
+                  }
+                ],
                 "reviews": [
                   {
                     "avatar": "imgs/avatars/user24.png",

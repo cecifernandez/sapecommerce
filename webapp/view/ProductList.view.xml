@@ -10,12 +10,6 @@
     />
 
     <Page title="Product List">
-        <!-- <headerContent>
-            <core:Fragment
-                fragmentName="ui5.starwarsecommerce.fragments.Toolbar"
-                type="XML"
-            />
-        </headerContent> -->
         <content>
             <HBox
                 justifyContent="Start"
@@ -24,7 +18,7 @@
             >
                 <Button
                     text="{subcategories>name}"
-                    press="onSubcategorySelect"
+                    press=".onSubcategorySelect"
                     class="sapUiTinyMarginEnd"
                 />
             </HBox>
@@ -33,7 +27,7 @@
                 mode="SingleSelectMaster"
                 items="{products>/products}"
                 class="sapUiResponsiveMargin"
-                itemPress="onProductPress"
+                itemPress=".onProductPress"
             >
                 <!-- Product Image -->
                 <CustomListItem type="Active">
@@ -43,9 +37,9 @@
                             class="sapUiSmallMarginEnd"
                         >
                             <Image
-                                src="{products>image}"
+                                src="{= ${products>variants} ? ${products>variants/0/images/0} : ${products>images/0} }"
                                 width="100%"
-                                height="80px"
+                                height="auto"
                                 class="sapUiSmallMarginBottom"
                             />
                         </VBox>
@@ -57,10 +51,6 @@
                                 level="H5"
                                 class="sapUiTinyMarginBottom"
                             />
-                            <!-- <Link
-                                text="CLICK ME"
-                                press="onProductPress"
-                            /> -->
                             <Text
                                 text="{products>description}"
                                 class="sapUiTinyMarginBottom"
@@ -71,10 +61,10 @@
                             />
                             <Button
                                 text="Add to Cart"
-                                press="onAddToCart"
+                                press=".onAddToCart"
                             />
                             <Button
-                                icon="sap-icon://favorite"
+                                icon="{= ${products>isFavorite} ? 'sap-icon://heart' : 'sap-icon://heart-2'}"
                                 type="Transparent"
                                 press=".onToggleFavorite"
                                 tooltip="Agregar a Favoritos"

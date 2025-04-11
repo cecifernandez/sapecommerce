@@ -10,31 +10,41 @@ sap.ui.define(
       },
 
       init() {
-        // Llama al init del padre
         UIComponent.prototype.init.apply(this, arguments);
-        this.getRouter().initialize();
 
-        const storedFavorites =
-          JSON.parse(localStorage.getItem("favorites")) || [];
+        const oProductModel = this.getModel("productModel");
 
-        const storedCart =
-          JSON.parse(localStorage.getItem("purchaseHistory")) || [];
+        oProductModel.attachRequestCompleted(() => {
+          const data = oProductModel.getData();
 
-        let oUserModel = new JSONModel({
-          avatar: "https://i.imgur.com/3GvwNBf.png",
-          name: "Leia Organa",
-          username: "leia",
-          mail: "leia@rebellion.org",
-          favorites: storedFavorites,
-          reviews: [],
-          purchaseHistory: storedCart,
-          filteredPurchaseHistory: [],
+          const destacados = [];
+          const allProducts = [];
+
+          data.catalog.categories.forEach((category) => {
+            category.subcategories.forEach((subcategory) => {
+              subcategory.products.forEach((product) => {
+                allProducts.push(product);
+                if (product.rating >= 4.5) {
+                  destacados.push(product);
+                }
+              });
+            });
+          });
+
+          const oViewModel = new JSONModel({
+            reviewText: "",
+          });
+          this.setModel(oViewModel, "viewModel");
+          // Modelos planos
+          const oDestacadosModel = new JSONModel({ destacados });
+          this.setModel(oDestacadosModel, "destacados");
+
+          const oAllProductsModel = new JSONModel({ products: allProducts });
+          this.setModel(oAllProductsModel, "products");
         });
-        this.setModel(oUserModel, "userModel");
+
+        this.getRouter().initialize();
       },
     });
   }
 );
-
-//index.js para que no tengamos codigo ejecutable en el html, por seguridad
-//mapping vista y controlador, atributos

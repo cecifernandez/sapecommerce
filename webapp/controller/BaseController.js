@@ -73,23 +73,6 @@ sap.ui.define(
           this.navTo("account");
         },
 
-        waitForProductModel(callback) {
-          const oModel = this.getModel("productModel");
-
-          if (!oModel) {
-            console.warn("Modelo productModel no disponible.");
-            return;
-          }
-
-          if (oModel.getData() && oModel.getData().catalog) {
-            callback(oModel.getData());
-          } else {
-            oModel.attachRequestCompleted(() => {
-              callback(oModel.getData());
-            });
-          }
-        },
-
         openCart(oEvent) {
           if (!this._pCartPopover) {
             this._pCartPopover = Fragment.load({
@@ -266,11 +249,11 @@ sap.ui.define(
         },
 
         getProductModel() {
-          return this.getModel("productModel");
+          return this.getOwnerComponent().getModel("productModel");
         },
 
         getUserModel() {
-          return this.getModel("userModel");
+          return this.getOwnerComponent().getModel("userModel");
         },
 
         showMessage(sText) {
@@ -320,6 +303,104 @@ sap.ui.define(
 
             oModel.setProperty("/filteredPurchaseHistory", aFiltered);
           }
+        },
+
+        markFavorites(aProducts) {
+          const aFavorites =
+            JSON.parse(localStorage.getItem("favorites")) || [];
+
+          return aProducts.map((product) => {
+            const isFav = aFavorites.some((fav) => fav.id === product.id);
+            return { ...product, isFavorite: isFav };
+          });
+        },
+
+        toggleFavorite(oProduct) {
+          const sId = oProduct.id;
+
+          // 🔄 Leer favoritos desde localStorage
+          let aFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+          const bAlreadyFav = aFavorites.some((fav) => fav.id === sId);
+
+          if (!bAlreadyFav) {
+            aFavorites.push(oProduct);
+            oProduct.isFavorite = true;
+            this.showMessage(`${oProduct.name} agregado a favoritos ❤️`);
+          } else {
+            aFavorites = aFavorites.filter((fav) => fav.id !== sId);
+            oProduct.isFavorite = false;
+            this.showMessage(`${oProduct.name} eliminado de favoritos 💔`);
+          }
+
+          // Guardar en localStorage
+          localStorage.setItem("favorites", JSON.stringify(aFavorites));
+
+          // Modelo destacados (home)
+          const oDestacadosModel = this.getView()?.getModel("destacados");
+          if (oDestacadosModel) {
+            const aDestacados =
+              oDestacadosModel.getProperty("/destacados") || [];
+            const iDestIndex = aDestacados.findIndex((p) => p.id === sId);
+            if (iDestIndex !== -1) {
+              oDestacadosModel.setProperty(
+                `/destacados/${iDestIndex}/isFavorite`,
+                oProduct.isFavorite
+              );
+            }
+          }
+        },
+
+        _getCartItems(oProductModel) {
+          return oProductModel.getProperty("/cart") || [];
+        },
+
+        _getCartTotal(oProductModel) {
+          return oProductModel.getProperty("/cartTotal") || "0.00";
+        },
+
+        _hasItems(aItems) {
+          return aItems.length > 0;
+        },
+
+        _createPurchase(aItems, total) {
+          return {
+            items: aItems,
+            total: total,
+            date: new Date().toLocaleString(),
+          };
+        },
+
+        _savePurchase(oUserModel, oPurchase) {
+          const aHistory = oUserModel.getProperty("/purchaseHistory") || [];
+          aHistory.push(oPurchase);
+          oUserModel.setProperty("/purchaseHistory", aHistory);
+          localStorage.setItem("purchaseHistory", JSON.stringify(aHistory));
+        },
+
+        _clearCart(oProductModel) {
+          oProductModel.setProperty("/cart", []);
+          oProductModel.setProperty("/cartTotal", "0.00");
+        },
+
+        onCheckout() {
+          const oProductModel = this.getProductModel();
+          const oUserModel = this.getUserModel();
+
+          const aCartItems = this._getCartItems(oProductModel);
+          const sTotal = this._getCartTotal(oProductModel);
+
+          if (!this._hasItems(aCartItems)) {
+            sap.m.MessageToast.show("Tu carrito está vacío 🛒");
+            return;
+          }
+
+          const oNewPurchase = this._createPurchase(aCartItems, sTotal);
+          this._savePurchase(oUserModel, oNewPurchase);
+
+          this._clearCart(oProductModel);
+          sap.m.MessageToast.show("¡Compra realizada con éxito! 🎉");
+          this.navTo("account");
         },
       }
     );

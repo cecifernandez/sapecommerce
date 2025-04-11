@@ -12,7 +12,7 @@
     <Page showHeader="false">
         <content>
             <Image
-                src="imgs/bannerimage.jpg"
+                src="assets/imgs/bannerimage.jpg"
                 width="100%"
                 alt="Banner Image"
             />
@@ -21,9 +21,12 @@
                 id="home"
                 items="{destacados>/destacados}"
                 class="sapUiResponsiveMargin"
+                itemPress=".onProductPress"
+                mode="SingleSelectMaster"
             >
                 <CustomListItem
                     class="sapUiLargeMarginBeginEnd sapUiTinyMarginTopBottom"
+                    type="Active"
                 >
                     <HBox class="sapUiSmallMargin card">
                         <!-- Imagen -->
@@ -32,9 +35,9 @@
                             class="sapUiSmallMarginEnd"
                         >
                             <Image
-                                src="{destacados>image}"
+                                src="{= ${destacados>variants} ? ${destacados>variants/0/images/0} : ${destacados>images/0} }"
                                 width="100%"
-                                height="150px"
+                                height="auto"
                                 class="sapUiSmallMarginBottom"
                             />
                         </VBox>

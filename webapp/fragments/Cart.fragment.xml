@@ -22,7 +22,7 @@
                             class="sapUiSmallMarginEnd"
                         >
                             <Image
-                                src="{productModel>image}"
+                                src="{= ${productModel>variants} ? ${productModel>variants/0/images/0} : ${productModel>images/0} }"
                                 width="100%"
                                 height="80px"
                                 class="sapUiSmallMarginBottom"

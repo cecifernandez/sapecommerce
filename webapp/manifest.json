@@ -7,7 +7,15 @@
     "models": {
       "productModel": {
         "type": "sap.ui.model.json.JSONModel",
-        "uri": "./model/Products.json"
+        "uri": "./model/Products.json",
+        "settings": {
+          "bindRequest": true
+        }
+      },
+      "userModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/userModel.json",
+        "settings": {}
       }
     },
     "rootView": {

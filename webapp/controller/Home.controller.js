@@ -5,34 +5,19 @@ sap.ui.define(
 
     return BaseController.extend("ui5.starwarsecommerce.controller.Home", {
       onInit() {
-        let oModel = this.getModel("productModel");
-
-        if (!oModel) {
-          console.warn("El modelo 'productModel' aún no está disponible.");
-          return;
-        }
-
-        // Esperar a que el modelo haya terminado de cargar
-        oModel.attachRequestCompleted(() => {
-          let oData = oModel.getData();
-
-          if (!oData || !oData.catalog) {
-            console.warn("No se encontró el catálogo en el modelo.");
-            return;
-          }
-
-          let aDestacados = this.extractProducts(
-            oData.catalog,
-            (product) => product.rating >= 4.5
-          );
-
-          let oDestacadosModel = new JSONModel({
-            destacados: aDestacados,
-          });
-          this.setModel(oDestacadosModel, "destacados");
-        });
+        // const oProductModel = this.getOwnerComponent().getModel("productModel");
+        // if (!oProductModel) {
+        //   console.warn("⚠️ No se encontró el modelo 'productModel'.");
+        //   return;
+        // }
+        // const catalog = oProductModel.getData().catalog;
+        // const destacados = this.extractProducts(
+        //   catalog,
+        //   (p) => p.rating >= 4.5
+        // );
+        // const oDestacadosModel = new JSONModel({ destacados });
+        // this.getView().setModel(oDestacadosModel, "destacados");
       },
-
       onNavToHome() {
         this.navTo("home");
       },
@@ -43,6 +28,13 @@ sap.ui.define(
 
       onNavToAccount() {
         this.navTo("account");
+      },
+
+      onProductPress(oEvent) {
+        const oProduct = this.getObjectFromEvent(oEvent, "destacados");
+        this.getRouter().navTo("productDetail", {
+          productId: oProduct.id,
+        });
       },
     });
   }

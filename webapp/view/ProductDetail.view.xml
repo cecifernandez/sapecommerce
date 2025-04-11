@@ -17,14 +17,14 @@
                     width="50%"
                     class="sapUiMediumMarginEnd"
                 >
-                    <Image
-                        id="productImage"
-                        width="100%"
-                        height="auto"
-                        src="{productDetail>image}"
-                        alt="{productDetail>name}"
-                        class="sapUiResponsiveMargin sapUiLargeMarginBottom"
-                    />
+                    <Carousel
+                        pages="{productDetail>/images}"
+                        loop="true"
+                        showPageIndicator="true"
+                        pageIndicatorPlacement="Bottom"
+                    >
+                        <Image src="{productDetail>}" />
+                    </Carousel>
                 </VBox>
 
                 <!-- Detalles del producto -->
@@ -33,17 +33,17 @@
                     class="sapUiSmallMargin"
                 >
                     <Title
-                        text="{productDetail>name}"
+                        text="{productDetail>/name}"
                         level="H1"
                     />
                     <Text
-                        text="{productDetail>description}"
+                        text="{productDetail>/description}"
                         wrapping="true"
                     />
-                    <Text text="Categoría: {productDetail>category}" />
-                    <Text text="Precio: ${productDetail>price}" />
+                    <Text text="Categoría: {productDetail>/category}" />
+                    <Text text="Precio: ${productDetail>/price}" />
                     <RatingIndicator
-                        value="{productDetail>rating}"
+                        value="{productDetail>/rating}"
                         maxValue="5"
                         enabled="true"
                         iconSize="2rem"
@@ -51,9 +51,26 @@
                     />
                     <Button
                         text="Agregar al carrito"
-                        press="onAddToCart"
+                        press=".onAddToCart"
                         class="sapUiSmallMarginTop"
                     />
+                    <Button
+                        icon="{= ${productDetail>/isFavorite} ? 'sap-icon://heart' : 'sap-icon://heart-2'}"
+                        type="Transparent"
+                        press=".onToggleFavorite"
+                        tooltip="Agregar a Favoritos"
+                    />
+                    <Label text="Variante" />
+                    <Select
+                        items="{productDetail>/variants}"
+                        selectedKey="{productDetail>/selectedVariant}"
+                        change=".onVariantChange"
+                    >
+                        <core:Item
+                            key="{productDetail>name}"
+                            text="{productDetail>name}"
+                        />
+                    </Select>
                 </VBox>
             </HBox>
             <!-- Reseñas del producto -->
@@ -89,6 +106,42 @@
                         </VBox>
                     </CustomListItem>
                 </List>
+            </VBox>
+            <Text
+                text="Tus reseñas"
+                class="sapUiMediumMarginTop sapUiLargeMarginBottom"
+            />
+            <List
+                items="{path: 'userModel>/filteredUserReviews'}"
+                class="sapUiMediumMarginBeginEnd"
+            >
+                <CustomListItem>
+                    <VBox class="sapUiSmallMarginBottom">
+                        <HBox alignItems="Center">
+                            <Title
+                                text="{userModel>user}"
+                                level="H3"
+                            />
+                        </HBox>
+                        <Text
+                            text="{userModel>text}"
+                            wrapping="true"
+                            class="sapUiTinyMarginTop"
+                        />
+                    </VBox>
+                </CustomListItem>
+            </List>
+            <VBox class="sapUiMediumMarginBegin sapUiLargeMarginBottom">
+                <Text text="Escribí tu reseña ✍️" />
+                <TextArea
+                    value="{viewModel>/reviewText}"
+                    rows="4"
+                    width="100%"
+                />
+                <Button
+                    text="Enviar Reseña"
+                    press=".onPostReview"
+                />
             </VBox>
         </content>
     </Page>

@@ -8,7 +8,6 @@ sap.ui.define(
       {
         onInit() {
           const oRouter = this.getRouter();
-
           // Registrar rutas
           oRouter
             .getRoute("productsByCategory")
@@ -20,16 +19,10 @@ sap.ui.define(
             .getRoute("productsBySubcategory")
             .attachPatternMatched(this._onSubcategoryMatched, this);
 
-          // Cargar productos generales
-          this.waitForProductModel((oData) => {
-            if (!oData || !oData.catalog) {
-              console.warn("El catálogo de productos no está disponible.");
-              return;
-            }
+          // const oData = this.getProductModel().getData();
 
-            const aProducts = this.extractProducts(oData.catalog);
-            this.setJSONModel({ products: aProducts }, "products");
-          });
+          // const aProducts = this.extractProducts(oData.catalog);
+          // this.setJSONModel({ products: aProducts }, "products");
         },
 
         // ───── Navegación ─────────────────────────────────────────────
@@ -63,29 +56,21 @@ sap.ui.define(
           const oProductModel = this.getProductModel();
           const oUserModel = this.getUserModel();
 
-          const aCartItems = oProductModel.getProperty("/cart") || [];
-          const sTotal = oProductModel.getProperty("/cartTotal") || "0.00";
+          const aCartItems = this._getCartItems(oProductModel);
+          const sTotal = this._getCartTotal(oProductModel);
 
-          if (aCartItems.length === 0) {
+          if (!this._hasItems(aCartItems)) {
             sap.m.MessageToast.show("Tu carrito está vacío 🛒");
             return;
           }
 
-          const oNewPurchase = this.createPurchaseRecord(aCartItems, sTotal);
-          const aHistory = oUserModel.getProperty("/purchaseHistory") || [];
+          const oNewPurchase = this._createPurchase(aCartItems, sTotal);
+          this._savePurchase(oUserModel, oNewPurchase);
 
-          aHistory.push(oNewPurchase);
-          oUserModel.setProperty("/purchaseHistory", aHistory);
-
-          oProductModel.setProperty("/cart", []);
-          oProductModel.setProperty("/cartTotal", "0.00");
-
-          localStorage.setItem("purchaseHistory", JSON.stringify(aHistory));
-
+          this._clearCart(oProductModel);
           sap.m.MessageToast.show("¡Compra realizada con éxito! 🎉");
           this.navTo("account");
         },
-
         // ───── Productos y Filtros ───────────────────────────────────
         _onCategoryMatched(oEvent) {
           const sCategory = decodeURIComponent(
@@ -93,23 +78,21 @@ sap.ui.define(
           );
           this._selectedCategory = { name: sCategory };
 
-          this.waitForProductModel((oData) => {
-            const aCategoryProducts = this.extractProducts(
-              oData.catalog,
-              (p) => p.category.toLowerCase() === sCategory.toLowerCase()
-            );
+          const oData = this.getProductModel().getData();
 
-            this.setJSONModel({ products: aCategoryProducts }, "products");
+          const aCategoryProducts = this.extractProducts(
+            oData.catalog,
+            (p) => p.category.toLowerCase() === sCategory.toLowerCase()
+          );
 
-            const aSubcategories = this.getSubcategoriesByCategoryName(
-              oData.catalog,
-              sCategory
-            );
-            this.setJSONModel(
-              { subcategories: aSubcategories },
-              "subcategories"
-            );
-          });
+          const aMarked = this.markFavorites(aCategoryProducts);
+          this.setJSONModel({ products: aMarked }, "products");
+
+          const aSubcategories = this.getSubcategoriesByCategoryName(
+            oData.catalog,
+            sCategory
+          );
+          this.setJSONModel({ subcategories: aSubcategories }, "subcategories");
         },
 
         _onSubcategoryMatched(oEvent) {
@@ -120,42 +103,35 @@ sap.ui.define(
             oEvent.getParameter("arguments").subcategory
           );
 
-          this.waitForProductModel((oData) => {
-            const aFiltered = this.extractProducts(
-              oData.catalog,
-              (product) =>
-                product.category.toLowerCase() === sCategory.toLowerCase() &&
-                product.subcategory &&
-                product.subcategory.toLowerCase() === sSubcategory.toLowerCase()
-            );
+          const oData = this.getProductModel().getData();
 
-            this.setJSONModel({ products: aFiltered }, "products");
+          const aFiltered = this.extractProducts(
+            oData.catalog,
+            (product) =>
+              product.category.toLowerCase() === sCategory.toLowerCase() &&
+              product.subcategory &&
+              product.subcategory.toLowerCase() === sSubcategory.toLowerCase()
+          );
 
-            const aSubcategories = this.getSubcategoriesByCategoryName(
-              oData.catalog,
-              sCategory
-            );
-            this.setJSONModel(
-              { subcategories: aSubcategories },
-              "subcategories"
-            );
-          });
+          const aMarked = this.markFavorites(aFiltered);
+          this.setJSONModel({ products: aMarked }, "products");
+
+          const aSubcategories = this.getSubcategoriesByCategoryName(
+            oData.catalog,
+            sCategory
+          );
+          this.setJSONModel({ subcategories: aSubcategories }, "subcategories");
         },
 
         _onAllProductsMatched() {
-          this.waitForProductModel((oData) => {
-            const aProducts = this.extractProducts(oData.catalog);
-            this.setJSONModel({ products: aProducts }, "products");
-          });
+          const oData = this.getProductModel().getData();
+          const aProducts = this.extractProducts(oData.catalog);
+          const aMarkedProducts = this.markFavorites(aProducts);
+          this.setJSONModel({ products: aMarkedProducts }, "products");
         },
 
         onProductPress(oEvent) {
           const oProduct = this.getObjectFromEvent(oEvent, "products");
-          if (!oProduct) {
-            console.error("No se encontró el producto desde el evento.");
-            return;
-          }
-
           this.getRouter().navTo("productDetail", {
             productId: oProduct.id,
           });
@@ -174,26 +150,17 @@ sap.ui.define(
         // ───── Favoritos ─────────────────────────────────────────────
         onToggleFavorite(oEvent) {
           const oProduct = this.getObjectFromEvent(oEvent, "products");
-          const oUserModel = this.getUserModel();
-          let aFavorites = oUserModel.getProperty("/favorites") || [];
+          this.toggleFavorite(oProduct);
 
-          const bAlreadyFav = aFavorites.some((fav) => fav.id === oProduct.id);
-
-          if (!bAlreadyFav) {
-            aFavorites.push(oProduct);
-            sap.m.MessageToast.show(`${oProduct.name} agregado a favoritos ❤️`);
-          } else {
-            aFavorites = aFavorites.filter((fav) => fav.id !== oProduct.id);
-            sap.m.MessageToast.show(
-              `${oProduct.name} eliminado de favoritos 💔`
+          const oProductsModel = this.getModel("products");
+          const aProducts = oProductsModel.getProperty("/products") || [];
+          const iIndex = aProducts.findIndex((p) => p.id === oProduct.id);
+          if (iIndex !== -1) {
+            oProductsModel.setProperty(
+              `/products/${iIndex}/isFavorite`,
+              oProduct.isFavorite
             );
           }
-
-          // 🧠 Actualizar modelo
-          oUserModel.setProperty("/favorites", aFavorites);
-
-          // 💾 Guardar en localStorage
-          localStorage.setItem("favorites", JSON.stringify(aFavorites));
         },
 
         // ───── Helpers ───────────────────────────────────────────────
