@@ -73,19 +73,40 @@ sap.ui.define(
           this.navTo("account");
         },
 
-        openCart(oEvent) {
-          if (!this._pCartPopover) {
-            this._pCartPopover = Fragment.load({
+        _loadFragment: function (sFragmentName, sFragmentType) {
+          const sPromiseVar = "_p" + sFragmentType;
+          const sObjectVar = "_o" + sFragmentType;
+
+          if (!this[sPromiseVar]) {
+            this[sPromiseVar] = this.loadFragment({
               id: this.getView().getId(),
-              name: "ui5.starwarsecommerce.fragments.Cart",
+              name: sFragmentName,
               controller: this,
-            }).then((oPopover) => {
-              this.getView().addDependent(oPopover);
-              return oPopover;
-            });
+            })
+              .then((oFragment) => {
+                this[sObjectVar] = oFragment;
+                return oFragment;
+              })
+              .catch((oError) => {
+                MessageToast.show(
+                  "Error al cargar " + sFragmentType + ": " + oError.message
+                );
+                this[sPromiseVar] = null;
+                return null;
+              });
           }
-          this._pCartPopover.then((oPopover) => {
-            oPopover.openBy(oEvent.getSource());
+
+          return this[sPromiseVar];
+        },
+
+        openCart(oEvent) {
+          this._loadFragment(
+            "ui5.starwarsecommerce.fragments.Cart",
+            "CartPopover"
+          ).then((oPopover) => {
+            if (oPopover) {
+              oPopover.openBy(oEvent.getSource());
+            }
           });
         },
 
@@ -161,32 +182,50 @@ sap.ui.define(
         },
 
         _showHoverPopover(options) {
-          let {
+          const {
             fragmentId,
             fragmentName,
             triggerControlId,
             storeProperty,
             controller = this,
           } = options;
+          const promiseProperty = `${storeProperty}Promise`;
 
-          if (!this[storeProperty]) {
-            Fragment.load({
+          if (!this[promiseProperty]) {
+            this[promiseProperty] = this.loadFragment({
               id: fragmentId,
               name: fragmentName,
-              controller,
-            }).then((oPopover) => {
-              this[storeProperty] = oPopover;
-              controller.getView().addDependent(oPopover);
-              oPopover.openBy(controller.byId(triggerControlId));
+            })
+              .then((oPopover) => {
+                this[storeProperty] = oPopover;
 
-              let $popover = oPopover.$();
-              $popover.on("mouseenter", () => {
-                this._isHoveringPopover = true;
+                // Configurar eventos de hover
+                oPopover.attachBrowserEvent(
+                  "mouseenter",
+                  () => (this._isHoveringPopover = true)
+                );
+                oPopover.attachBrowserEvent(
+                  "mouseleave",
+                  this._onMouseLeavePopover.bind(this)
+                );
+
+                // Abrir el popover
+                oPopover.openBy(controller.byId(triggerControlId));
+                return oPopover;
+              })
+              .catch((error) => {
+                console.error("Error al cargar popover:", error);
+                this[promiseProperty] = null;
+                return null;
               });
-              $popover.on("mouseleave", this._onMouseLeavePopover.bind(this));
-            });
+          } else if (this[storeProperty]) {
+            // Si ya está cargado, abrirlo directamente
+            this[storeProperty].openBy(controller.byId(triggerControlId));
           } else {
-            this[storeProperty].openBy(this.byId(triggerControlId));
+            // Si está en proceso de carga, esperar a que termine
+            this[promiseProperty].then((oPopover) => {
+              if (oPopover) oPopover.openBy(controller.byId(triggerControlId));
+            });
           }
 
           this._isHoveringPopover = false;
@@ -264,44 +303,14 @@ sap.ui.define(
           const sQuery = oEvent.getSource().getValue().toLowerCase();
 
           const oView = this.getView();
-          const oModel = oView.getModel("userModel");
+          const oModel = oView.getUserModel();
 
-          // En vista de productos
           const oProductList = oView.byId("productList");
           if (oProductList) {
             const aProductFilter = sQuery
               ? [new Filter("name", FilterOperator.Contains, sQuery)]
               : [];
             oProductList.getBinding("items").filter(aProductFilter);
-          }
-
-          //En favoritos
-          const oFavoritesList = oView.byId("favoritesList");
-          if (oFavoritesList) {
-            const aFavFilter = sQuery
-              ? [new Filter("name", FilterOperator.Contains, sQuery)]
-              : [];
-            oFavoritesList.getBinding("items").filter(aFavFilter);
-          }
-
-          // En compras
-          const aOriginal = oModel.getProperty("/purchaseHistory");
-
-          // Si no hay texto de búsqueda, mostrar todo
-          if (!sQuery || sQuery.length === 0) {
-            oModel.setProperty("/filteredPurchaseHistory", aOriginal);
-          } else {
-            // Filtrado por nombre del producto dentro de cada compra
-            const aFiltered = aOriginal
-              .map((purchase) => {
-                const aFilteredItems = purchase.items.filter((item) =>
-                  item.name.toLowerCase().includes(sQuery)
-                );
-                return { ...purchase, items: aFilteredItems };
-              })
-              .filter((p) => p.items.length > 0); // Solo mantener compras con al menos 1 ítem
-
-            oModel.setProperty("/filteredPurchaseHistory", aFiltered);
           }
         },
 

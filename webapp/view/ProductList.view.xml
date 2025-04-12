@@ -8,11 +8,44 @@
         fragmentName="ui5.starwarsecommerce.fragments.Toolbar"
         type="XML"
     />
+    <core:Fragment
+        fragmentName="ui5.starwarsecommerce.fragments.SortDialog"
+        type="XML"
+    />
 
-    <Page title="Product List">
+    <Page
+        title="Product List"
+        showHeader="false"
+        class="sapUiMediumMarginTop"
+    >
         <content>
+            <!-- Buscador y Filtro -->
             <HBox
-                justifyContent="Start"
+                class="sapUiMediumMargin sapUiTinyMarginBottom search-bar-container"
+                justifyContent="End"
+                alignItems="Center"
+            >
+                <SearchField
+                    liveChange="onSearch"
+                    width="20rem"
+                    class="sapUiTinyMarginEnd"
+                    placeholder="Buscar"
+                />
+                <Button
+                    icon="sap-icon://sort"
+                    type="Emphasized"
+                    press=".onSort"
+                />
+                <Button
+                    icon="sap-icon://reset"
+                    type="Transparent"
+                    press=".onResetFilters"
+                    tooltip="Reiniciar filtros"
+                />
+            </HBox>
+            <HBox
+                justifyContent="Center"
+                alignItems="Center"
                 class="sapUiSmallMargin sapUiTinyMarginBottom"
                 items="{subcategories>/subcategories}"
             >
@@ -30,7 +63,10 @@
                 itemPress=".onProductPress"
             >
                 <!-- Product Image -->
-                <CustomListItem type="Active">
+                <CustomListItem
+                    type="Active"
+                    class="sapUiLargeMarginEnd"
+                >
                     <HBox class="sapUiSmallMargin">
                         <VBox
                             width="100px"
@@ -59,16 +95,20 @@
                                 text="{= ${products>price} + ' ' + ${products>currency} }"
                                 class="sapUiTinyMarginBottom"
                             />
-                            <Button
-                                text="Add to Cart"
-                                press=".onAddToCart"
-                            />
-                            <Button
-                                icon="{= ${products>isFavorite} ? 'sap-icon://heart' : 'sap-icon://heart-2'}"
-                                type="Transparent"
-                                press=".onToggleFavorite"
-                                tooltip="Agregar a Favoritos"
-                            />
+                            <HBox>
+                                <Button
+                                    text="Add to Cart"
+                                    press=".onAddToCart"
+                                    class="sapUiSmallMarginBegin"
+                                />
+                                <Button
+                                    icon="{= ${products>isFavorite} ? 'sap-icon://heart' : 'sap-icon://heart-2'}"
+                                    type="Transparent"
+                                    press=".onToggleFavorite"
+                                    tooltip="Agregar a Favoritos"
+                                    class="sapUiSmallMarginBegin"
+                                />
+                            </HBox>
                         </VBox>
                     </HBox>
                 </CustomListItem>

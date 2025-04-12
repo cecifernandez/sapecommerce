@@ -33,6 +33,7 @@ sap.ui.define(
 
           const oViewModel = new JSONModel({
             reviewText: "",
+            reviewRating: 0,
           });
           this.setModel(oViewModel, "viewModel");
           // Modelos planos

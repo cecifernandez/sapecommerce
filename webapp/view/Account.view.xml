@@ -8,7 +8,7 @@
         fragmentName="ui5.starwarsecommerce.fragments.Toolbar"
         type="XML"
     />
-    <Page title="Account">
+    <Page showHeader="false">
         <content>
             <!-- PERFIL DEL USUARIO -->
             <VBox class="sapUiSmallMargin sapUiAlignCenter sapUiContentPadding">
@@ -59,20 +59,63 @@
                 expandable="true"
                 expanded="true"
             >
-                <List items="{userModel>/purchaseHistory}">
-                    <CustomListItem>
+                <VBox items="{userModel>/purchaseHistory}">
+                    <items>
                         <VBox>
-                            <List items="{userModel>items}">
-                                <StandardListItem
-                                    title="{userModel>name}"
-                                    description="Cantidad: {userModel>quantity} - Precio: $ {userModel>price}"
-                                />
-                            </List>
-                            <Text text="Fecha: {userModel>date}" />
-                            <Text text="Total: $ {userModel>total}" />
+                            <!-- Header de la compra -->
+
+                            <!-- Tabla de productos -->
+                            <Table
+                                inset="false"
+                                items="{userModel>items}"
+                                width="100%"
+                            >
+                                <headerToolbar>
+                                    <OverflowToolbar>
+                                        <Title
+                                            text="Compra: {userModel>date}"
+                                            level="H5"
+                                        />
+                                    </OverflowToolbar>
+                                </headerToolbar>
+                                <columns>
+                                    <Column width="100%">
+                                        <Text text="Producto" />
+                                    </Column>
+                                    <Column
+                                        width="100%"
+                                        hAlign="Center"
+                                    >
+                                        <Text text="Cantidad" />
+                                    </Column>
+                                    <Column
+                                        width="100%"
+                                        hAlign="End"
+                                    >
+                                        <Text text="Precio" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem vAlign="Middle">
+                                        <cells>
+                                            <ObjectIdentifier
+                                                title="{userModel>name}"
+                                            />
+                                            <Text text="{userModel>quantity}" />
+                                            <ObjectNumber
+                                                number="{userModel>price}"
+                                                unit="$"
+                                            />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                            <HBox justifyContent="End">
+                                <Text text="Total: {userModel>total} $" />
+                            </HBox>
                         </VBox>
-                    </CustomListItem>
-                </List>
+                    </items>
+                </VBox>
             </Panel>
         </content>
     </Page>

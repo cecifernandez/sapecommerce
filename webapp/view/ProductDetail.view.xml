@@ -9,7 +9,10 @@
         type="XML"
     />
 
-    <Page title="Producto">
+    <Page
+        showHeader="false"
+        class="prod-detail sapUiMediumMarginTop"
+    >
         <content>
             <HBox class="sapUiSmallMargin">
                 <!-- Imagen del producto -->
@@ -40,26 +43,30 @@
                         text="{productDetail>/description}"
                         wrapping="true"
                     />
-                    <Text text="Categoría: {productDetail>/category}" />
-                    <Text text="Precio: ${productDetail>/price}" />
+                    <Title
+                        text="Precio: ${productDetail>/price}"
+                        level="H2"
+                    />
                     <RatingIndicator
-                        value="{productDetail>/rating}"
+                        value="{viewModel>/reviewRating}"
                         maxValue="5"
                         enabled="true"
                         iconSize="2rem"
                         class="sapUiTinyMarginBegin"
                     />
-                    <Button
-                        text="Agregar al carrito"
-                        press=".onAddToCart"
-                        class="sapUiSmallMarginTop"
-                    />
-                    <Button
-                        icon="{= ${productDetail>/isFavorite} ? 'sap-icon://heart' : 'sap-icon://heart-2'}"
-                        type="Transparent"
-                        press=".onToggleFavorite"
-                        tooltip="Agregar a Favoritos"
-                    />
+                    <HBox>
+                        <Button
+                            text="Agregar al carrito"
+                            press=".onAddToCart"
+                            class="sapUiSmallMarginTop"
+                        />
+                        <Button
+                            icon="{= ${productDetail>/isFavorite} ? 'sap-icon://heart' : 'sap-icon://heart-2'}"
+                            type="Transparent"
+                            press=".onToggleFavorite"
+                            tooltip="Agregar a Favoritos"
+                        />
+                    </HBox>
                     <Label text="Variante" />
                     <Select
                         items="{productDetail>/variants}"
@@ -107,30 +114,39 @@
                     </CustomListItem>
                 </List>
             </VBox>
-            <Text
-                text="Tus reseñas"
-                class="sapUiMediumMarginTop sapUiLargeMarginBottom"
-            />
-            <List
-                items="{path: 'userModel>/filteredUserReviews'}"
-                class="sapUiMediumMarginBeginEnd"
-            >
-                <CustomListItem>
-                    <VBox class="sapUiSmallMarginBottom">
-                        <HBox alignItems="Center">
-                            <Title
-                                text="{userModel>user}"
-                                level="H3"
+            <VBox class="sapUiSmallMarginTop sapUiMediumMarginBegin">
+                <Title
+                    text="Tus Reseñas"
+                    level="H2"
+                />
+                <List
+                    items="{path: 'userModel>/filteredUserReviews'}"
+                    class="sapUiResponsiveMargin"
+                >
+                    <CustomListItem>
+                        <VBox class="sapUiSmallMarginBottom">
+                            <HBox alignItems="Center">
+                                <Title
+                                    text="{userModel>user}"
+                                    level="H3"
+                                />
+                                <RatingIndicator
+                                    value="{userModel>rating}"
+                                    maxValue="5"
+                                    enabled="false"
+                                    iconSize="1rem"
+                                    class="sapUiSmallMarginBegin"
+                                />
+                            </HBox>
+                            <Text
+                                text="{userModel>text}"
+                                wrapping="true"
+                                class="sapUiTinyMarginTop"
                             />
-                        </HBox>
-                        <Text
-                            text="{userModel>text}"
-                            wrapping="true"
-                            class="sapUiTinyMarginTop"
-                        />
-                    </VBox>
-                </CustomListItem>
-            </List>
+                        </VBox>
+                    </CustomListItem>
+                </List>
+            </VBox>
             <VBox class="sapUiMediumMarginBegin sapUiLargeMarginBottom">
                 <Text text="Escribí tu reseña ✍️" />
                 <TextArea
