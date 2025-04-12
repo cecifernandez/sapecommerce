@@ -12,14 +12,7 @@ sap.ui.define(
             .getRoute("productDetail")
             .attachPatternMatched(this._onObjectMatched, this);
 
-          // const oViewModel = new JSONModel({
-          //   reviewText: "",
-          // });
-          // this.getView().setModel(oViewModel, "viewModel");
-
-          // Sobrescribimos datos del modelo de usuario si hay info en localStorage
-          const oUserModel = this.getOwnerComponent().getModel("userModel");
-
+          const oUserModel = this.getUserModel();
           try {
             const storedFavorites =
               JSON.parse(localStorage.getItem("favorites")) || [];
@@ -38,7 +31,7 @@ sap.ui.define(
 
         _onObjectMatched(oEvent) {
           const sProductId = oEvent.getParameter("arguments").productId;
-          const oProductModel = this.getModel("productModel");
+          const oProductModel = this.getProductModel();
 
           this._currentProductId = sProductId;
 
@@ -70,7 +63,7 @@ sap.ui.define(
           const oDetailModel = new JSONModel(oProduct);
           this.getView().setModel(oDetailModel, "productDetail");
 
-          const oUserModel = this.getOwnerComponent().getModel("userModel");
+          const oUserModel = this.getUserModel();
           this._filterUserReviews(
             sProductId,
             oUserModel.getProperty("/username")
@@ -110,15 +103,20 @@ sap.ui.define(
 
         onPostReview() {
           const oView = this.getView();
-          const oUserModel = this.getOwnerComponent().getModel("userModel");
+          const oUserModel = this.getUserModel();
           const oProduct = oView.getModel("productDetail").getData();
-          const sText = oView
-            .getModel("viewModel")
-            .getProperty("/reviewText")
-            .toLowerCase();
+          const oViewModel = oView.getModel("viewModel");
+
+          const sText = oViewModel.getProperty("/reviewText").toLowerCase();
+          const iRating = oViewModel.getProperty("/reviewRating");
 
           if (!sText) {
             MessageToast.show("Por favor escribí una reseña antes de enviar.");
+            return;
+          }
+
+          if (iRating === 0) {
+            MessageToast.show("Por favor seleccioná una calificación.");
             return;
           }
 
@@ -127,17 +125,34 @@ sap.ui.define(
             productId: oProduct.id,
             text: sText,
             user: oUserModel.getProperty("/username"),
+            rating: iRating,
+            date: new Date().toISOString(),
           });
 
+          // Actualizar el modelo y el localStorage
           oUserModel.setProperty("/reviews", aReviews);
           localStorage.setItem("reviews", JSON.stringify(aReviews));
 
-          oView.getModel("viewModel").setProperty("/reviewText", "");
+          // Limpiar los campos de texto y rating
+          oViewModel.setProperty("/reviewText", "");
+          oViewModel.setProperty("/reviewRating", 0);
+
           MessageToast.show("¡Gracias por tu reseña!");
+
+          // Recargar las reseñas desde el localStorage
+          const storedReviews =
+            JSON.parse(localStorage.getItem("reviews")) || [];
+          oUserModel.setProperty("/reviews", storedReviews);
+
+          // Volver a filtrar las reseñas para el producto actual
+          this._filterUserReviews(
+            oProduct.id,
+            oUserModel.getProperty("/username")
+          );
         },
 
         _filterUserReviews(productId, username) {
-          const oUserModel = this.getOwnerComponent().getModel("userModel");
+          const oUserModel = this.getUserModel();
           const aAllReviews = oUserModel.getProperty("/reviews") || [];
 
           const aUserReviews = aAllReviews.filter(

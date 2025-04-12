@@ -163,10 +163,110 @@ sap.ui.define(
           }
         },
 
-        // ───── Helpers ───────────────────────────────────────────────
+        // ───── Filtros ───────────────────────────────────────────────
 
-        onShowMessage() {
-          sap.m.MessageToast.show("Hola, soy un mensaje de prueba!");
+        // Abrir el Dialog de Filtro
+        onSort() {
+          this._loadFragment(
+            "ui5.starwarsecommerce.fragments.SortDialog",
+            "SortDialog"
+          ).then((oDialog) => {
+            if (oDialog) {
+              oDialog.open();
+            }
+          });
+        },
+
+        onCancelFilters() {
+          const oModel = this.getView().getModel("products");
+          oModel.setProperty("/filterByPrice", false);
+          oModel.setProperty("/filterByRating", false);
+          oModel.setProperty("/priceSortOrder", "");
+          oModel.setProperty("/ratingSortOrder", "");
+
+          if (this._oSortDialog && this._oSortDialog.isOpen()) {
+            this._oSortDialog.close();
+          }
+
+          if (this._oSortDialog) {
+            this._oSortDialog.destroy();
+            this._oSortDialog = null;
+          }
+
+          this._pSortDialog = null;
+        },
+
+        onPriceSelect(oEvent) {
+          const bSelected = oEvent.getParameter("selected");
+          const oModel = this.getView().getModel("products");
+
+          oModel.setProperty("/filterByPrice", bSelected);
+          if (bSelected) {
+            oModel.setProperty("/filterByRating", false);
+          }
+        },
+
+        onRatingSelect(oEvent) {
+          const bSelected = oEvent.getParameter("selected");
+          const oModel = this.getView().getModel("products");
+
+          oModel.setProperty("/filterByRating", bSelected);
+          if (bSelected) {
+            oModel.setProperty("/filterByPrice", false);
+          }
+        },
+
+        // Aplicar el filtro
+        onApplyFilters: function () {
+          const oProductsModel = this.getView().getModel("products");
+          let aProducts = oProductsModel.getProperty("/products");
+
+          const bPrice = oProductsModel.getProperty("/filterByPrice");
+          const bRating = oProductsModel.getProperty("/filterByRating");
+          const priceOrder = oProductsModel.getProperty("/priceSortOrder");
+          const ratingOrder = oProductsModel.getProperty("/ratingSortOrder");
+
+          // Filtrar por precio
+          if (bPrice && priceOrder) {
+            aProducts = aProducts.sort((a, b) => {
+              return priceOrder === "asc"
+                ? a.price - b.price
+                : b.price - a.price;
+            });
+          }
+
+          // Filtrar por rating
+          if (bRating && ratingOrder) {
+            aProducts = aProducts.sort((a, b) => {
+              return ratingOrder === "asc"
+                ? a.rating - b.rating
+                : b.rating - a.rating;
+            });
+          }
+
+          // Actualizar el modelo con los productos ordenados
+          oProductsModel.setProperty("/products", aProducts);
+          this._oSortDialog.close();
+          sap.m.MessageToast.show("Filtros aplicados con éxito");
+        },
+
+        onResetFilters() {
+          const oModel = this.getView().getModel("products");
+
+          // Restablecer flags y valores a sus valores predeterminados
+          oModel.setProperty("/filterByPrice", false);
+          oModel.setProperty("/filterByRating", false);
+          oModel.setProperty("/priceSortOrder", "");
+          oModel.setProperty("/ratingSortOrder", "");
+
+          const oProductModel = this.getProductModel();
+          const aProducts = this.extractProducts(
+            oProductModel.getData().catalog
+          );
+          const aMarkedProducts = this.markFavorites(aProducts);
+          oModel.setProperty("/products", aMarkedProducts);
+
+          sap.m.MessageToast.show("Filtros reiniciados");
         },
       }
     );

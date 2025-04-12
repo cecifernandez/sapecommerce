@@ -1,0 +1,84 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog
+        title="Filtrar Productos"
+        class="sapUiContentPadding"
+    >
+        <VBox class="sapUiSmallMarginTop">
+            <!-- Ordenar por Precio -->
+            <CheckBox
+                id="priceCheck"
+                text="Ordenar por Precio"
+                selected="{products>/filterByPrice}"
+                select=".onPriceSelect"
+            />
+            <Select
+                id="priceSelect"
+                enabled="{products>/filterByPrice}"
+                selectedKey="{products>/priceSortOrder}"
+                width="100%"
+            >
+                <items>
+                    <core:Item
+                        key="empty"
+                        text=""
+                    />
+                    <core:Item
+                        key="asc"
+                        text="Menor a Mayor"
+                    />
+                    <core:Item
+                        key="desc"
+                        text="Mayor a Menor"
+                    />
+                </items>
+            </Select>
+
+            <!-- Ordenar por Rating -->
+            <CheckBox
+                id="ratingCheck"
+                text="Ordenar por Rating"
+                selected="{products>/filterByRating}"
+                select=".onRatingSelect"
+                class="sapUiSmallMarginTop"
+            />
+            <Select
+                id="ratingSelect"
+                enabled="{products>/filterByRating}"
+                selectedKey="{products>/ratingSortOrder}"
+                width="100%"
+            >
+                <items>
+                    <core:Item
+                        key="empty"
+                        text=""
+                    />
+                    <core:Item
+                        key="asc"
+                        text="Menor a Mayor"
+                    />
+                    <core:Item
+                        key="desc"
+                        text="Mayor a Menor"
+                    />
+                </items>
+            </Select>
+        </VBox>
+
+        <beginButton>
+            <Button
+                text="OK"
+                type="Emphasized"
+                press=".onApplyFilters"
+            />
+        </beginButton>
+        <endButton>
+            <Button
+                text="Cancelar"
+                press=".onCancelFilters"
+            />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

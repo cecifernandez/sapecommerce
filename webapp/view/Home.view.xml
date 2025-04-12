@@ -12,7 +12,7 @@
     <Page showHeader="false">
         <content>
             <Image
-                src="assets/imgs/bannerimage.jpg"
+                src="assets/imgs/bannerimage.png"
                 width="100%"
                 alt="Banner Image"
             />
@@ -25,7 +25,7 @@
                 mode="SingleSelectMaster"
             >
                 <CustomListItem
-                    class="sapUiLargeMarginBeginEnd sapUiTinyMarginTopBottom"
+                    class="sapUiLargeMarginBeginEnd"
                     type="Active"
                 >
                     <HBox class="sapUiSmallMargin card">

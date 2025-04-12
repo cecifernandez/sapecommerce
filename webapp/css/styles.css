@@ -1,11 +1,47 @@
-/* .banner_img {
-    display: "flex";
-    justify-content: "center";
-    margin: auto
-} */
+.toolbar-container {
+    display: flex !important;
+    justify-content: center !important;
+    width: "95%" !important;
+}
 
 .toolbar {
-    display: flex;
-    justify-content: center;
-    gap: 10px;s
+    justify-content: center !important;
+    align-items: "center" !important;
+    position: fixed !important;
+    top: 5px !important;
+    /* o el valor que prefieras */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 1000 !important;
+    background-color: rgba(235, 233, 233, 0.838) !important;
+    /* blanco con un poco de transparencia */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 12px !important;
+    padding: 8px 16px !important;
+}
+
+.search-bar-container {
+    background-color: #f9f9f954 !important;
+    padding: 0.75rem !important;
+    border-radius: 0.5rem !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.toolbar .sapMBtn {
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    margin: 0 6px !important;
+}
+
+.toolbar .sapMBtn:hover {
+    transform: translateY(-2px) !important;
+}
+
+.toolbar .sapMBtnInner {
+    font-weight: bold !important;
+    color: black !important;
+}
+
+.prod-detail {
+    background-color: white !important;
 }
