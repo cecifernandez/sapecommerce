@@ -1,6 +1,6 @@
 sap.ui.define(
-  ["./BaseController", "sap/ui/model/json/JSONModel", "sap/ui/core/Fragment"],
-  function (BaseController, JSONModel, Fragment) {
+  ["./BaseController"],
+  function (BaseController) {
     "use strict";
 
     return BaseController.extend(
@@ -8,7 +8,6 @@ sap.ui.define(
       {
         onInit() {
           const oRouter = this.getRouter();
-          // Registrar rutas
           oRouter
             .getRoute("productsByCategory")
             .attachPatternMatched(this._onCategoryMatched, this);
@@ -18,21 +17,11 @@ sap.ui.define(
           oRouter
             .getRoute("productsBySubcategory")
             .attachPatternMatched(this._onSubcategoryMatched, this);
-
-          // const oData = this.getProductModel().getData();
-
-          // const aProducts = this.extractProducts(oData.catalog);
-          // this.setJSONModel({ products: aProducts }, "products");
         },
 
         // ───── Navegación ─────────────────────────────────────────────
         onNavToHome() {
           this.navTo("home");
-        },
-
-        onNavToProducts() {
-          this.navTo("productsList");
-          this.setJSONModel({ subcategories: [] }, "subcategories");
         },
 
         onNavToAccount() {
@@ -50,26 +39,6 @@ sap.ui.define(
           const oProduct = this.getObjectFromEvent(oEvent, "productModel");
           this.removeFromCart(oProduct.id);
           this.getCartTotal();
-        },
-
-        onCheckout() {
-          const oProductModel = this.getProductModel();
-          const oUserModel = this.getUserModel();
-
-          const aCartItems = this._getCartItems(oProductModel);
-          const sTotal = this._getCartTotal(oProductModel);
-
-          if (!this._hasItems(aCartItems)) {
-            sap.m.MessageToast.show("Tu carrito está vacío 🛒");
-            return;
-          }
-
-          const oNewPurchase = this._createPurchase(aCartItems, sTotal);
-          this._savePurchase(oUserModel, oNewPurchase);
-
-          this._clearCart(oProductModel);
-          sap.m.MessageToast.show("¡Compra realizada con éxito! 🎉");
-          this.navTo("account");
         },
         // ───── Productos y Filtros ───────────────────────────────────
         _onCategoryMatched(oEvent) {
@@ -150,25 +119,14 @@ sap.ui.define(
         // ───── Favoritos ─────────────────────────────────────────────
         onToggleFavorite(oEvent) {
           const oProduct = this.getObjectFromEvent(oEvent, "products");
-          this.toggleFavorite(oProduct);
-
-          const oProductsModel = this.getModel("products");
-          const aProducts = oProductsModel.getProperty("/products") || [];
-          const iIndex = aProducts.findIndex((p) => p.id === oProduct.id);
-          if (iIndex !== -1) {
-            oProductsModel.setProperty(
-              `/products/${iIndex}/isFavorite`,
-              oProduct.isFavorite
-            );
-          }
+          this.toggleFavorite(oProduct, "products"); 
         },
 
         // ───── Filtros ───────────────────────────────────────────────
 
-        // Abrir el Dialog de Filtro
         onSort() {
           this._loadFragment(
-            "ui5.starwarsecommerce.fragments.SortDialog",
+            "ui5.starwarsecommerce.view.fragments.SortDialog",
             "SortDialog"
           ).then((oDialog) => {
             if (oDialog) {
@@ -216,44 +174,43 @@ sap.ui.define(
           }
         },
 
-        // Aplicar el filtro
-        onApplyFilters: function () {
+        onApplyFilters() {
           const oProductsModel = this.getView().getModel("products");
           let aProducts = oProductsModel.getProperty("/products");
-
+        
           const bPrice = oProductsModel.getProperty("/filterByPrice");
           const bRating = oProductsModel.getProperty("/filterByRating");
           const priceOrder = oProductsModel.getProperty("/priceSortOrder");
           const ratingOrder = oProductsModel.getProperty("/ratingSortOrder");
-
-          // Filtrar por precio
+        
           if (bPrice && priceOrder) {
-            aProducts = aProducts.sort((a, b) => {
-              return priceOrder === "asc"
-                ? a.price - b.price
-                : b.price - a.price;
-            });
+            aProducts = this._filterByPrice(aProducts, priceOrder);
           }
-
-          // Filtrar por rating
+        
           if (bRating && ratingOrder) {
-            aProducts = aProducts.sort((a, b) => {
-              return ratingOrder === "asc"
-                ? a.rating - b.rating
-                : b.rating - a.rating;
-            });
+            aProducts = this._filterByRating(aProducts, ratingOrder);
           }
-
-          // Actualizar el modelo con los productos ordenados
+        
           oProductsModel.setProperty("/products", aProducts);
           this._oSortDialog.close();
-          sap.m.MessageToast.show("Filtros aplicados con éxito");
+          this.showMessage("Filtros aplicados con éxito");
+        },
+
+        _filterByPrice(aProducts, priceOrder) {
+          return aProducts.sort((a, b) => {
+            return priceOrder === "asc" ? a.price - b.price : b.price - a.price;
+          });
+        },
+
+        _filterByRating(aProducts, ratingOrder) {
+          return aProducts.sort((a, b) => {
+            return ratingOrder === "asc" ? a.rating - b.rating : b.rating - a.rating;
+          });
         },
 
         onResetFilters() {
           const oModel = this.getView().getModel("products");
 
-          // Restablecer flags y valores a sus valores predeterminados
           oModel.setProperty("/filterByPrice", false);
           oModel.setProperty("/filterByRating", false);
           oModel.setProperty("/priceSortOrder", "");
@@ -266,7 +223,26 @@ sap.ui.define(
           const aMarkedProducts = this.markFavorites(aProducts);
           oModel.setProperty("/products", aMarkedProducts);
 
-          sap.m.MessageToast.show("Filtros reiniciados");
+          showMessage("Filtros reiniciados");
+        },
+
+        onSearch(oEvent) {
+          const sQuery = oEvent.getSource().getValue().toLowerCase();
+
+          const oView = this.getView();
+          const oProductList = oView.byId("productList");
+            const aProductFilter = sQuery
+              ? [
+                  new sap.ui.model.Filter(
+                    "name",
+                    sap.ui.model.FilterOperator.Contains,
+                    sQuery
+                  ),
+                ]
+              : [];
+            oProductList
+              .getBinding("items")
+              .filter(aProductFilter, "Application")
         },
       }
     );

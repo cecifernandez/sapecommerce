@@ -36,7 +36,6 @@ sap.ui.define(
             reviewRating: 0,
           });
           this.setModel(oViewModel, "viewModel");
-          // Modelos planos
           const oDestacadosModel = new JSONModel({ destacados });
           this.setModel(oDestacadosModel, "destacados");
 

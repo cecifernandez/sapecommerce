@@ -5,18 +5,14 @@ sap.ui.define(
 
     return BaseController.extend("ui5.starwarsecommerce.controller.Home", {
       onInit() {
-        // const oProductModel = this.getOwnerComponent().getModel("productModel");
-        // if (!oProductModel) {
-        //   console.warn("⚠️ No se encontró el modelo 'productModel'.");
-        //   return;
-        // }
-        // const catalog = oProductModel.getData().catalog;
-        // const destacados = this.extractProducts(
-        //   catalog,
-        //   (p) => p.rating >= 4.5
-        // );
-        // const oDestacadosModel = new JSONModel({ destacados });
-        // this.getView().setModel(oDestacadosModel, "destacados");
+        const oModel = this.getOwnerComponent().getModel("destacados");
+        const aProducts = oModel.getProperty("/destacados") || [];
+
+        aProducts.forEach((product) => {
+          product.isFavorite = this.isProductFavorite(product);
+        });
+
+        oModel.setProperty("/destacados", aProducts);
       },
       onNavToHome() {
         this.navTo("home");
@@ -35,6 +31,34 @@ sap.ui.define(
         this.getRouter().navTo("productDetail", {
           productId: oProduct.id,
         });
+      },
+
+      onAddToCart(oEvent) {
+        const oProduct = this.getObjectFromEvent(oEvent, "destacados");
+        if (!oProduct || !oProduct.id) {
+          showMessage("❌ Producto no disponible.");
+          return;
+        }
+
+        this.addToCart(oProduct);
+        this.getCartTotal();
+        showMessage(`${oProduct.name} agregado al carrito 🛒`);
+      },
+
+      onToggleFavorite(oEvent) {
+        const oProduct = this.getObjectFromEvent(oEvent, "destacados");
+        this.toggleFavorite(oProduct, "destacados");
+
+        this.getModel("destacados").setProperty(
+          "/isFavorite",
+          oProduct.isFavorite
+        );
+      },
+
+      onRemoveFromCart(oEvent) {
+        const oProduct = this.getObjectFromEvent(oEvent, "productModel");
+        this.removeFromCart(oProduct.id);
+        this.getCartTotal();
       },
     });
   }

@@ -1,20 +1,10 @@
 sap.ui.define(
   [
     "sap/ui/core/mvc/Controller",
-    "sap/ui/core/Fragment",
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageToast",
-    "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator",
   ],
-  function (
-    Controller,
-    Fragment,
-    JSONModel,
-    MessageToast,
-    Filter,
-    FilterOperator
-  ) {
+  function (Controller, JSONModel, MessageToast) {
     "use strict";
 
     return Controller.extend(
@@ -34,12 +24,38 @@ sap.ui.define(
           this.getView().setModel(oModel, sName);
         },
 
-        getResourceBundle() {
-          return this.getOwnerComponent().getModel("i18n").getResourceBundle();
-        },
-
         navTo(sRoute) {
           this.getRouter().navTo(sRoute);
+        },
+
+        onNavToProducts(oEvent) {
+          this._loadFragment(
+            "ui5.starwarsecommerce.view.fragments.Categories",
+            "CategoriesPopover"
+          ).then((oPopover) => {
+            if (!this._oCategoriesPopover) {
+              this._oCategoriesPopover = oPopover;
+            }
+
+            this._oCategoriesPopover.openBy(oEvent.getSource());
+          });
+          this.navTo("productsList");
+          this.setJSONModel({ subcategories: [] }, "subcategories");
+        },
+
+        onNavBack() {
+          const oHistory = sap.ui.core.routing.History.getInstance();
+          const sPreviousHash = oHistory.getPreviousHash();
+
+          if (sPreviousHash !== undefined) {
+            window.history.go(-1);
+          } else {
+            this.navTo("home", {}, true);
+          }
+        },
+
+        onNavForward() {
+          window.history.forward();
         },
 
         extractProducts(catalog, fnCondition) {
@@ -64,11 +80,6 @@ sap.ui.define(
           this.navTo("home");
         },
 
-        onNavToProducts() {
-          this.navTo("productsList");
-          this.setModel(new JSONModel({ subcategories: [] }), "subcategories");
-        },
-
         onNavToAccount() {
           this.navTo("account");
         },
@@ -88,7 +99,7 @@ sap.ui.define(
                 return oFragment;
               })
               .catch((oError) => {
-                MessageToast.show(
+                showMessage(
                   "Error al cargar " + sFragmentType + ": " + oError.message
                 );
                 this[sPromiseVar] = null;
@@ -101,58 +112,74 @@ sap.ui.define(
 
         openCart(oEvent) {
           this._loadFragment(
-            "ui5.starwarsecommerce.fragments.Cart",
+            "ui5.starwarsecommerce.view.fragments.Cart",
             "CartPopover"
           ).then((oPopover) => {
             if (oPopover) {
+              this._oCartPopover = oPopover;
               oPopover.openBy(oEvent.getSource());
             }
           });
         },
 
-        getCartTotal() {
-          let oModel = this.getProductModel();
-          let aCart = oModel.getProperty("/cart") || [];
-
-          let fTotal = aCart.reduce((sum, item) => {
-            return sum + item.price * item.quantity;
-          }, 0);
-
-          oModel.setProperty("/cartTotal", fTotal.toFixed(2));
-        },
-
         addToCart(oProduct) {
-          let oModel = this.getProductModel();
-          let aCart = oModel.getProperty("/cart");
-
-          let oCartItem = aCart.find((item) => item.id === oProduct.id);
-          let aUpdatedCart;
-
-          if (oCartItem) {
-            aUpdatedCart = aCart.map((item) => {
-              return item.id === oProduct.id
-                ? { ...item, quantity: item.quantity + 1 }
-                : item;
-            });
-          } else {
-            let oNewItem = { ...oProduct, quantity: 1 };
-            aUpdatedCart = [...aCart, oNewItem];
+          if (!oProduct) {
+            this.showMessage("No se pudo agregar el producto al carrito.");
+            return;
           }
 
-          oModel.setProperty("/cart", aUpdatedCart);
-          this.showMessage(`${oProduct.name} agregado al carrito 🛒`);
+          const oModel = this.getProductModel();
+          const aCart = oModel.getProperty("/cart") || [];
 
-          console.log("Carrito actualizado:", aUpdatedCart);
+          const oCartItem = aCart.find((item) => item.id === oProduct.id);
+          if (oCartItem) {
+            oCartItem.quantity += 1;
+          } else {
+            aCart.push({ ...oProduct, quantity: 1 });
+          }
+
+          oModel.setProperty("/cart", aCart);
+          oModel.refresh();
+          this.showMessage(`${oProduct.name} agregado al carrito 🛒`);
         },
 
         removeFromCart(sProductId) {
-          let oModel = this.getProductModel();
-          let aCart = oModel.getProperty("/cart") || [];
+          const oModel = this.getProductModel();
+          const aCart = oModel.getProperty("/cart") || [];
 
-          let aUpdatedCart = aCart.filter((item) => item.id !== sProductId);
+          const aUpdatedCart = aCart.filter((item) => item.id !== sProductId);
 
           oModel.setProperty("/cart", aUpdatedCart);
+          oModel.refresh();
           this.showMessage("Producto eliminado del carrito 🗑️");
+        },
+
+        getCartTotal() {
+          const oModel = this.getProductModel();
+          const aCart = oModel.getProperty("/cart") || [];
+
+          const fTotal = aCart.reduce(
+            (sum, item) => sum + item.price * item.quantity,
+            0
+          );
+          oModel.setProperty("/cartTotal", fTotal.toFixed(2));
+          return fTotal;
+        },
+
+        updateCartQuantity(oEvent) {
+          const oButton = oEvent.getSource();
+
+          const oContext = oButton.getBindingContext("productModel");
+
+          const iCurrentQuantity = oContext.getProperty("quantity");
+
+          const bIncrement = oButton.getIcon() === "sap-icon://add";
+          const iNewQuantity = bIncrement
+            ? iCurrentQuantity + 1
+            : Math.max(iCurrentQuantity - 1, 1);
+          oContext.setProperty("quantity", iNewQuantity);
+
+          this.getCartTotal();
         },
 
         getSubcategoriesByCategoryName(catalog, categoryName) {
@@ -171,84 +198,7 @@ sap.ui.define(
           });
         },
 
-        onAfterRendering() {
-          let oButton = this.byId("productsText");
-          if (oButton && !this._bHoverAttached) {
-            this._bHoverAttached = true;
-            let $btn = oButton.$();
-            $btn.on("mouseenter", this._onProductsMouseEnter.bind(this));
-            $btn.on("mouseleave", this._onMouseLeavePopover.bind(this));
-          }
-        },
-
-        _showHoverPopover(options) {
-          const {
-            fragmentId,
-            fragmentName,
-            triggerControlId,
-            storeProperty,
-            controller = this,
-          } = options;
-          const promiseProperty = `${storeProperty}Promise`;
-
-          if (!this[promiseProperty]) {
-            this[promiseProperty] = this.loadFragment({
-              id: fragmentId,
-              name: fragmentName,
-            })
-              .then((oPopover) => {
-                this[storeProperty] = oPopover;
-
-                // Configurar eventos de hover
-                oPopover.attachBrowserEvent(
-                  "mouseenter",
-                  () => (this._isHoveringPopover = true)
-                );
-                oPopover.attachBrowserEvent(
-                  "mouseleave",
-                  this._onMouseLeavePopover.bind(this)
-                );
-
-                // Abrir el popover
-                oPopover.openBy(controller.byId(triggerControlId));
-                return oPopover;
-              })
-              .catch((error) => {
-                console.error("Error al cargar popover:", error);
-                this[promiseProperty] = null;
-                return null;
-              });
-          } else if (this[storeProperty]) {
-            // Si ya está cargado, abrirlo directamente
-            this[storeProperty].openBy(controller.byId(triggerControlId));
-          } else {
-            // Si está en proceso de carga, esperar a que termine
-            this[promiseProperty].then((oPopover) => {
-              if (oPopover) oPopover.openBy(controller.byId(triggerControlId));
-            });
-          }
-
-          this._isHoveringPopover = false;
-        },
-
-        _onProductsMouseEnter() {
-          this._showHoverPopover({
-            fragmentId: this.getView().getId(),
-            fragmentName: "ui5.starwarsecommerce.fragments.Categories",
-            triggerControlId: "productsText",
-            storeProperty: "_oCategoriesPopover",
-          });
-        },
-
-        _onMouseLeavePopover() {
-          setTimeout(() => {
-            if (!this._isHoveringPopover) {
-              this._oCategoriesPopover.close();
-            }
-          }, 300);
-        },
-
-        getProductContext(oEvent, sModelName = "products") {
+        _getProductContext(oEvent, sModelName = "products") {
           let oContext = oEvent.getSource().getBindingContext(sModelName);
 
           if (!oContext && typeof oEvent.getParameter === "function") {
@@ -257,7 +207,6 @@ sap.ui.define(
               oContext = oListItem.getBindingContext(sModelName);
             }
           }
-
           if (!oContext) {
             let oParent = oEvent.getSource().getParent();
             while (oParent && !oContext) {
@@ -265,26 +214,17 @@ sap.ui.define(
               oParent = oParent.getParent();
             }
           }
-
           return oContext;
         },
 
         getObjectFromEvent(oEvent, sModelName = "products") {
-          let oContext = this.getProductContext(oEvent, sModelName);
+          let oContext = this._getProductContext(oEvent, sModelName);
           return oContext ? oContext.getObject() : null;
         },
 
         setJSONModel(data, name) {
           let oModel = new JSONModel(data);
           this.setModel(oModel, name);
-        },
-
-        createPurchaseRecord(aItems, sTotal) {
-          return {
-            date: new Date().toISOString(),
-            items: [...aItems],
-            total: parseFloat(sTotal),
-          };
         },
 
         getProductModel() {
@@ -299,21 +239,6 @@ sap.ui.define(
           MessageToast.show(sText);
         },
 
-        onSearch(oEvent) {
-          const sQuery = oEvent.getSource().getValue().toLowerCase();
-
-          const oView = this.getView();
-          const oModel = oView.getUserModel();
-
-          const oProductList = oView.byId("productList");
-          if (oProductList) {
-            const aProductFilter = sQuery
-              ? [new Filter("name", FilterOperator.Contains, sQuery)]
-              : [];
-            oProductList.getBinding("items").filter(aProductFilter);
-          }
-        },
-
         markFavorites(aProducts) {
           const aFavorites =
             JSON.parse(localStorage.getItem("favorites")) || [];
@@ -324,36 +249,45 @@ sap.ui.define(
           });
         },
 
-        toggleFavorite(oProduct) {
+        isProductFavorite(oProduct) {
+          if (!oProduct || !oProduct.id) {
+            return false;
+          }
+
+          const aFavorites =
+            JSON.parse(localStorage.getItem("favorites")) || [];
+          return aFavorites.some((fav) => fav.id === oProduct.id);
+        },
+
+        toggleFavorite(oProduct, sModelName = "destacados") {
+          if (!oProduct) {
+            this.showMessage("No se pudo actualizar el estado de favoritos.");
+            return;
+          }
+
           const sId = oProduct.id;
-
-          // 🔄 Leer favoritos desde localStorage
           let aFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
-
           const bAlreadyFav = aFavorites.some((fav) => fav.id === sId);
 
-          if (!bAlreadyFav) {
-            aFavorites.push(oProduct);
-            oProduct.isFavorite = true;
-            this.showMessage(`${oProduct.name} agregado a favoritos ❤️`);
-          } else {
+          if (bAlreadyFav) {
             aFavorites = aFavorites.filter((fav) => fav.id !== sId);
             oProduct.isFavorite = false;
             this.showMessage(`${oProduct.name} eliminado de favoritos 💔`);
+          } else {
+            aFavorites.push(oProduct);
+            oProduct.isFavorite = true;
+            this.showMessage(`${oProduct.name} agregado a favoritos ❤️`);
           }
 
-          // Guardar en localStorage
           localStorage.setItem("favorites", JSON.stringify(aFavorites));
 
-          // Modelo destacados (home)
-          const oDestacadosModel = this.getView()?.getModel("destacados");
-          if (oDestacadosModel) {
-            const aDestacados =
-              oDestacadosModel.getProperty("/destacados") || [];
-            const iDestIndex = aDestacados.findIndex((p) => p.id === sId);
-            if (iDestIndex !== -1) {
-              oDestacadosModel.setProperty(
-                `/destacados/${iDestIndex}/isFavorite`,
+          const oModel = this.getView().getModel(sModelName);
+          if (oModel) {
+            const aItems = oModel.getProperty(`/${sModelName}`) || [];
+            const iIndex = aItems.findIndex((p) => p.id === sId);
+            if (iIndex !== -1) {
+              oModel.setProperty(
+                `/${sModelName}/${iIndex}/isFavorite`,
                 oProduct.isFavorite
               );
             }
@@ -392,24 +326,60 @@ sap.ui.define(
           oProductModel.setProperty("/cartTotal", "0.00");
         },
 
+        onCancelPurchase() {
+          const oProductModel = this.getProductModel();
+          this._clearCart(oProductModel);
+
+          this._oCartPopover.close();
+        },
+
         onCheckout() {
+          this._loadFragment(
+            "ui5.starwarsecommerce.view.fragments.CheckoutDialog",
+            "CheckoutDialog"
+          ).then((oDialog) => {
+            if (!this._oCheckoutDialog) {
+              this._oCheckoutDialog = oDialog;
+              this.getView().addDependent(this._oCheckoutDialog);
+            }
+            const oCheckoutModel = new sap.ui.model.json.JSONModel({
+              name: "",
+              email: "",
+              address: "",
+              card: "",
+              dni: "",
+            });
+            this._oCheckoutDialog.setModel(oCheckoutModel, "checkoutModel");
+            this._oCheckoutDialog.open();
+          });
+        },
+
+        onConfirmCheckout() {
+          const oCheckoutModel =
+            this._oCheckoutDialog.getModel("checkoutModel");
+          const oData = oCheckoutModel.getData();
+
+          if (!oData.name || !oData.email || !oData.address || !oData.card) {
+            showMessage("Por favor, completa todos los campos.");
+            return;
+          }
+
           const oProductModel = this.getProductModel();
           const oUserModel = this.getUserModel();
 
           const aCartItems = this._getCartItems(oProductModel);
           const sTotal = this._getCartTotal(oProductModel);
 
-          if (!this._hasItems(aCartItems)) {
-            sap.m.MessageToast.show("Tu carrito está vacío 🛒");
-            return;
-          }
-
-          const oNewPurchase = this._createPurchase(aCartItems, sTotal);
-          this._savePurchase(oUserModel, oNewPurchase);
-
+          const oPurchase = this._createPurchase(aCartItems, sTotal);
+          this._savePurchase(oUserModel, oPurchase);
           this._clearCart(oProductModel);
-          sap.m.MessageToast.show("¡Compra realizada con éxito! 🎉");
-          this.navTo("account");
+
+          showMessage("Compra realizada con éxito.");
+          this._oCheckoutDialog.close();
+        },
+
+        onCancelCheckout() {
+          this._oCheckoutDialog.close();
         },
       }
     );

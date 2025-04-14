@@ -1,0 +1,45 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Toolbar
+        width="95%"
+        class="toolbar"
+    >
+        <Button
+            icon="sap-icon://nav-back"
+            press=".onNavBack"
+            class="btn"
+            visible="{= ${ui>/showNavBack} }"
+        />
+        <Button
+            text="{i18n>home}"
+            press=".onNavToHome"
+            class="btn"
+            icon="sap-icon://home"
+        />
+        <Button
+            text="{i18n>products}"
+            press=".onNavToProducts"
+            class="btn btn-products"
+            icon="sap-icon://product"
+        />
+        <Button
+            text="{i18n>account}"
+            press=".onNavToAccount"
+            class="btn"
+            icon="sap-icon://person-placeholder"
+        />
+        <Button
+            text="{i18n>cart}"
+            press=".openCart"
+            class="btn"
+            icon="{= ${productModel>/cart}.length === 0 ? 'sap-icon://cart' : 'sap-icon://cart-full' }"
+        />
+        <Button
+            icon="sap-icon://navigation-right-arrow"
+            press=".onNavForward"
+            class="btn"
+        />
+    </Toolbar>
+</core:FragmentDefinition>

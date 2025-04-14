@@ -1,6 +1,6 @@
 sap.ui.define(
-  ["./BaseController", "sap/ui/model/json/JSONModel", "sap/m/MessageToast"],
-  function (BaseController, JSONModel, MessageToast) {
+  ["./BaseController", "sap/ui/model/json/JSONModel"],
+  function (BaseController, JSONModel) {
     "use strict";
 
     return BaseController.extend(
@@ -36,7 +36,7 @@ sap.ui.define(
           this._currentProductId = sProductId;
 
           if (!oProductModel) {
-            MessageToast.show("Modelo de productos no disponible ❌");
+            showMessage("Modelo de productos no disponible ❌");
             return;
           }
 
@@ -46,7 +46,10 @@ sap.ui.define(
           const oProduct = aProducts.find((p) => p.id === sProductId);
 
           if (!oProduct) {
-            MessageToast.show("Producto no encontrado ❌");
+            showMessage("Producto no encontrado ❌");
+            this.getRouter().navTo("notFound", {
+              fromTarget: "productDetail",
+            });
             return;
           }
 
@@ -54,11 +57,8 @@ sap.ui.define(
             oProduct.selectedVariant = oProduct.variants[0].name;
             oProduct.images = oProduct.variants[0].images;
           }
-          // 👉 Verificamos si está en favoritos
-          const aFavorites =
-            JSON.parse(localStorage.getItem("favorites")) || [];
-          const bIsFav = aFavorites.some((fav) => fav.id === oProduct.id);
-          oProduct.isFavorite = bIsFav;
+
+          oProduct.isFavorite = this.isProductFavorite(oProduct);
 
           const oDetailModel = new JSONModel(oProduct);
           this.getView().setModel(oDetailModel, "productDetail");
@@ -72,33 +72,20 @@ sap.ui.define(
 
         onAddToCart() {
           const oProduct = this.getModel("productDetail").getProperty("/");
-          console.log("PRODUCTO: ", oProduct);
           if (!oProduct || !oProduct.id) {
-            MessageToast.show("❌ Producto no disponible.");
+            showMessage("❌ Producto no disponible.");
             return;
           }
 
           this.addToCart(oProduct);
           this.getCartTotal();
-          MessageToast.show(`${oProduct.name} agregado al carrito 🛒`);
+          showMessage(`${oProduct.name} agregado al carrito 🛒`);
         },
 
         onRemoveFromCart(oEvent) {
           const oProduct = this.getObjectFromEvent(oEvent, "productModel");
           this.removeFromCart(oProduct.id);
           this.getCartTotal();
-          console.log(oProduct);
-        },
-
-        onNavBack() {
-          const oHistory = sap.ui.core.routing.History.getInstance();
-          const sPreviousHash = oHistory.getPreviousHash();
-
-          if (sPreviousHash !== undefined) {
-            window.history.go(-1);
-          } else {
-            this.getRouter().navTo("productList", {}, true);
-          }
         },
 
         onPostReview() {
@@ -111,12 +98,12 @@ sap.ui.define(
           const iRating = oViewModel.getProperty("/reviewRating");
 
           if (!sText) {
-            MessageToast.show("Por favor escribí una reseña antes de enviar.");
+            showMessage("Por favor escribí una reseña antes de enviar.");
             return;
           }
 
           if (iRating === 0) {
-            MessageToast.show("Por favor seleccioná una calificación.");
+            showMessage("Por favor seleccioná una calificación.");
             return;
           }
 
@@ -129,22 +116,18 @@ sap.ui.define(
             date: new Date().toISOString(),
           });
 
-          // Actualizar el modelo y el localStorage
           oUserModel.setProperty("/reviews", aReviews);
           localStorage.setItem("reviews", JSON.stringify(aReviews));
 
-          // Limpiar los campos de texto y rating
           oViewModel.setProperty("/reviewText", "");
           oViewModel.setProperty("/reviewRating", 0);
 
-          MessageToast.show("¡Gracias por tu reseña!");
+          showMessage("¡Gracias por tu reseña!");
 
-          // Recargar las reseñas desde el localStorage
           const storedReviews =
             JSON.parse(localStorage.getItem("reviews")) || [];
           oUserModel.setProperty("/reviews", storedReviews);
 
-          // Volver a filtrar las reseñas para el producto actual
           this._filterUserReviews(
             oProduct.id,
             oUserModel.getProperty("/username")
@@ -159,7 +142,6 @@ sap.ui.define(
             (r) => r.productId === productId && r.user === username
           );
 
-          console.log("Reseñas filtradas:", aUserReviews);
           oUserModel.setProperty("/filteredUserReviews", aUserReviews);
         },
 

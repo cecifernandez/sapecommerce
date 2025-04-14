@@ -5,42 +5,46 @@
     controllerName="ui5.starwarsecommerce.controller.Account"
 >
     <core:Fragment
-        fragmentName="ui5.starwarsecommerce.fragments.Toolbar"
+        fragmentName="ui5.starwarsecommerce.view.fragments.Toolbar"
         type="XML"
     />
-    <Page showHeader="false">
+    <Page
+        showHeader="false"
+        class="sapUiMediumMarginTop"
+    >
         <content>
             <!-- PERFIL DEL USUARIO -->
-            <VBox class="sapUiSmallMargin sapUiAlignCenter sapUiContentPadding">
-                <HBox
+            <HBox
+                alignItems="Center"
+                justifyContent="Center"
+                class="userBanner sapUiAlignCenter sapUiContentPadding"
+            >
+                <VBox
                     alignItems="Center"
                     justifyContent="Center"
                 >
-                    <Image
+                    <Avatar
                         src="{userModel>/avatar}"
-                        width="5rem"
+                        displaySize="XL"
                         class="sapUiSmallMarginEnd"
                     />
-                    <VBox>
+
+                    <Text text="{userModel>/name}" />
+                    <HBox class="underTextProfile">
                         <Text
-                            text="{userModel>/name}"
-                            class="sapUiTinyMarginBottom"
+                            text="{= ${userModel>/username} + ' ● ' + ${userModel>/mail} }"
+                            class=" sapUiTinyMarginBottom"
                         />
-                        <Text
-                            text="{userModel>/username}"
-                            class="sapUiTinyMarginBottom"
-                        />
-                        <Text text="{userModel>/mail}" />
-                    </VBox>
-                </HBox>
-            </VBox>
+                    </HBox>
+                </VBox>
+            </HBox>
 
             <!-- FAVORITOS -->
             <Panel
-                headerText="⭐ Favoritos"
+                headerText="{i18n>favorites}"
                 expandable="true"
                 expanded="true"
-                class="sapUiSmallMarginBottom"
+                class="sapUiSmallMarginBottom sapUiTinyMarginTop"
             >
                 <List
                     items="{userModel>/favorites}"
@@ -55,44 +59,41 @@
 
             <!-- COMPRAS RECIENTES -->
             <Panel
-                headerText="🛍️ Compras Recientes"
+                headerText="{i18n>recentPurchases}"
                 expandable="true"
                 expanded="true"
+                class="sapUiLargeMarginBottom"
             >
                 <VBox items="{userModel>/purchaseHistory}">
                     <items>
                         <VBox>
-                            <!-- Header de la compra -->
-
-                            <!-- Tabla de productos -->
                             <Table
                                 inset="false"
                                 items="{userModel>items}"
-                                width="100%"
                             >
                                 <headerToolbar>
                                     <OverflowToolbar>
                                         <Title
-                                            text="Compra: {userModel>date}"
+                                            text="{= ${i18n>purchaseTitle} + ': ' + ${userModel>date} }"
                                             level="H5"
                                         />
                                     </OverflowToolbar>
                                 </headerToolbar>
                                 <columns>
                                     <Column width="100%">
-                                        <Text text="Producto" />
+                                        <Text text="{i18n>product}" />
                                     </Column>
                                     <Column
                                         width="100%"
                                         hAlign="Center"
                                     >
-                                        <Text text="Cantidad" />
+                                        <Text text="{i18n>quantity}" />
                                     </Column>
                                     <Column
                                         width="100%"
                                         hAlign="End"
                                     >
-                                        <Text text="Precio" />
+                                        <Text text="{i18n>price}" />
                                     </Column>
                                 </columns>
                                 <items>
@@ -111,12 +112,20 @@
                                 </items>
                             </Table>
                             <HBox justifyContent="End">
-                                <Text text="Total: {userModel>total} $" />
+                                <Text
+                                    text="{= ${i18n>total} + ': ' + ${userModel>total} + ' $' }"
+                                />
                             </HBox>
                         </VBox>
                     </items>
                 </VBox>
             </Panel>
         </content>
+        <footer>
+            <core:Fragment
+                fragmentName="ui5.starwarsecommerce.view.fragments.Footer"
+                type="XML"
+            />
+        </footer>
     </Page>
 </mvc:View>
