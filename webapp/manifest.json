@@ -70,7 +70,7 @@
     "resources": {
       "css": [
         {
-          "uri": "css/style.css"
+          "uri": "css/styles.css"
         }
       ]
     },
@@ -120,6 +120,11 @@
           "pattern": "account",
           "name": "account",
           "target": "account"
+        },
+        {
+          "pattern": "notFound",
+          "name": "notFound",
+          "target": "notFound"
         }
       ],
       "targets": {
@@ -138,6 +143,11 @@
         "account": {
           "viewName": "Account",
           "viewLevel": 3
+        },
+        "notFound": {
+          "id": "notFound",
+          "viewName": "NotFound",
+          "transition": "show"
         }
       }
     }

@@ -48,19 +48,19 @@
 
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user1.png",
+                    "avatar": "/assets/imgs/avatars/Luke.png",
                     "username": "JediMasterLuke",
                     "rating": 3.5,
                     "comment": "Está buena, pero medio saladita para lo que es"
                   },
                   {
-                    "avatar": "imgs/avatars/user2.png",
+                    "avatar": "/assets/imgs/avatars/Jabba.png",
                     "username": "HothSurvivor",
                     "rating": 4,
                     "comment": "Zafa bastante. Me esperaba algo más pesado pero igual re cumple. Va como piña"
                   },
                   {
-                    "avatar": "imgs/avatars/user3.png",
+                    "avatar": "/assets/imgs/avatars/Vader.png",
                     "username": "XWingAce",
                     "rating": 4.5,
                     "comment": "Me llegó en dos días, una bestia. La figura está re bien hecha"
@@ -105,19 +105,19 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user4.png",
+                    "avatar": "/assets/imgs/avatars/Leia.png",
                     "username": "Leia_Lover77",
                     "rating": 4.5,
                     "comment": "Muy fachera, me encantó. Le doy 4.5 nomás porque la base no encastra del todo bien, pero re va igual."
                   },
                   {
-                    "avatar": "imgs/avatars/user5.png",
+                    "avatar": "/assets/imgs/avatars/Ewok.png",
                     "username": "AlderaanVibes",
                     "rating": 5,
                     "comment": "Una masa."
                   },
                   {
-                    "avatar": "imgs/avatars/user6.png",
+                    "avatar": "/assets/imgs/avatars/HanSolo.png",
                     "username": "BlasterMaster",
                     "rating": 4,
                     "comment": "Muy bien lograda. Me vino con un detallecito en la pintura pero nada grave."
@@ -162,19 +162,19 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user7.png",
+                    "avatar": "/assets/imgs/avatars/HanSolo.png",
                     "username": "SoloHanNotAlone",
                     "rating": 4.5,
                     "comment": "Lo compré con la idea de regalarlo y terminé quedándomelo jaja. La cara está re bien lograda."
                   },
                   {
-                    "avatar": "imgs/avatars/user8.png",
+                    "avatar": "/assets/imgs/avatars/R2D2.png",
                     "username": "CoruscantKing",
                     "rating": 5,
                     "comment": "Una locura esta figura. Me llegó rapidísimo y re bien embalada."
                   },
                   {
-                    "avatar": "imgs/avatars/user9.png",
+                    "avatar": "/assets/imgs/avatars/Yoda.png",
                     "username": "ForceUser_01",
                     "rating": 3,
                     "comment": "Flojo. La articulación está dura y la cara parece más Harrison Ford después de un asado que en Star Wars. Zafa si no sos muy detallista."
@@ -219,19 +219,19 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user10.png",
+                    "avatar": "/assets/imgs/avatars/C3PO.png",
                     "username": "CloneTrooperX",
                     "rating": 5,
                     "comment": "Una locura esta figura. Los detalles están re bien logrados y los sables blancos se ven de lujo."
                   },
                   {
-                    "avatar": "imgs/avatars/user11.png",
+                    "avatar": "/assets/imgs/avatars/Luke.png",
                     "username": "BobaFlex",
                     "rating": 2,
                     "comment": "No me gustó."
                   },
                   {
-                    "avatar": "imgs/avatars/user12.png",
+                    "avatar": "/assets/imgs/avatars/Chewbacca.png",
                     "username": "EndorExplorer",
                     "rating": 3,
                     "comment": "Muy buena figura, aunque el sable vino un poquito doblado."
@@ -276,19 +276,19 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user13.png",
+                    "avatar": "/assets/imgs/avatars/Leia.png",
                     "username": "JediDelSubte",
                     "rating": 5,
                     "comment": "*'I brought peace, freedom, justice… y una figura espectacular a mi vitrina.'* Alta compra, no me arrepiento de nada."
                   },
                   {
-                    "avatar": "imgs/avatars/user14.png",
+                    "avatar": "/assets/imgs/avatars/Yoda.png",
                     "username": "NoSoyDarth",
                     "rating": 4,
                     "comment": "Anakin es mi personaje favorito, así que esta figura no podía faltar. La capa removible es un detalle hermoso."
                   },
                   {
-                    "avatar": "imgs/avatars/user15.png",
+                    "avatar": "/assets/imgs/avatars/Vader.png",
                     "username": "SeparatistaArrepentido",
                     "rating": 4.5,
                     "comment": "Detalles increíbles."
@@ -339,19 +339,19 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user16.png",
+                    "avatar": "/assets/imgs/avatars/user16.png",
                     "username": "MaestroDelMate",
                     "rating": 5,
                     "comment": "Re fachero el Obi-Wan."
                   },
                   {
-                    "avatar": "imgs/avatars/user17.png",
+                    "avatar": "/assets/imgs/avatars/user17.png",
                     "username": "HelloThere94",
                     "rating": 4,
                     "comment": "Excelente figura. La puse al lado de la de Anakin solo para revivir Mustafar."
                   },
                   {
-                    "avatar": "imgs/avatars/user18.png",
+                    "avatar": "/assets/imgs/avatars/user18.png",
                     "username": "AnakinSinObraSocial",
                     "rating": 4.5,
                     "comment": "Lo compré para mi nene pero me lo quedé yo."
@@ -397,19 +397,19 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user20.png",
+                    "avatar": "/assets/imgs/avatars/Ewok.png",
                     "username": "MateYMidiclorianos",
                     "rating": 5,
                     "comment": "No soy fan de la nueva trilogía, pero esta figura me encantó. Me hizo querer volver a ver las pelis. Buen material, buen tamaño, y no pesa nada."
                   },
                   {
-                    "avatar": "imgs/avatars/user21.png",
+                    "avatar": "/assets/imgs/avatars/C3PO.png",
                     "username": "JediEnSandalias",
                     "rating": 4,
                     "comment": "La tengo arriba del escritorio custodiando el mate."
                   },
                   {
-                    "avatar": "imgs/avatars/user22.png",
+                    "avatar": "/assets/imgs/avatars/R2D2.png",
                     "username": "PalpatineNN",
                     "rating": 4.5,
                     "comment": "Tremenda. Parece que está por salir corriendo a cagarse a piñas."
@@ -453,19 +453,19 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user23.png",
+                    "avatar": "/assets/imgs/avatars/HanSolo.png",
                     "username": "JabbaTheButt",
                     "rating": 4,
                     "comment": "Es chiquito, sí, pero está lleno de detalles."
                   },
                   {
-                    "avatar": "imgs/avatars/user24.png",
+                    "avatar": "/assets/imgs/avatars/Luke.png",
                     "username": "DroideEnEsteroides",
                     "rating": 5,
                     "comment": "Mi primera figura de Star Wars fue R2 y esta es como una versión mejorada. Me trajo lindos recuerdos."
                   },
                   {
-                    "avatar": "imgs/avatars/user25.png",
+                    "avatar": "/assets/imgs/avatars/Leia.png",
                     "username": "DroideConfundido",
                     "rating": 4.5,
                     "comment": "La figura no hace ruidos ni nada, pero posta que no hace falta. La terminación es impecable."
@@ -502,19 +502,19 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user26.png",
+                    "avatar": "/assets/imgs/avatars/Jabba.png",
                     "username": "C3POyMate",
                     "rating": 3.5,
                     "comment": "Muy buena figura, aunque las articulaciones son medio duras al principio."
                   },
                   {
-                    "avatar": "imgs/avatars/user27.png",
+                    "avatar": "/assets/imgs/avatars/Luke.png",
                     "username": "BeepBoopUser",
                     "rating": 5,
                     "comment": "El dorado brilla una locura, y los detalles están re bien hechos. Lo tengo al lado de R2 y quedan joya."
                   },
                   {
-                    "avatar": "imgs/avatars/user28.png",
+                    "avatar": "/assets/imgs/avatars/Yoda.png",
                     "username": "DroideDeBarrio",
                     "rating": 4.5,
                     "comment": "Muy buena compra."
@@ -551,19 +551,19 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user29.png",
+                    "avatar": "/assets/imgs/avatars/user29.png",
                     "username": "BB-ATE",
                     "rating": 4.5,
                     "comment": "Amo al robot gordito."
                   },
                   {
-                    "avatar": "imgs/avatars/user30.png",
+                    "avatar": "/assets/imgs/avatars/user30.png",
                     "username": "BeepBoopUser",
                     "rating": 5,
                     "comment": "Me lo regalaron y fue amor a primera vista."
                   },
                   {
-                    "avatar": "imgs/avatars/user31.png",
+                    "avatar": "/assets/imgs/avatars/user31.png",
                     "username": "DroideDeBarrio",
                     "rating": 4.5,
                     "comment": "Me encantó, amo que puede girar"
@@ -601,13 +601,13 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user29.png",
+                    "avatar": "/assets/imgs/avatars/Ewok.png",
                     "username": "DroideBardero",
                     "rating": 4.5,
                     "comment": "Lo tengo en la estantería y cada vez que lo miro me imagino que me está puteando en binario."
                   },
                   {
-                    "avatar": "imgs/avatars/user30.png",
+                    "avatar": "/assets/imgs/avatars/Luke.png",
                     "username": "AstroInsano",
                     "rating": 4,
                     "comment": "Está buenísima la figura, aunque me hubiera encantado que viniera con alguna herramienta extra o efecto de movimiento. Pero igual garpa."
@@ -659,13 +659,13 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user32.png",
+                    "avatar": "/assets/imgs/avatars/Vader.png",
                     "username": "LadoOscuro22",
                     "rating": 5,
                     "comment": "Imponente como el mismísimo Vader."
                   },
                   {
-                    "avatar": "imgs/avatars/user33.png",
+                    "avatar": "/assets/imgs/avatars/Chewbacca.png",
                     "username": "DarkMate",
                     "rating": 4,
                     "comment": "La calidad es buenísima, pero por ese precio esperaba que viniera con efectos de sonido o algo más."
@@ -703,13 +703,13 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user33.png",
+                    "avatar": "/assets/imgs/avatars/Jabba.png",
                     "username": "BenNoRen",
                     "rating": 4,
                     "comment": "Está buena, pero el precio me pareció un poco salado. Por lo menos viene con facha"
                   },
                   {
-                    "avatar": "imgs/avatars/user34.png",
+                    "avatar": "/assets/imgs/avatars/Leia.png",
                     "username": "NietoDeVader",
                     "rating": 5,
                     "comment": "La figura está buenísima, el casco tiene unos detalles que parecen sacados de la peli."
@@ -747,7 +747,7 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user35.png",
+                    "avatar": "/assets/imgs/avatars/C3PO.png",
                     "username": "HornsAndSith",
                     "rating": 5,
                     "comment": "La mejor figura que tengo, posta."
@@ -785,7 +785,7 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user36.png",
+                    "avatar": "/assets/imgs/avatars/Vader.png",
                     "username": "PlanBDeThrawn",
                     "rating": 5,
                     "comment": "Thrawn se ve impecable, la calidad es de otro planeta."
@@ -839,25 +839,25 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user37.png",
+                    "avatar": "/assets/imgs/avatars/Jabba.png",
                     "username": "SithLord_77",
                     "rating": 4.5,
                     "comment": "¡PODER ILIMITADOOOO! Cuando le ponés los rayitos en las manos es imposible no gritarlo. La capa tiene una caída perfecta. El trono le suma un +100 en maldad."
                   },
                   {
-                    "avatar": "imgs/avatars/user37.png",
+                    "avatar": "/assets/imgs/avatars/Vader.png",
                     "username": "OscuroPeroElegante",
                     "rating": 4,
                     "comment": "Figura top. El rostro está tan bien hecho que cada vez que paso por al lado me da miedo. Literalmente siento que me está manipulando."
                   },
                   {
-                    "avatar": "imgs/avatars/user38.png",
+                    "avatar": "/assets/imgs/avatars/R2D2.png",
                     "username": "ExecutorFan",
                     "rating": 3.5,
                     "comment": "Perfecta para recrear escenas de pura traición y rayos. No sé por qué, pero desde que la tengo me peleo más con mi familia."
                   },
                   {
-                    "avatar": "imgs/avatars/user39.png",
+                    "avatar": "/assets/imgs/avatars/Leia.png",
                     "username": "Orden66Activo",
                     "rating": 4,
                     "comment": "Lo compré y automáticamente se me cayó una estatua de los Jedi. Coincidencia… no lo creo. Detalles excelentes, especialmente los ojos malignos."
@@ -902,13 +902,13 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user40.png",
+                    "avatar": "/assets/imgs/avatars/Yoda.png",
                     "username": "MultiBrazo",
                     "rating": 4,
                     "comment": "La figura es tan precisa que hasta siento que se va a poner a toser. La edición desmontable es brutal. Parece que va a liderar una invasión de estanterías."
                   },
                   {
-                    "avatar": "imgs/avatars/user41.png",
+                    "avatar": "/assets/imgs/avatars/C3PO.png",
                     "username": "SableCollector",
                     "rating": 5,
                     "comment": "Ideal para ponerlo en una pose intimidante con los cuatro sables. Mis otras figuras Jedi están reconsiderando sus decisiones."
@@ -957,13 +957,13 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user42.png",
+                    "avatar": "/assets/imgs/avatars/Leia.png",
                     "username": "SkywalkerFan",
                     "rating": 5,
                     "comment": "La mejor réplica que tengo. La calidad es impresionante y el brillo del sable es espectacular."
                   },
                   {
-                    "avatar": "imgs/avatars/user43.png",
+                    "avatar": "/assets/imgs/avatars/HanSolo.png",
                     "username": "SableLover",
                     "rating": 4,
                     "comment": "Me encanta, pero el precio es un poco elevado. Aún así, vale la pena."
@@ -1001,13 +1001,13 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user44.png",
+                    "avatar": "/assets/imgs/avatars/Chewbacca.png",
                     "username": "DarthFan",
                     "rating": 5,
                     "comment": "Increíble réplica. La calidad es impresionante y el sonido es genial."
                   },
                   {
-                    "avatar": "imgs/avatars/user45.png",
+                    "avatar": "/assets/imgs/avatars/Ewok.png",
                     "username": "SithLord",
                     "rating": 4,
                     "comment": "Me encanta, pero me gustaría que tuviera más efectos de sonido."
@@ -1052,13 +1052,13 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user46.png",
+                    "avatar": "/assets/imgs/avatars/HanSolo.png",
                     "username": "InquisidorFan",
                     "rating": 5,
                     "comment": "La mejor réplica que tengo. La rotación es impresionante y el sonido es genial."
                   },
                   {
-                    "avatar": "imgs/avatars/user47.png",
+                    "avatar": "/assets/imgs/avatars/Vader.png",
                     "username": "SithCollector",
                     "rating": 4,
                     "comment": "Me encanta, pero me gustaría que tuviera más efectos de sonido."
@@ -1103,13 +1103,13 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user48.png",
+                    "avatar": "/assets/imgs/avatars/Jabba.png",
                     "username": "MandalorianFan",
                     "rating": 5,
                     "comment": "Excelente réplica, se siente sólida y bien construida."
                   },
                   {
-                    "avatar": "imgs/avatars/user49.png",
+                    "avatar": "/assets/imgs/avatars/C3PO.png",
                     "username": "DarksaberCollector",
                     "rating": 4,
                     "comment": "Me encanta, el sonido es increible."
@@ -1217,13 +1217,13 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user50.png",
+                    "avatar": "/assets/imgs/avatars/Vader.png",
                     "username": "ArteStarFan",
                     "rating": 5,
                     "comment": "El poster es increíble, los colores son vibrantes y la calidad es excelente."
                   },
                   {
-                    "avatar": "imgs/avatars/user51.png",
+                    "avatar": "/assets/imgs/avatars/Luke.png",
                     "username": "ColeccionistaDeArte",
                     "rating": 4,
                     "comment": "Me encanta, pero me gustaría que viniera enmarcado."
@@ -1271,13 +1271,13 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user52.png",
+                    "avatar": "/assets/imgs/avatars/HanSolo.png",
                     "username": "TazaFan",
                     "rating": 4,
                     "comment": "La taza es genial, pero me gustaría que tuviera más diseños."
                   },
                   {
-                    "avatar": "imgs/avatars/user53.png",
+                    "avatar": "/assets/imgs/avatars/Leia.png",
                     "username": "CaféConFuerza",
                     "rating": 5,
                     "comment": "Perfecta para mis mañanas de café y Star Wars."
@@ -1321,13 +1321,13 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user54.png",
+                    "avatar": "/assets/imgs/avatars/Luke.png",
                     "username": "LlaveroFan",
                     "rating": 4,
                     "comment": "El llavero es genial, pero me gustaría que tuviera más detalles."
                   },
                   {
-                    "avatar": "imgs/avatars/user55.png",
+                    "avatar": "/assets/imgs/avatars/HanSolo.png",
                     "username": "ImperialCollector",
                     "rating": 5,
                     "comment": "Perfecto para mis llaves. ¡Imperio al poder!"
@@ -1376,13 +1376,13 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user22.png",
+                    "avatar": "/assets/imgs/avatars/Vader.png",
                     "username": "XWingFan",
                     "rating": 5,
                     "comment": "Increíble detalle y calidad. Perfecto para mi colección."
                   },
                   {
-                    "avatar": "imgs/avatars/user23.png",
+                    "avatar": "/assets/imgs/avatars/C3PO.png",
                     "username": "StarshipLover",
                     "rating": 4.5,
                     "comment": "El modelo es genial, pero el ensamblaje fue un poco complicado."
@@ -1429,13 +1429,13 @@
                 ],
                 "reviews": [
                   {
-                    "avatar": "imgs/avatars/user24.png",
+                    "avatar": "/assets/imgs/avatars/Chewbacca.png",
                     "username": "ImperialFan",
                     "rating": 5,
                     "comment": "El modelo es impresionante, los detalles son increíbles."
                   },
                   {
-                    "avatar": "imgs/avatars/user25.png",
+                    "avatar": "/assets/imgs/avatars/Ewok.png",
                     "username": "StarshipCollector",
                     "rating": 4,
                     "comment": "Me encanta, pero el precio es un poco elevado."

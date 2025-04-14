@@ -5,16 +5,16 @@
     controllerName="ui5.starwarsecommerce.controller.ProductList"
 >
     <core:Fragment
-        fragmentName="ui5.starwarsecommerce.fragments.Toolbar"
+        fragmentName="ui5.starwarsecommerce.view.fragments.Toolbar"
         type="XML"
     />
     <core:Fragment
-        fragmentName="ui5.starwarsecommerce.fragments.SortDialog"
+        fragmentName="ui5.starwarsecommerce.view.fragments.SortDialog"
         type="XML"
     />
 
     <Page
-        title="Product List"
+        title="{i18n>productListTitle}"
         showHeader="false"
         class="sapUiMediumMarginTop"
     >
@@ -26,10 +26,10 @@
                 alignItems="Center"
             >
                 <SearchField
-                    liveChange="onSearch"
+                    liveChange=".onSearch"
                     width="20rem"
                     class="sapUiTinyMarginEnd"
-                    placeholder="Buscar"
+                    placeholder="{i18n>searchPlaceholder}"
                 />
                 <Button
                     icon="sap-icon://sort"
@@ -40,9 +40,10 @@
                     icon="sap-icon://reset"
                     type="Transparent"
                     press=".onResetFilters"
-                    tooltip="Reiniciar filtros"
+                    tooltip="{i18n>resetFiltersTooltip}"
                 />
             </HBox>
+
             <HBox
                 justifyContent="Center"
                 alignItems="Center"
@@ -55,6 +56,7 @@
                     class="sapUiTinyMarginEnd"
                 />
             </HBox>
+
             <List
                 id="productList"
                 mode="SingleSelectMaster"
@@ -62,12 +64,12 @@
                 class="sapUiResponsiveMargin"
                 itemPress=".onProductPress"
             >
-                <!-- Product Image -->
                 <CustomListItem
                     type="Active"
                     class="sapUiLargeMarginEnd"
                 >
                     <HBox class="sapUiSmallMargin">
+                        <!-- Product Image -->
                         <VBox
                             width="100px"
                             class="sapUiSmallMarginEnd"
@@ -97,7 +99,7 @@
                             />
                             <HBox>
                                 <Button
-                                    text="Add to Cart"
+                                    text="{i18n>addToCart}"
                                     press=".onAddToCart"
                                     class="sapUiSmallMarginBegin"
                                 />
@@ -105,7 +107,7 @@
                                     icon="{= ${products>isFavorite} ? 'sap-icon://heart' : 'sap-icon://heart-2'}"
                                     type="Transparent"
                                     press=".onToggleFavorite"
-                                    tooltip="Agregar a Favoritos"
+                                    tooltip="{i18n>addToFavorites}"
                                     class="sapUiSmallMarginBegin"
                                 />
                             </HBox>
@@ -114,5 +116,11 @@
                 </CustomListItem>
             </List>
         </content>
+        <footer>
+            <core:Fragment
+                fragmentName="ui5.starwarsecommerce.view.fragments.Footer"
+                type="XML"
+            />
+        </footer>
     </Page>
 </mvc:View>

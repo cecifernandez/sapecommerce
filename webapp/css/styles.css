@@ -45,3 +45,47 @@
 .prod-detail {
     background-color: white !important;
 }
+
+.userBanner {
+    background-image: url('/assets/imgs/profilebanner.png') !important;
+    background-size: cover !important;
+    background-position: center 35% !important;
+    color: rgb(255, 0, 0) !important;
+    padding: 2rem !important;
+    border-radius: 8px !important;
+    height: 350px !important;
+}
+
+.userBanner .sapMText {
+    color: white !important;
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+}
+
+.underTextProfile .sapMText {
+    color: rgb(163, 163, 163) !important;
+    font-size: 0.75rem !important;
+    font-weight: light !important;
+}
+
+.footerToolbar {
+    bottom: 10px !important;
+    width: 100% !important;
+    z-index: 10 !important;
+    background-color: #f8f9fa !important;
+    border-top: 1px solid #ddd !important;
+    padding: 15px 25px !important;
+}
+
+.productDetailContainer {
+    gap: 2rem !important;
+}
+
+
+@media (min-width: 768px) {
+
+    .productCarouselBox,
+    .productDetailsBox {
+        width: 48%;
+    }
+}

@@ -3,14 +3,14 @@
     xmlns:core="sap.ui.core"
 >
     <Dialog
-        title="Filtrar Productos"
+        title="{i18n>filterDialogTitle}"
         class="sapUiContentPadding"
     >
         <VBox class="sapUiSmallMarginTop">
             <!-- Ordenar por Precio -->
             <CheckBox
                 id="priceCheck"
-                text="Ordenar por Precio"
+                text="{i18n>sortByPrice}"
                 selected="{products>/filterByPrice}"
                 select=".onPriceSelect"
             />
@@ -21,25 +21,16 @@
                 width="100%"
             >
                 <items>
-                    <core:Item
-                        key="empty"
-                        text=""
-                    />
-                    <core:Item
-                        key="asc"
-                        text="Menor a Mayor"
-                    />
-                    <core:Item
-                        key="desc"
-                        text="Mayor a Menor"
-                    />
+                    <core:Item key="empty" text="" />
+                    <core:Item key="asc" text="{i18n>asc}" />
+                    <core:Item key="desc" text="{i18n>desc}" />
                 </items>
             </Select>
 
             <!-- Ordenar por Rating -->
             <CheckBox
                 id="ratingCheck"
-                text="Ordenar por Rating"
+                text="{i18n>sortByRating}"
                 selected="{products>/filterByRating}"
                 select=".onRatingSelect"
                 class="sapUiSmallMarginTop"
@@ -51,32 +42,23 @@
                 width="100%"
             >
                 <items>
-                    <core:Item
-                        key="empty"
-                        text=""
-                    />
-                    <core:Item
-                        key="asc"
-                        text="Menor a Mayor"
-                    />
-                    <core:Item
-                        key="desc"
-                        text="Mayor a Menor"
-                    />
+                    <core:Item key="empty" text="" />
+                    <core:Item key="asc" text="{i18n>asc}" />
+                    <core:Item key="desc" text="{i18n>desc}" />
                 </items>
             </Select>
         </VBox>
 
         <beginButton>
             <Button
-                text="OK"
+                text="{i18n>ok}"
                 type="Emphasized"
                 press=".onApplyFilters"
             />
         </beginButton>
         <endButton>
             <Button
-                text="Cancelar"
+                text="{i18n>cancel}"
                 press=".onCancelFilters"
             />
         </endButton>

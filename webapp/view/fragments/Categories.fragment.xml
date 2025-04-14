@@ -8,7 +8,6 @@
     >
         <VBox class="sapUiSmallMargin">
             <List
-                id="CategoriesList"
                 items="{productModel>/catalog/categories}"
                 mode="None"
             >

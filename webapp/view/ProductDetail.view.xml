@@ -5,7 +5,7 @@
     controllerName="ui5.starwarsecommerce.controller.ProductDetail"
 >
     <core:Fragment
-        fragmentName="ui5.starwarsecommerce.fragments.Toolbar"
+        fragmentName="ui5.starwarsecommerce.view.fragments.Toolbar"
         type="XML"
     />
 
@@ -14,11 +14,22 @@
         class="prod-detail sapUiMediumMarginTop"
     >
         <content>
-            <HBox class="sapUiSmallMargin">
+            <!-- Imagen del producto -->
+            <FlexBox
+                class="sapUiSmallMargin productDetailContainer"
+                wrap="Wrap"
+                direction="Row"
+                alignItems="Start"
+            >
                 <!-- Imagen del producto -->
                 <VBox
-                    width="50%"
-                    class="sapUiMediumMarginEnd"
+                    class="productCarouselBox"
+                    layoutData="
+            sap.ui.layout.FlexItemData: {
+                styleClass: 'sapUiResponsiveMargin',
+                growFactor: 1
+            }
+        "
                 >
                     <Carousel
                         pages="{productDetail>/images}"
@@ -31,10 +42,7 @@
                 </VBox>
 
                 <!-- Detalles del producto -->
-                <VBox
-                    width="50%"
-                    class="sapUiSmallMargin"
-                >
+                <VBox class="productDetailsBox sapUiSmallMarginBottom">
                     <Title
                         text="{productDetail>/name}"
                         level="H1"
@@ -44,7 +52,7 @@
                         wrapping="true"
                     />
                     <Title
-                        text="Precio: ${productDetail>/price}"
+                        text="{= ${i18n>priceLabel} + ' ' + ${productDetail>/price} }"
                         level="H2"
                     />
                     <RatingIndicator
@@ -54,20 +62,23 @@
                         iconSize="2rem"
                         class="sapUiTinyMarginBegin"
                     />
-                    <HBox>
+                    <HBox
+                        alignItems="Center"
+                        class="sapUiSmallMarginTop"
+                    >
                         <Button
-                            text="Agregar al carrito"
+                            text="{i18n>addToCart}"
                             press=".onAddToCart"
-                            class="sapUiSmallMarginTop"
+                            class="sapUiSmallMarginEnd"
                         />
                         <Button
                             icon="{= ${productDetail>/isFavorite} ? 'sap-icon://heart' : 'sap-icon://heart-2'}"
                             type="Transparent"
                             press=".onToggleFavorite"
-                            tooltip="Agregar a Favoritos"
+                            tooltip="{i18n>addToFavorites}"
                         />
                     </HBox>
-                    <Label text="Variante" />
+                    <Label text="{i18n>variantLabel}" />
                     <Select
                         items="{productDetail>/variants}"
                         selectedKey="{productDetail>/selectedVariant}"
@@ -79,11 +90,12 @@
                         />
                     </Select>
                 </VBox>
-            </HBox>
+            </FlexBox>
+
             <!-- Reseñas del producto -->
             <VBox class="sapUiSmallMarginTop sapUiMediumMarginBegin">
                 <Title
-                    text="Reseñas"
+                    text="{i18n>reviews}"
                     level="H2"
                 />
                 <List
@@ -91,8 +103,13 @@
                     class="sapUiResponsiveMargin"
                 >
                     <CustomListItem>
-                        <VBox class="sapUiSmallMarginBottom">
+                        <VBox class="sapUiSmallMarginBottom sapUiTinyMarginTop">
                             <HBox alignItems="Center">
+                                <Avatar
+                                    src="{productDetail>avatar}"
+                                    displaySize="S"
+                                    class="sapUiSmallMarginEnd"
+                                />
                                 <Title
                                     text="{productDetail>username}"
                                     level="H3"
@@ -114,9 +131,11 @@
                     </CustomListItem>
                 </List>
             </VBox>
+
+            <!-- Tus Reseñas -->
             <VBox class="sapUiSmallMarginTop sapUiMediumMarginBegin">
                 <Title
-                    text="Tus Reseñas"
+                    text="{i18n>yourReviews}"
                     level="H2"
                 />
                 <List
@@ -124,8 +143,13 @@
                     class="sapUiResponsiveMargin"
                 >
                     <CustomListItem>
-                        <VBox class="sapUiSmallMarginBottom">
+                        <VBox class="sapUiSmallMarginBottom sapUiTinyMarginTop">
                             <HBox alignItems="Center">
+                                <Avatar
+                                    src="{userModel>/avatar}"
+                                    displaySize="S"
+                                    class="sapUiSmallMarginEnd"
+                                />
                                 <Title
                                     text="{userModel>user}"
                                     level="H3"
@@ -147,18 +171,27 @@
                     </CustomListItem>
                 </List>
             </VBox>
+
+            <!-- Escribir nueva reseña -->
             <VBox class="sapUiMediumMarginBegin sapUiLargeMarginBottom">
-                <Text text="Escribí tu reseña ✍️" />
+                <Text text="{i18n>writeReview}" />
                 <TextArea
                     value="{viewModel>/reviewText}"
                     rows="4"
                     width="100%"
+                    placeholder="{i18n>reviewPlaceholder}"
                 />
                 <Button
-                    text="Enviar Reseña"
+                    text="{i18n>submitReview}"
                     press=".onPostReview"
                 />
             </VBox>
         </content>
+        <footer>
+            <core:Fragment
+                fragmentName="ui5.starwarsecommerce.view.fragments.Footer"
+                type="XML"
+            />
+        </footer>
     </Page>
 </mvc:View>

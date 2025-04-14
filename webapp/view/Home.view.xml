@@ -5,7 +5,7 @@
     controllerName="ui5.starwarsecommerce.controller.Home"
 >
     <core:Fragment
-        fragmentName="ui5.starwarsecommerce.fragments.Toolbar"
+        fragmentName="ui5.starwarsecommerce.view.fragments.Toolbar"
         type="XML"
     />
 
@@ -61,10 +61,30 @@
                                 text="{= ${destacados>rating} + ' ★' }"
                                 class="sapUiTinyMarginBottom"
                             />
+                            <HBox>
+                                <Button
+                                    text="{i18n>addToCart}"
+                                    press=".onAddToCart"
+                                    class="sapUiSmallMarginBegin"
+                                />
+                                <Button
+                                    icon="{= ${destacados>isFavorite} ? 'sap-icon://heart' : 'sap-icon://heart-2'}"
+                                    type="Transparent"
+                                    press=".onToggleFavorite"
+                                    tooltip="{i18n>addToFavorites}"
+                                    class="sapUiSmallMarginBegin"
+                                />
+                            </HBox>
                         </VBox>
                     </HBox>
                 </CustomListItem>
             </List>
         </content>
+        <footer>
+            <core:Fragment
+                fragmentName="ui5.starwarsecommerce.view.fragments.Footer"
+                type="XML"
+            />
+        </footer>
     </Page>
 </mvc:View>
