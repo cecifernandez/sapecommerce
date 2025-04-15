@@ -14,8 +14,10 @@
             <Image
                 src="assets/imgs/bannerimage.png"
                 width="100%"
+                class="roundedBanner"
                 alt="Banner Image"
             />
+        <Title text="Productos Destacados" class="centeredTitle"></Title>
 
             <List
                 id="home"
@@ -37,7 +39,6 @@
                             <Image
                                 src="{= ${destacados>variants} ? ${destacados>variants/0/images/0} : ${destacados>images/0} }"
                                 width="100%"
-                                height="auto"
                                 class="sapUiSmallMarginBottom"
                             />
                         </VBox>
