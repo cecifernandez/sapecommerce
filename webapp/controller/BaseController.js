@@ -11,20 +11,7 @@ sap.ui.define(
     return Controller.extend(
       "ui5.starwarsecommerce.controller.BaseController",
       {
-        oninit() {
-          var oView = this.getView();
-
-          if (
-            Device.system.desktop ||
-            Device.media.getCurrentRange().name === "Desktop"
-          ) {
-            oView.byId("productCarouselBox").addStyleClass("desktopWidth");
-            oView.byId("productDetailsBox").addStyleClass("desktopWidth");
-          } else {
-            oView.byId("productCarouselBox").removeStyleClass("desktopWidth");
-            oView.byId("productDetailsBox").removeStyleClass("desktopWidth");
-          }
-        },
+        
         getRouter() {
           return this.getOwnerComponent().getRouter();
         },
