@@ -17,7 +17,7 @@
                 class="roundedBanner"
                 alt="Banner Image"
             />
-        <Title text="Productos Destacados" class="centeredTitle"></Title>
+        <Title text="{i18n>homeTitle}" class="centeredTitle"></Title>
 
             <List
                 id="home"

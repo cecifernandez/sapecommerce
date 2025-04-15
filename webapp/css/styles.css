@@ -96,11 +96,6 @@
     align-items: center !important;
     margin: 1rem 0 !important;
 }
-
-@media (min-width: 768px) {
-
-    .productCarouselBox,
-    .productDetailsBox {
-        width: 48%;
-    }
+.desktopWidth {
+    width: 48% !important;
 }

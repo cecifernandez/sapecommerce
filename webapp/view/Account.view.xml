@@ -8,16 +8,13 @@
         fragmentName="ui5.starwarsecommerce.view.fragments.Toolbar"
         type="XML"
     />
-    <Page
-        showHeader="false"
-        class="sapUiMediumMarginTop"
-    >
+    <Page showHeader="false">
         <content>
             <!-- PERFIL DEL USUARIO -->
             <HBox
                 alignItems="Center"
                 justifyContent="Center"
-                class="userBanner sapUiAlignCenter sapUiContentPadding"
+                class="userBanner sapUiAlignCenter sapUiContentPadding sapUiMediumMarginTop"
             >
                 <VBox
                     alignItems="Center"

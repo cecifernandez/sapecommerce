@@ -1,6 +1,6 @@
 sap.ui.define(
-  ["./BaseController", "sap/ui/model/json/JSONModel"],
-  function (BaseController, JSONModel) {
+  ["./BaseController"],
+  function (BaseController) {
     "use strict";
 
     return BaseController.extend("ui5.starwarsecommerce.controller.Home", {
@@ -14,17 +14,6 @@ sap.ui.define(
 
         oModel.setProperty("/destacados", aProducts);
       },
-      onNavToHome() {
-        this.navTo("home");
-      },
-
-      onNavToProducts() {
-        this.navTo("productsList");
-      },
-
-      onNavToAccount() {
-        this.navTo("account");
-      },
 
       onProductPress(oEvent) {
         const oProduct = this.getObjectFromEvent(oEvent, "destacados");
@@ -36,13 +25,13 @@ sap.ui.define(
       onAddToCart(oEvent) {
         const oProduct = this.getObjectFromEvent(oEvent, "destacados");
         if (!oProduct || !oProduct.id) {
-          showMessage("❌ Producto no disponible.");
+          this.showMessage("❌ Producto no disponible.");
           return;
         }
 
         this.addToCart(oProduct);
         this.getCartTotal();
-        showMessage(`${oProduct.name} agregado al carrito 🛒`);
+        this.showMessage(`${oProduct.name} agregado al carrito 🛒`);
       },
 
       onToggleFavorite(oEvent) {
