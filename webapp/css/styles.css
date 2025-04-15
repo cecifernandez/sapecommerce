@@ -81,11 +81,21 @@
     gap: 2rem !important;
 }
 
+.roundedBanner {
+    /* border-radius: 15px !important;
+    display: block !important;
+    margin: 0 auto !important; */
+    object-fit: cover !important;
+    object-position: center top !important;
+    height: 450px !important;
+}
 
-@media (min-width: 768px) {
-
-    .productCarouselBox,
-    .productDetailsBox {
-        width: 48%;
-    }
+.centeredTitle {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 1rem 0 !important;
+}
+.desktopWidth {
+    width: 48% !important;
 }

@@ -16,105 +16,106 @@
     <Page
         title="{i18n>productListTitle}"
         showHeader="false"
-        class="sapUiMediumMarginTop"
     >
         <content>
             <!-- Buscador y Filtro -->
-            <HBox
-                class="sapUiMediumMargin sapUiTinyMarginBottom search-bar-container"
-                justifyContent="End"
-                alignItems="Center"
-            >
-                <SearchField
-                    liveChange=".onSearch"
-                    width="20rem"
-                    class="sapUiTinyMarginEnd"
-                    placeholder="{i18n>searchPlaceholder}"
-                />
-                <Button
-                    icon="sap-icon://sort"
-                    type="Emphasized"
-                    press=".onSort"
-                />
-                <Button
-                    icon="sap-icon://reset"
-                    type="Transparent"
-                    press=".onResetFilters"
-                    tooltip="{i18n>resetFiltersTooltip}"
-                />
-            </HBox>
-
-            <HBox
-                justifyContent="Center"
-                alignItems="Center"
-                class="sapUiSmallMargin sapUiTinyMarginBottom"
-                items="{subcategories>/subcategories}"
-            >
-                <Button
-                    text="{subcategories>name}"
-                    press=".onSubcategorySelect"
-                    class="sapUiTinyMarginEnd"
-                />
-            </HBox>
-
-            <List
-                id="productList"
-                mode="SingleSelectMaster"
-                items="{products>/products}"
-                class="sapUiResponsiveMargin"
-                itemPress=".onProductPress"
-            >
-                <CustomListItem
-                    type="Active"
-                    class="sapUiLargeMarginEnd"
+            <VBox class="sapUiMediumMarginTop">
+                <HBox
+                    class="sapUiMediumMargin sapUiTinyMarginBottom  search-bar-container"
+                    justifyContent="End"
+                    alignItems="Center"
                 >
-                    <HBox class="sapUiSmallMargin">
-                        <!-- Product Image -->
-                        <VBox
-                            width="100px"
-                            class="sapUiSmallMarginEnd"
-                        >
-                            <Image
-                                src="{= ${products>variants} ? ${products>variants/0/images/0} : ${products>images/0} }"
-                                width="100%"
-                                height="auto"
-                                class="sapUiSmallMarginBottom"
-                            />
-                        </VBox>
+                    <SearchField
+                        liveChange=".onSearch"
+                        width="20rem"
+                        class="sapUiTinyMarginEnd"
+                        placeholder="{i18n>searchPlaceholder}"
+                    />
+                    <Button
+                        icon="sap-icon://sort"
+                        type="Emphasized"
+                        press=".onSort"
+                    />
+                    <Button
+                        icon="sap-icon://reset"
+                        type="Transparent"
+                        press=".onResetFilters"
+                        tooltip="{i18n>resetFiltersTooltip}"
+                    />
+                </HBox>
 
-                        <!-- Product Details -->
-                        <VBox>
-                            <Title
-                                text="{products>name}"
-                                level="H5"
-                                class="sapUiTinyMarginBottom"
-                            />
-                            <Text
-                                text="{products>description}"
-                                class="sapUiTinyMarginBottom"
-                            />
-                            <Text
-                                text="{= ${products>price} + ' ' + ${products>currency} }"
-                                class="sapUiTinyMarginBottom"
-                            />
-                            <HBox>
-                                <Button
-                                    text="{i18n>addToCart}"
-                                    press=".onAddToCart"
-                                    class="sapUiSmallMarginBegin"
+                <HBox
+                    justifyContent="Center"
+                    alignItems="Center"
+                    class="sapUiSmallMargin sapUiTinyMarginBottom"
+                    items="{subcategories>/subcategories}"
+                >
+                    <Button
+                        text="{subcategories>name}"
+                        press=".onSubcategorySelect"
+                        class="sapUiTinyMarginEnd"
+                    />
+                </HBox>
+
+                <List
+                    id="productList"
+                    mode="SingleSelectMaster"
+                    items="{products>/products}"
+                    class="sapUiResponsiveMargin"
+                    itemPress=".onProductPress"
+                >
+                    <CustomListItem
+                        type="Active"
+                        class="sapUiLargeMarginEnd"
+                    >
+                        <HBox class="sapUiSmallMargin">
+                            <!-- Product Image -->
+                            <VBox
+                                width="100px"
+                                class="sapUiSmallMarginEnd"
+                            >
+                                <Image
+                                    src="{= ${products>variants} ? ${products>variants/0/images/0} : ${products>images/0} }"
+                                    width="100%"
+                                    height="auto"
+                                    class="sapUiSmallMarginBottom"
                                 />
-                                <Button
-                                    icon="{= ${products>isFavorite} ? 'sap-icon://heart' : 'sap-icon://heart-2'}"
-                                    type="Transparent"
-                                    press=".onToggleFavorite"
-                                    tooltip="{i18n>addToFavorites}"
-                                    class="sapUiSmallMarginBegin"
+                            </VBox>
+
+                            <!-- Product Details -->
+                            <VBox>
+                                <Title
+                                    text="{products>name}"
+                                    level="H5"
+                                    class="sapUiTinyMarginBottom"
                                 />
-                            </HBox>
-                        </VBox>
-                    </HBox>
-                </CustomListItem>
-            </List>
+                                <Text
+                                    text="{products>description}"
+                                    class="sapUiTinyMarginBottom"
+                                />
+                                <Text
+                                    text="{= ${products>price} + ' ' + ${products>currency} }"
+                                    class="sapUiTinyMarginBottom"
+                                />
+                                <HBox>
+                                    <Button
+                                        text="{i18n>addToCart}"
+                                        press=".onAddToCart"
+                                        class="sapUiSmallMarginBegin"
+                                    />
+                                    <Button
+                                        icon="{= ${products>isFavorite} ? 'sap-icon://heart' : 'sap-icon://heart-2'}"
+                                        type="Transparent"
+                                        press=".onToggleFavorite"
+                                        tooltip="{i18n>addToFavorites}"
+                                        class="sapUiSmallMarginBegin"
+                                    />
+                                </HBox>
+                            </VBox>
+                        </HBox>
+                    </CustomListItem>
+                </List>
+            </VBox>
         </content>
         <footer>
             <core:Fragment

@@ -11,26 +11,18 @@
 
     <Page
         showHeader="false"
-        class="prod-detail sapUiMediumMarginTop"
+        class="prod-detail"
     >
         <content>
             <!-- Imagen del producto -->
             <FlexBox
-                class="sapUiSmallMargin productDetailContainer"
+                class="sapUiSmallMargin productDetailContainer sapUiMediumMarginTop"
                 wrap="Wrap"
                 direction="Row"
                 alignItems="Start"
             >
                 <!-- Imagen del producto -->
-                <VBox
-                    class="productCarouselBox"
-                    layoutData="
-            sap.ui.layout.FlexItemData: {
-                styleClass: 'sapUiResponsiveMargin',
-                growFactor: 1
-            }
-        "
-                >
+                <VBox class="productCarouselBox">
                     <Carousel
                         pages="{productDetail>/images}"
                         loop="true"
@@ -42,7 +34,9 @@
                 </VBox>
 
                 <!-- Detalles del producto -->
-                <VBox class="productDetailsBox sapUiSmallMarginBottom">
+                <VBox
+                    class="productDetailsBox sapUiSmallMarginBottom sapUiMediumMarginTop"
+                >
                     <Title
                         text="{productDetail>/name}"
                         level="H1"

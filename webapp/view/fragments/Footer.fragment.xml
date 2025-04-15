@@ -2,17 +2,8 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
 >
-    <OverflowToolbar
-        class="footerToolbar"
-        height="auto"
-        design="Auto"
-    >
-        <VBox
-            justifyContent="Center"
-            alignItems="Center"
-            width="100%"
-            class="sapUiSmallMarginBottom"
-        >
+    <Bar design="Footer">
+        <contentMiddle>
             <Image
                 src="/assets/imgs/geonosis-logo.png"
                 width="100px"
@@ -20,10 +11,10 @@
                 class="sapUiTinyMarginBottom"
             />
             <Text
-                text="© 2025 Geonosis. Todos los derechos reservados."
+                text="{i18n>footerText}"
                 class="sapUiTinyMarginBottom"
                 wrapping="false"
             />
-        </VBox>
-    </OverflowToolbar>
+        </contentMiddle>
+    </Bar>
 </core:FragmentDefinition>

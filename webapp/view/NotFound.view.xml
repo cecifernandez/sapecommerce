@@ -11,7 +11,7 @@
         <additionalContent>
             <Button
                 text="{i18n>NotFound.backToHome}"
-                press=".onNavBack"
+                press=".onNavToHome"
             />
         </additionalContent>
     </IllustratedMessage>

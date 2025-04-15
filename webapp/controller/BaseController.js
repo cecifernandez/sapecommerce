@@ -3,13 +3,28 @@ sap.ui.define(
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageToast",
+    "sap/ui/Device",
   ],
-  function (Controller, JSONModel, MessageToast) {
+  function (Controller, JSONModel, MessageToast, Device) {
     "use strict";
 
     return Controller.extend(
       "ui5.starwarsecommerce.controller.BaseController",
       {
+        oninit() {
+          var oView = this.getView();
+
+          if (
+            Device.system.desktop ||
+            Device.media.getCurrentRange().name === "Desktop"
+          ) {
+            oView.byId("productCarouselBox").addStyleClass("desktopWidth");
+            oView.byId("productDetailsBox").addStyleClass("desktopWidth");
+          } else {
+            oView.byId("productCarouselBox").removeStyleClass("desktopWidth");
+            oView.byId("productDetailsBox").removeStyleClass("desktopWidth");
+          }
+        },
         getRouter() {
           return this.getOwnerComponent().getRouter();
         },
@@ -82,6 +97,10 @@ sap.ui.define(
 
         onNavToAccount() {
           this.navTo("account");
+        },
+
+        onNavToProducts() {
+          this.navTo("productsList");
         },
 
         _loadFragment: function (sFragmentName, sFragmentType) {
@@ -259,7 +278,7 @@ sap.ui.define(
           return aFavorites.some((fav) => fav.id === oProduct.id);
         },
 
-        toggleFavorite(oProduct, sModelName = "destacados") {
+        toggleFavorite(oProduct) {
           if (!oProduct) {
             this.showMessage("No se pudo actualizar el estado de favoritos.");
             return;
@@ -281,17 +300,8 @@ sap.ui.define(
 
           localStorage.setItem("favorites", JSON.stringify(aFavorites));
 
-          const oModel = this.getView().getModel(sModelName);
-          if (oModel) {
-            const aItems = oModel.getProperty(`/${sModelName}`) || [];
-            const iIndex = aItems.findIndex((p) => p.id === sId);
-            if (iIndex !== -1) {
-              oModel.setProperty(
-                `/${sModelName}/${iIndex}/isFavorite`,
-                oProduct.isFavorite
-              );
-            }
-          }
+          const oUserModel = this.getUserModel();
+          oUserModel.setProperty("/favorites", aFavorites);
         },
 
         _getCartItems(oProductModel) {
@@ -374,7 +384,7 @@ sap.ui.define(
           this._savePurchase(oUserModel, oPurchase);
           this._clearCart(oProductModel);
 
-          showMessage("Compra realizada con éxito.");
+          sap.m.MessageToast.show("Compra realizada con éxito.");
           this._oCheckoutDialog.close();
         },
 

@@ -36,7 +36,7 @@ sap.ui.define(
           this._currentProductId = sProductId;
 
           if (!oProductModel) {
-            showMessage("Modelo de productos no disponible ❌");
+            this.showMessage("Modelo de productos no disponible ❌");
             return;
           }
 
@@ -46,7 +46,7 @@ sap.ui.define(
           const oProduct = aProducts.find((p) => p.id === sProductId);
 
           if (!oProduct) {
-            showMessage("Producto no encontrado ❌");
+            this.showMessage("Producto no encontrado ❌");
             this.getRouter().navTo("notFound", {
               fromTarget: "productDetail",
             });
@@ -73,13 +73,13 @@ sap.ui.define(
         onAddToCart() {
           const oProduct = this.getModel("productDetail").getProperty("/");
           if (!oProduct || !oProduct.id) {
-            showMessage("❌ Producto no disponible.");
+            sap.m.MessageToast.show("❌ Producto no disponible.");
             return;
           }
 
           this.addToCart(oProduct);
           this.getCartTotal();
-          showMessage(`${oProduct.name} agregado al carrito 🛒`);
+          this.showMessage(`${oProduct.name} agregado al carrito 🛒`);
         },
 
         onRemoveFromCart(oEvent) {
@@ -90,58 +90,58 @@ sap.ui.define(
 
         onPostReview() {
           const oView = this.getView();
-          const oUserModel = this.getUserModel();
+          const oUserModel = this.getOwnerComponent().getModel("userModel");
           const oProduct = oView.getModel("productDetail").getData();
-          const oViewModel = oView.getModel("viewModel");
+          const sText = oView
+            .getModel("viewModel")
+            .getProperty("/reviewText")
+            .toLowerCase();
+          const iRating = oView
+            .getModel("viewModel")
+            .getProperty("/reviewRating"); // Obtener el rating del usuario
 
-          const sText = oViewModel.getProperty("/reviewText").toLowerCase();
-          const iRating = oViewModel.getProperty("/reviewRating");
-
-          if (!sText) {
-            showMessage("Por favor escribí una reseña antes de enviar.");
-            return;
-          }
-
-          if (iRating === 0) {
-            showMessage("Por favor seleccioná una calificación.");
+          if (!sText || !iRating) {
+            MessageToast.show(
+              "Por favor escribí una reseña y seleccioná un puntaje antes de enviar."
+            );
             return;
           }
 
           const aReviews = oUserModel.getProperty("/reviews") || [];
-          aReviews.push({
+          const oNewReview = {
             productId: oProduct.id,
             text: sText,
+            rating: iRating, // Agregar el rating
             user: oUserModel.getProperty("/username"),
-            rating: iRating,
-            date: new Date().toISOString(),
-          });
+          };
+
+          aReviews.push(oNewReview);
 
           oUserModel.setProperty("/reviews", aReviews);
           localStorage.setItem("reviews", JSON.stringify(aReviews));
 
-          oViewModel.setProperty("/reviewText", "");
-          oViewModel.setProperty("/reviewRating", 0);
+          // Limpiar los campos de texto y rating
+          oView.getModel("viewModel").setProperty("/reviewText", "");
+          oView.getModel("viewModel").setProperty("/reviewRating", null);
 
-          showMessage("¡Gracias por tu reseña!");
-
-          const storedReviews =
-            JSON.parse(localStorage.getItem("reviews")) || [];
-          oUserModel.setProperty("/reviews", storedReviews);
-
+          // Actualizar las reseñas filtradas para que se muestren inmediatamente
           this._filterUserReviews(
             oProduct.id,
             oUserModel.getProperty("/username")
           );
+
+          MessageToast.show("¡Gracias por tu reseña!");
         },
 
         _filterUserReviews(productId, username) {
-          const oUserModel = this.getUserModel();
+          const oUserModel = this.getOwnerComponent().getModel("userModel");
           const aAllReviews = oUserModel.getProperty("/reviews") || [];
 
           const aUserReviews = aAllReviews.filter(
             (r) => r.productId === productId && r.user === username
           );
 
+          console.log("Reseñas filtradas:", aUserReviews);
           oUserModel.setProperty("/filteredUserReviews", aUserReviews);
         },
 
