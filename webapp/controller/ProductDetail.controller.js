@@ -1,6 +1,6 @@
 sap.ui.define(
-  ["./BaseController", "sap/ui/model/json/JSONModel"],
-  function (BaseController, JSONModel) {
+  ["./BaseController", "sap/ui/model/json/JSONModel", "sap/ui/Device"],
+  function (BaseController, JSONModel, Device) {
     "use strict";
 
     return BaseController.extend(
@@ -68,6 +68,19 @@ sap.ui.define(
             sProductId,
             oUserModel.getProperty("/username")
           );
+
+          const oView = this.getView();
+
+          if (
+            Device.system.desktop ||
+            Device.media.getCurrentRange().name === "Desktop"
+          ) {
+            oView.byId("productCarouselBox").addStyleClass("desktopWidth");
+            oView.byId("productDetailsBox").addStyleClass("desktopWidth");
+          } else {
+            oView.byId("productCarouselBox").removeStyleClass("desktopWidth");
+            oView.byId("productDetailsBox").removeStyleClass("desktopWidth");
+          }
         },
 
         onAddToCart() {

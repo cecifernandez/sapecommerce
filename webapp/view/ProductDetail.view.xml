@@ -22,7 +22,7 @@
                 alignItems="Start"
             >
                 <!-- Imagen del producto -->
-                <VBox class="productCarouselBox">
+                <VBox class="productCarouselBox" id="productCarouselBox">
                     <Carousel
                         pages="{productDetail>/images}"
                         loop="true"
