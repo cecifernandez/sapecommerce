@@ -116,6 +116,8 @@ sap.ui.define(["./BaseController"], function (BaseController) {
     onToggleFavorite(oEvent) {
       const oProduct = this.getObjectFromEvent(oEvent, "products");
       this.toggleFavorite(oProduct, "products");
+
+      this.getModel("products").setProperty("/isFavorite", oProduct.isFavorite);
     },
 
     // ───── Filtros ───────────────────────────────────────────────
