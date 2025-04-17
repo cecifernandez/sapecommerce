@@ -9,34 +9,48 @@
         type="XML"
     />
 
-    <Page showHeader="false">
+    <Page
+        id="homePage"
+        showHeader="false"
+    >
         <content>
             <Image
+                id="homeBannerImage"
                 src="assets/imgs/bannerimage.png"
                 width="100%"
                 class="roundedBanner"
                 alt="Banner Image"
             />
-        <Title text="{i18n>homeTitle}" class="centeredTitle"></Title>
+            <Title
+                id="homeTitle"
+                text="{i18n>homeTitle}"
+                class="centeredTitle"
+            />
 
             <List
-                id="home"
+                id="homeList"
                 items="{destacados>/destacados}"
                 class="sapUiResponsiveMargin"
                 itemPress=".onProductPress"
                 mode="SingleSelectMaster"
             >
                 <CustomListItem
+                    id="homeCustomListItem"
                     class="sapUiLargeMarginBeginEnd"
                     type="Active"
                 >
-                    <HBox class="sapUiSmallMargin card">
+                    <HBox
+                        id="homeCardHBox"
+                        class="sapUiSmallMargin card"
+                    >
                         <!-- Imagen -->
                         <VBox
+                            id="homeImageVBox"
                             width="100px"
                             class="sapUiSmallMarginEnd"
                         >
                             <Image
+                                id="homeProductImage"
                                 src="{= ${destacados>variants} ? ${destacados>variants/0/images/0} : ${destacados>images/0} }"
                                 width="100%"
                                 class="sapUiSmallMarginBottom"
@@ -44,31 +58,37 @@
                         </VBox>
 
                         <!-- Detalles -->
-                        <VBox>
+                        <VBox id="homeDetailsVBox">
                             <Title
+                                id="homeProductName"
                                 text="{destacados>name}"
                                 level="H5"
                                 class="sapUiTinyMarginBottom"
                             />
                             <Text
+                                id="homeProductDescription"
                                 text="{destacados>description}"
                                 class="sapUiTinyMarginBottom"
                             />
                             <Text
+                                id="homeProductPrice"
                                 text="{= ${destacados>price} + ' ' + ${destacados>currency} }"
                                 class="sapUiTinyMarginBottom"
                             />
                             <Text
+                                id="homeProductRating"
                                 text="{= ${destacados>rating} + ' ★' }"
                                 class="sapUiTinyMarginBottom"
                             />
-                            <HBox>
+                            <HBox id="homeActionsHBox">
                                 <Button
+                                    id="homeAddToCartButton"
                                     text="{i18n>addToCart}"
                                     press=".onAddToCart"
                                     class="sapUiSmallMarginBegin"
                                 />
                                 <Button
+                                    id="homeFavoriteToggleButton"
                                     icon="{= ${destacados>isFavorite} ? 'sap-icon://heart' : 'sap-icon://heart-2'}"
                                     type="Transparent"
                                     press=".onToggleFavorite"

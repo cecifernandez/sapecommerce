@@ -10,46 +10,59 @@
     />
 
     <Page
+        id="productDetailPage"
         showHeader="false"
         class="prod-detail"
     >
         <content>
-            <!-- Imagen del producto -->
             <FlexBox
+                id="productDetailContainer"
                 class="sapUiSmallMargin productDetailContainer sapUiMediumMarginTop"
                 wrap="Wrap"
                 direction="Row"
                 alignItems="Start"
             >
                 <!-- Imagen del producto -->
-                <VBox class="productCarouselBox" id="productCarouselBox">
+                <VBox
+                    id="productCarouselBox"
+                    class="productCarouselBox"
+                >
                     <Carousel
+                        id="productImageCarousel"
                         pages="{productDetail>/images}"
                         loop="true"
                         showPageIndicator="true"
                         pageIndicatorPlacement="Bottom"
                     >
-                        <Image src="{productDetail>}" />
+                        <Image
+                            id="productCarouselImage"
+                            src="{productDetail>}"
+                        />
                     </Carousel>
                 </VBox>
 
                 <!-- Detalles del producto -->
                 <VBox
+                    id="productDetailsBox"
                     class="productDetailsBox sapUiSmallMarginBottom sapUiMediumMarginTop"
                 >
                     <Title
+                        id="productName"
                         text="{productDetail>/name}"
                         level="H1"
                     />
                     <Text
+                        id="productDescription"
                         text="{productDetail>/description}"
                         wrapping="true"
                     />
                     <Title
+                        id="productPrice"
                         text="{= ${i18n>priceLabel} + ' ' + ${productDetail>/price} }"
                         level="H2"
                     />
                     <RatingIndicator
+                        id="productRatingIndicator"
                         value="{viewModel>/reviewRating}"
                         maxValue="5"
                         enabled="true"
@@ -57,23 +70,30 @@
                         class="sapUiTinyMarginBegin"
                     />
                     <HBox
+                        id="productActions"
                         alignItems="Center"
                         class="sapUiSmallMarginTop"
                     >
                         <Button
+                            id="addToCartButton"
                             text="{i18n>addToCart}"
                             press=".onAddToCart"
                             class="sapUiSmallMarginEnd"
                         />
                         <Button
+                            id="toggleFavoriteButton"
                             icon="{= ${productDetail>/isFavorite} ? 'sap-icon://heart' : 'sap-icon://heart-2'}"
                             type="Transparent"
                             press=".onToggleFavorite"
                             tooltip="{i18n>addToFavorites}"
                         />
                     </HBox>
-                    <Label text="{i18n>variantLabel}" />
+                    <Label
+                        id="variantLabel"
+                        text="{i18n>variantLabel}"
+                    />
                     <Select
+                        id="variantSelect"
                         items="{productDetail>/variants}"
                         selectedKey="{productDetail>/selectedVariant}"
                         change=".onVariantChange"
@@ -81,34 +101,49 @@
                         <core:Item
                             key="{productDetail>name}"
                             text="{productDetail>name}"
+                            id="variantItem"
                         />
                     </Select>
                 </VBox>
             </FlexBox>
 
             <!-- Reseñas del producto -->
-            <VBox class="sapUiSmallMarginTop sapUiMediumMarginBegin">
+            <VBox
+                id="productReviewsBox"
+                class="sapUiSmallMarginTop sapUiMediumMarginBegin"
+            >
                 <Title
+                    id="reviewsTitle"
                     text="{i18n>reviews}"
                     level="H2"
                 />
                 <List
+                    id="reviewsList"
                     items="{productDetail>/reviews}"
                     class="sapUiResponsiveMargin"
                 >
-                    <CustomListItem>
-                        <VBox class="sapUiSmallMarginBottom sapUiTinyMarginTop">
-                            <HBox alignItems="Center">
+                    <CustomListItem id="reviewItemList">
+                        <VBox
+                            class="sapUiSmallMarginBottom sapUiTinyMarginTop"
+                            id="reviewItemVBox"
+                        >
+                            <HBox
+                                alignItems="Center"
+                                id="reviewItemHBox"
+                            >
                                 <Avatar
+                                    id="reviewAvatar"
                                     src="{productDetail>avatar}"
                                     displaySize="S"
                                     class="sapUiSmallMarginEnd"
                                 />
                                 <Title
+                                    id="reviewUsername"
                                     text="{productDetail>username}"
                                     level="H3"
                                 />
                                 <RatingIndicator
+                                    id="reviewRating"
                                     value="{productDetail>rating}"
                                     maxValue="5"
                                     enabled="false"
@@ -117,6 +152,7 @@
                                 />
                             </HBox>
                             <Text
+                                id="reviewComment"
                                 text="{productDetail>comment}"
                                 wrapping="true"
                                 class="sapUiTinyMarginTop"
@@ -127,28 +163,36 @@
             </VBox>
 
             <!-- Tus Reseñas -->
-            <VBox class="sapUiSmallMarginTop sapUiMediumMarginBegin">
+            <VBox
+                id="userReviewsBox"
+                class="sapUiSmallMarginTop sapUiMediumMarginBegin"
+            >
                 <Title
+                    id="yourReviewsTitle"
                     text="{i18n>yourReviews}"
                     level="H2"
                 />
                 <List
+                    id="yourReviewsList"
                     items="{path: 'userModel>/filteredUserReviews'}"
                     class="sapUiResponsiveMargin"
                 >
-                    <CustomListItem>
-                        <VBox class="sapUiSmallMarginBottom sapUiTinyMarginTop">
-                            <HBox alignItems="Center">
+                    <CustomListItem id="userReviewItemList">
+                        <VBox class="sapUiSmallMarginBottom sapUiTinyMarginTop" id="userReviewItemVBox">
+                            <HBox alignItems="Center" id="userReviewItemHBox">
                                 <Avatar
+                                    id="userReviewAvatar"
                                     src="{userModel>/avatar}"
                                     displaySize="S"
                                     class="sapUiSmallMarginEnd"
                                 />
                                 <Title
+                                    id="userReviewName"
                                     text="{userModel>user}"
                                     level="H3"
                                 />
                                 <RatingIndicator
+                                    id="userReviewRating"
                                     value="{userModel>rating}"
                                     maxValue="5"
                                     enabled="false"
@@ -157,6 +201,7 @@
                                 />
                             </HBox>
                             <Text
+                                id="userReviewComment"
                                 text="{userModel>text}"
                                 wrapping="true"
                                 class="sapUiTinyMarginTop"
@@ -167,15 +212,23 @@
             </VBox>
 
             <!-- Escribir nueva reseña -->
-            <VBox class="sapUiMediumMarginBegin sapUiLargeMarginBottom">
-                <Text text="{i18n>writeReview}" />
+            <VBox
+                id="writeReviewBox"
+                class="sapUiMediumMarginBegin sapUiLargeMarginBottom"
+            >
+                <Text
+                    id="writeReviewPrompt"
+                    text="{i18n>writeReview}"
+                />
                 <TextArea
+                    id="reviewTextArea"
                     value="{viewModel>/reviewText}"
                     rows="4"
                     width="100%"
                     placeholder="{i18n>reviewPlaceholder}"
                 />
                 <Button
+                    id="submitReviewButton"
                     text="{i18n>submitReview}"
                     press=".onPostReview"
                 />
