@@ -13,6 +13,17 @@ sap.ui.define(["./BaseController"], function (BaseController) {
       oRouter
         .getRoute("productsBySubcategory")
         .attachPatternMatched(this._onSubcategoryMatched, this);
+
+      if (sap.ui.Device.system.phone) {
+        const oVBox = this.byId("productListFilters");
+        if (oVBox) {
+          oVBox.addStyleClass("paddingTopForPhone");
+        }
+        const oList = this.byId("productList");
+        if (oList) {
+          oList.addStyleClass("centerListForPhone");
+        }
+      }
     },
 
     // ───── Navegación ─────────────────────────────────────────────

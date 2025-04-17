@@ -71,6 +71,7 @@
 .footerToolbar {
     bottom: 10px !important;
     width: 100% !important;
+    height: 100% !important;
     z-index: 10 !important;
     background-color: #f8f9fa !important;
     border-top: 1px solid #ddd !important;
@@ -99,4 +100,26 @@
 
 .desktopWidth {
     width: 48% !important;
+}
+
+.paddingTopForPhone {
+    padding-top: 4rem !important;
+}
+
+.centerListForPhone {
+    margin-left: 20px !important;
+}
+
+.footerContentPhone {
+    flex-direction: column !important;
+}
+
+.footerLogoPhone {
+    width: 60px !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.footerTextPhone {
+    font-size: 0.9rem !important;
+    text-align: center !important;
 }

@@ -22,11 +22,11 @@
             <!-- Buscador y Filtro -->
             <VBox
                 id="productListFilters"
-                class="sapUiMediumMarginTop"
+                class="sapUiMediumMarginTop sapUiResponsiveMargin"
             >
                 <HBox
                     id="searchBarContainer"
-                    class="sapUiMediumMargin sapUiTinyMarginBottom search-bar-container"
+                    class="sapUiMediumMargin sapUiTinyMarginBottom sapUiResponsiveMargin search-bar-container"
                     justifyContent="End"
                     alignItems="Center"
                 >
