@@ -3,18 +3,24 @@
     xmlns:core="sap.ui.core"
 >
     <Popover
+        id="popover_cat"
         placement="Bottom"
         showHeader="false"
     >
-        <VBox class="sapUiSmallMargin">
+        <VBox
+            class="sapUiSmallMargin"
+            id="vbox_cat"
+        >
             <List
                 items="{productModel>/catalog/categories}"
                 mode="None"
+                id="list_cat"
             >
                 <StandardListItem
                     title="{productModel>name}"
                     type="Active"
                     press="onCategorySelect"
+                    id="standard_list_cat"
                 />
             </List>
         </VBox>

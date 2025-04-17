@@ -2,18 +2,22 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
 >
-    <Bar design="Footer">
+    <Bar design="Footer" id="footerBar">
         <contentMiddle>
             <Image
                 src="/assets/imgs/geonosis-logo.png"
                 width="100px"
                 height="auto"
                 class="sapUiTinyMarginBottom"
+                id="footerLogo"
+                alt="{i18n>footerLogoAlt}"
+                tooltip="{i18n>footerLogoTooltip}"
             />
             <Text
                 text="{i18n>footerText}"
                 class="sapUiTinyMarginBottom"
                 wrapping="false"
+                id="footerText"
             />
         </contentMiddle>
     </Bar>

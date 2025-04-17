@@ -3,54 +3,83 @@
     xmlns:core="sap.ui.core"
 >
     <Dialog
+        id="filterDialog"
         title="{i18n>filterDialogTitle}"
         class="sapUiContentPadding"
     >
-        <VBox class="sapUiSmallMarginTop">
+        <VBox
+            id="filterVBox"
+            class="sapUiSmallMarginTop"
+        >
             <!-- Ordenar por Precio -->
             <CheckBox
-                id="priceCheck"
+                id="filterPriceCheck"
                 text="{i18n>sortByPrice}"
                 selected="{products>/filterByPrice}"
                 select=".onPriceSelect"
             />
             <Select
-                id="priceSelect"
+                id="filterPriceSelect"
                 enabled="{products>/filterByPrice}"
                 selectedKey="{products>/priceSortOrder}"
                 width="100%"
             >
                 <items>
-                    <core:Item key="empty" text="" />
-                    <core:Item key="asc" text="{i18n>asc}" />
-                    <core:Item key="desc" text="{i18n>desc}" />
+                    <core:Item
+                        id="filterPriceItemEmpty"
+                        key="empty"
+                        text=""
+                    />
+                    <core:Item
+                        id="filterPriceItemAsc"
+                        key="asc"
+                        text="{i18n>asc}"
+                    />
+                    <core:Item
+                        id="filterPriceItemDesc"
+                        key="desc"
+                        text="{i18n>desc}"
+                    />
                 </items>
             </Select>
 
             <!-- Ordenar por Rating -->
             <CheckBox
-                id="ratingCheck"
+                id="filterRatingCheck"
                 text="{i18n>sortByRating}"
                 selected="{products>/filterByRating}"
                 select=".onRatingSelect"
                 class="sapUiSmallMarginTop"
             />
             <Select
-                id="ratingSelect"
+                id="filterRatingSelect"
                 enabled="{products>/filterByRating}"
                 selectedKey="{products>/ratingSortOrder}"
                 width="100%"
             >
                 <items>
-                    <core:Item key="empty" text="" />
-                    <core:Item key="asc" text="{i18n>asc}" />
-                    <core:Item key="desc" text="{i18n>desc}" />
+                    <core:Item
+                        id="filterRatingItemEmpty"
+                        key="empty"
+                        text=""
+                    />
+                    <core:Item
+                        id="filterRatingItemAsc"
+                        key="asc"
+                        text="{i18n>asc}"
+                    />
+                    <core:Item
+                        id="filterRatingItemDesc"
+                        key="desc"
+                        text="{i18n>desc}"
+                    />
                 </items>
             </Select>
         </VBox>
 
         <beginButton>
             <Button
+                id="filterOkButton"
                 text="{i18n>ok}"
                 type="Emphasized"
                 press=".onApplyFilters"
@@ -58,6 +87,7 @@
         </beginButton>
         <endButton>
             <Button
+                id="filterCancelButton"
                 text="{i18n>cancel}"
                 press=".onCancelFilters"
             />

@@ -11,8 +11,7 @@ sap.ui.define(
     return Controller.extend(
       "ui5.starwarsecommerce.controller.BaseController",
       {
-        
-        getRouter() {
+        getRouter: function () {
           return this.getOwnerComponent().getRouter();
         },
 
@@ -22,15 +21,15 @@ sap.ui.define(
             : this.getOwnerComponent().getModel(sName);
         },
 
-        setModel(oModel, sName) {
+        setModel: function (oModel, sName) {
           this.getView().setModel(oModel, sName);
         },
 
-        navTo(sRoute) {
+        navTo: function (sRoute) {
           this.getRouter().navTo(sRoute);
         },
 
-        onNavToProducts(oEvent) {
+        onNavToProducts: function (oEvent) {
           this._loadFragment(
             "ui5.starwarsecommerce.view.fragments.Categories",
             "CategoriesPopover"
@@ -45,7 +44,7 @@ sap.ui.define(
           this.setJSONModel({ subcategories: [] }, "subcategories");
         },
 
-        onNavBack() {
+        onNavBack: function () {
           const oHistory = sap.ui.core.routing.History.getInstance();
           const sPreviousHash = oHistory.getPreviousHash();
 
@@ -56,11 +55,11 @@ sap.ui.define(
           }
         },
 
-        onNavForward() {
+        onNavForward: function () {
           window.history.forward();
         },
 
-        extractProducts(catalog, fnCondition) {
+        extractProducts: function (catalog, fnCondition) {
           let aProducts = [];
           catalog.categories.forEach((category) => {
             category.subcategories.forEach((subcategory) => {
@@ -78,15 +77,15 @@ sap.ui.define(
           return aProducts;
         },
 
-        onNavToHome() {
+        onNavToHome: function () {
           this.navTo("home");
         },
 
-        onNavToAccount() {
+        onNavToAccount: function () {
           this.navTo("account");
         },
 
-        onNavToProducts() {
+        onNavToProducts: function () {
           this.navTo("productsList");
         },
 
@@ -116,7 +115,7 @@ sap.ui.define(
           return this[sPromiseVar];
         },
 
-        openCart(oEvent) {
+        openCart: function (oEvent) {
           this._loadFragment(
             "ui5.starwarsecommerce.view.fragments.Cart",
             "CartPopover"
@@ -128,7 +127,7 @@ sap.ui.define(
           });
         },
 
-        addToCart(oProduct) {
+        addToCart: function (oProduct) {
           if (!oProduct) {
             this.showMessage("No se pudo agregar el producto al carrito.");
             return;
@@ -149,7 +148,7 @@ sap.ui.define(
           this.showMessage(`${oProduct.name} agregado al carrito 🛒`);
         },
 
-        removeFromCart(sProductId) {
+        removeFromCart: function (sProductId) {
           const oModel = this.getProductModel();
           const aCart = oModel.getProperty("/cart") || [];
 
@@ -160,7 +159,7 @@ sap.ui.define(
           this.showMessage("Producto eliminado del carrito 🗑️");
         },
 
-        getCartTotal() {
+        getCartTotal: function () {
           const oModel = this.getProductModel();
           const aCart = oModel.getProperty("/cart") || [];
 
@@ -172,7 +171,7 @@ sap.ui.define(
           return fTotal;
         },
 
-        updateCartQuantity(oEvent) {
+        updateCartQuantity: function (oEvent) {
           const oButton = oEvent.getSource();
 
           const oContext = oButton.getBindingContext("productModel");
@@ -188,7 +187,7 @@ sap.ui.define(
           this.getCartTotal();
         },
 
-        getSubcategoriesByCategoryName(catalog, categoryName) {
+        getSubcategoriesByCategoryName: function (catalog, categoryName) {
           if (!catalog?.categories) return [];
 
           let oCategory = catalog.categories.find(
@@ -197,14 +196,14 @@ sap.ui.define(
           return oCategory ? oCategory.subcategories : [];
         },
 
-        onCategorySelect(oEvent) {
+        onCategorySelect: function (oEvent) {
           let sCategory = oEvent.getSource().getTitle();
           this.getRouter().navTo("productsByCategory", {
             category: encodeURIComponent(sCategory),
           });
         },
 
-        _getProductContext(oEvent, sModelName = "products") {
+        _getProductContext: function (oEvent, sModelName = "products") {
           let oContext = oEvent.getSource().getBindingContext(sModelName);
 
           if (!oContext && typeof oEvent.getParameter === "function") {
@@ -223,29 +222,29 @@ sap.ui.define(
           return oContext;
         },
 
-        getObjectFromEvent(oEvent, sModelName = "products") {
+        getObjectFromEvent: function (oEvent, sModelName = "products") {
           let oContext = this._getProductContext(oEvent, sModelName);
           return oContext ? oContext.getObject() : null;
         },
 
-        setJSONModel(data, name) {
+        setJSONModel: function (data, name) {
           let oModel = new JSONModel(data);
           this.setModel(oModel, name);
         },
 
-        getProductModel() {
+        getProductModel: function () {
           return this.getOwnerComponent().getModel("productModel");
         },
 
-        getUserModel() {
+        getUserModel: function () {
           return this.getOwnerComponent().getModel("userModel");
         },
 
-        showMessage(sText) {
+        showMessage: function (sText) {
           MessageToast.show(sText);
         },
 
-        markFavorites(aProducts) {
+        markFavorites: function (aProducts) {
           const aFavorites =
             JSON.parse(localStorage.getItem("favorites")) || [];
 
@@ -255,7 +254,7 @@ sap.ui.define(
           });
         },
 
-        isProductFavorite(oProduct) {
+        isProductFavorite: function (oProduct) {
           if (!oProduct || !oProduct.id) {
             return false;
           }
@@ -265,7 +264,7 @@ sap.ui.define(
           return aFavorites.some((fav) => fav.id === oProduct.id);
         },
 
-        toggleFavorite(oProduct) {
+        toggleFavorite: function (oProduct) {
           if (!oProduct) {
             this.showMessage("No se pudo actualizar el estado de favoritos.");
             return;
@@ -291,19 +290,19 @@ sap.ui.define(
           oUserModel.setProperty("/favorites", aFavorites);
         },
 
-        _getCartItems(oProductModel) {
+        _getCartItems: function (oProductModel) {
           return oProductModel.getProperty("/cart") || [];
         },
 
-        _getCartTotal(oProductModel) {
+        _getCartTotal: function (oProductModel) {
           return oProductModel.getProperty("/cartTotal") || "0.00";
         },
 
-        _hasItems(aItems) {
+        _hasItems: function (aItems) {
           return aItems.length > 0;
         },
 
-        _createPurchase(aItems, total) {
+        _createPurchase: function (aItems, total) {
           return {
             items: aItems,
             total: total,
@@ -311,26 +310,26 @@ sap.ui.define(
           };
         },
 
-        _savePurchase(oUserModel, oPurchase) {
+        _savePurchase: function (oUserModel, oPurchase) {
           const aHistory = oUserModel.getProperty("/purchaseHistory") || [];
           aHistory.push(oPurchase);
           oUserModel.setProperty("/purchaseHistory", aHistory);
           localStorage.setItem("purchaseHistory", JSON.stringify(aHistory));
         },
 
-        _clearCart(oProductModel) {
+        _clearCart: function (oProductModel) {
           oProductModel.setProperty("/cart", []);
           oProductModel.setProperty("/cartTotal", "0.00");
         },
 
-        onCancelPurchase() {
+        onCancelPurchase: function () {
           const oProductModel = this.getProductModel();
           this._clearCart(oProductModel);
 
           this._oCartPopover.close();
         },
 
-        onCheckout() {
+        onCheckout: function () {
           this._loadFragment(
             "ui5.starwarsecommerce.view.fragments.CheckoutDialog",
             "CheckoutDialog"
@@ -351,7 +350,7 @@ sap.ui.define(
           });
         },
 
-        onConfirmCheckout() {
+        onConfirmCheckout: function () {
           const oCheckoutModel =
             this._oCheckoutDialog.getModel("checkoutModel");
           const oData = oCheckoutModel.getData();
@@ -375,7 +374,7 @@ sap.ui.define(
           this._oCheckoutDialog.close();
         },
 
-        onCancelCheckout() {
+        onCancelCheckout: function () {
           this._oCheckoutDialog.close();
         },
       }

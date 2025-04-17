@@ -3,6 +3,7 @@
     xmlns:core="sap.ui.core"
 >
     <Popover
+        id="popover_fragment"
         title="{i18n>cartTitle}"
         placement="Bottom"
         class="sapUiResponsivePadding"
@@ -11,29 +12,40 @@
         <content>
             <!-- Mostrar mensaje si el carrito está vacío -->
             <VBox
+                id="popover_vbox"
                 visible="{= ${productModel>/cart}.length === 0 }"
                 class="sapUiSmallMargin sapUiResponsiveMargin"
             >
                 <Text
+                    id="popover_txt"
                     text="{i18n>cartEmpty}"
                     class="sapUiTinyMarginBottom sapMTitle"
                 />
             </VBox>
 
             <!-- Mostrar contenido del carrito si hay productos -->
-            <VBox visible="{= ${productModel>/cart}.length > 0 }">
+            <VBox
+                visible="{= ${productModel>/cart}.length > 0 }"
+                id="popover_vbox_2"
+            >
                 <List
+                    id="popover1_list"
                     items="{productModel>/cart}"
                     class="sapUiResponsiveMargin"
                 >
-                    <CustomListItem>
-                        <HBox class="sapUiSmallMargin">
+                    <CustomListItem id="popover_customList">
+                        <HBox
+                            class="sapUiSmallMargin"
+                            id="popover_hbox"
+                        >
                             <!-- Product Image -->
                             <VBox
+                                id="popover_vbox_3"
                                 width="100px"
                                 class="sapUiSmallMarginEnd"
                             >
                                 <Image
+                                    id="popover_img"
                                     src="{= ${productModel>variants} ? ${productModel>variants/0/images/0} : ${products>images/0} }"
                                     width="100%"
                                     height="80px"
@@ -42,8 +54,9 @@
                             </VBox>
 
                             <!-- Product Details -->
-                            <VBox>
+                            <VBox id="popover_vbox_4">
                                 <Title
+                                    id="popover_title"
                                     text="{productModel>name}"
                                     level="H5"
                                     class="sapUiTinyMarginBottom"
@@ -51,25 +64,30 @@
                                 <Text
                                     text="{= ${productModel>price} + ' ' + ${productModel>currency} }"
                                     class="sapUiTinyMarginBottom"
+                                    id="popover_txt_2"
                                 />
                                 <!-- Controles para ajustar la cantidad -->
                                 <HBox
                                     alignItems="Center"
                                     class="sapUiTinyMarginBottom"
+                                    id="popover_hbox_2"
                                 >
                                     <Button
+                                        id="popover_cartbtn"
                                         icon="sap-icon://less"
                                         type="Transparent"
                                         press=".updateCartQuantity"
                                         tooltip="{i18n>decreaseQty}"
                                     />
                                     <Input
+                                        id="popover_input"
                                         value="{productModel>quantity}"
                                         width="3rem"
                                         textAlign="Center"
                                         editable="false"
                                     />
                                     <Button
+                                        id="popover_addbtn"
                                         icon="sap-icon://add"
                                         type="Transparent"
                                         press=".updateCartQuantity"
@@ -77,6 +95,7 @@
                                     />
                                 </HBox>
                                 <Button
+                                    id="popover_deletebtn"
                                     icon="sap-icon://delete"
                                     type="Transparent"
                                     press=".onRemoveFromCart"
@@ -89,10 +108,12 @@
                 <HBox
                     justifyContent="End"
                     class="sapUiTinyMargin sapUiTinyMarginEnd"
+                    id="popover_hbox_3"
                 >
                     <Text
                         text="{= ${i18n>cartTotal} + ': ' + ${productModel>/cartTotal} + ' ' + (${productModel>/cart/0/currency} || '') }"
                         class="sapMTitle"
+                        id="popover_txt_3"
                     />
                 </HBox>
             </VBox>
@@ -103,16 +124,19 @@
                 justifyContent="SpaceBetween"
                 class="sapUiTinyMargin"
                 visible="{= ${productModel>/cart}.length > 0 }"
+                id="popover_hbox_4"
             >
                 <Button
                     text="{i18n>checkout}"
                     type="Emphasized"
                     press=".onCheckout"
+                    id="popover_checkoutbtn"
                 />
                 <Button
                     text="{i18n>cancel}"
                     type="Transparent"
                     press=".onCancelPurchase"
+                    id="popover_cancelbtn"
                 />
             </HBox>
         </footer>

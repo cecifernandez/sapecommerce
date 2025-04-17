@@ -14,29 +14,37 @@
     />
 
     <Page
+        id="productListPage"
         title="{i18n>productListTitle}"
         showHeader="false"
     >
         <content>
             <!-- Buscador y Filtro -->
-            <VBox class="sapUiMediumMarginTop">
+            <VBox
+                id="productListFilters"
+                class="sapUiMediumMarginTop"
+            >
                 <HBox
-                    class="sapUiMediumMargin sapUiTinyMarginBottom  search-bar-container"
+                    id="searchBarContainer"
+                    class="sapUiMediumMargin sapUiTinyMarginBottom search-bar-container"
                     justifyContent="End"
                     alignItems="Center"
                 >
                     <SearchField
+                        id="productSearchField"
                         liveChange=".onSearch"
                         width="20rem"
                         class="sapUiTinyMarginEnd"
                         placeholder="{i18n>searchPlaceholder}"
                     />
                     <Button
+                        id="sortButton"
                         icon="sap-icon://sort"
                         type="Emphasized"
                         press=".onSort"
                     />
                     <Button
+                        id="resetFiltersButton"
                         icon="sap-icon://reset"
                         type="Transparent"
                         press=".onResetFilters"
@@ -45,12 +53,14 @@
                 </HBox>
 
                 <HBox
+                    id="subcategoryButtonsContainer"
                     justifyContent="Center"
                     alignItems="Center"
                     class="sapUiSmallMargin sapUiTinyMarginBottom"
                     items="{subcategories>/subcategories}"
                 >
                     <Button
+                        id="subcategoryButton"
                         text="{subcategories>name}"
                         press=".onSubcategorySelect"
                         class="sapUiTinyMarginEnd"
@@ -65,16 +75,22 @@
                     itemPress=".onProductPress"
                 >
                     <CustomListItem
+                        id="productListItem"
                         type="Active"
                         class="sapUiLargeMarginEnd"
                     >
-                        <HBox class="sapUiSmallMargin">
+                        <HBox
+                            id="productListItemHBox"
+                            class="sapUiSmallMargin"
+                        >
                             <!-- Product Image -->
                             <VBox
+                                id="productImageBox"
                                 width="100px"
                                 class="sapUiSmallMarginEnd"
                             >
                                 <Image
+                                    id="productImage"
                                     src="{= ${products>variants} ? ${products>variants/0/images/0} : ${products>images/0} }"
                                     width="100%"
                                     height="auto"
@@ -83,27 +99,32 @@
                             </VBox>
 
                             <!-- Product Details -->
-                            <VBox>
+                            <VBox id="product_DetailsBox">
                                 <Title
+                                    id="productTitle"
                                     text="{products>name}"
                                     level="H5"
                                     class="sapUiTinyMarginBottom"
                                 />
                                 <Text
+                                    id="product_Description"
                                     text="{products>description}"
                                     class="sapUiTinyMarginBottom"
                                 />
                                 <Text
+                                    id="product_Price"
                                     text="{= ${products>price} + ' ' + ${products>currency} }"
                                     class="sapUiTinyMarginBottom"
                                 />
-                                <HBox>
+                                <HBox id="productActionsBox">
                                     <Button
+                                        id="addToCartBtn"
                                         text="{i18n>addToCart}"
                                         press=".onAddToCart"
                                         class="sapUiSmallMarginBegin"
                                     />
                                     <Button
+                                        id="toggleFavoriteBtn"
                                         icon="{= ${products>isFavorite} ? 'sap-icon://heart' : 'sap-icon://heart-2'}"
                                         type="Transparent"
                                         press=".onToggleFavorite"

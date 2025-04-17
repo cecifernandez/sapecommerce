@@ -8,29 +8,41 @@
         fragmentName="ui5.starwarsecommerce.view.fragments.Toolbar"
         type="XML"
     />
-    <Page showHeader="false">
+    <Page
+        id="accountPage"
+        showHeader="false"
+    >
         <content>
             <!-- PERFIL DEL USUARIO -->
             <HBox
+                id="accountUserBanner"
                 alignItems="Center"
                 justifyContent="Center"
                 class="userBanner sapUiAlignCenter sapUiContentPadding sapUiMediumMarginTop"
             >
                 <VBox
+                    id="accountUserVBox"
                     alignItems="Center"
                     justifyContent="Center"
                 >
                     <Avatar
+                        id="accountUserAvatar"
                         src="{userModel>/avatar}"
                         displaySize="XL"
                         class="sapUiSmallMarginEnd"
                     />
-
-                    <Text text="{userModel>/name}" />
-                    <HBox class="underTextProfile">
+                    <Text
+                        id="accountUserName"
+                        text="{userModel>/name}"
+                    />
+                    <HBox
+                        id="accountUserUnderText"
+                        class="underTextProfile"
+                    >
                         <Text
+                            id="accountUserInfo"
                             text="{= ${userModel>/username} + ' ● ' + ${userModel>/mail} }"
-                            class=" sapUiTinyMarginBottom"
+                            class="sapUiTinyMarginBottom"
                         />
                     </HBox>
                 </VBox>
@@ -38,16 +50,18 @@
 
             <!-- FAVORITOS -->
             <Panel
+                id="accountFavoritesPanel"
                 headerText="{i18n>favorites}"
                 expandable="true"
                 expanded="true"
                 class="sapUiSmallMarginBottom sapUiTinyMarginTop"
             >
                 <List
+                    id="accountFavoritesList"
                     items="{userModel>/favorites}"
-                    id="favoritesList"
                 >
                     <StandardListItem
+                        id="accountFavoritesListItem"
                         title="{userModel>name}"
                         description="{userModel>price}"
                     />
@@ -56,51 +70,81 @@
 
             <!-- COMPRAS RECIENTES -->
             <Panel
+                id="accountPurchasesPanel"
                 headerText="{i18n>recentPurchases}"
                 expandable="true"
                 expanded="true"
                 class="sapUiLargeMarginBottom"
             >
-                <VBox items="{userModel>/purchaseHistory}">
+                <VBox
+                    id="accountPurchaseHistoryVBox"
+                    items="{userModel>/purchaseHistory}"
+                >
                     <items>
-                        <VBox>
+                        <VBox id="accountSinglePurchaseVBox">
                             <Table
+                                id="accountPurchaseTable"
                                 inset="false"
                                 items="{userModel>items}"
                             >
                                 <headerToolbar>
-                                    <OverflowToolbar>
+                                    <OverflowToolbar
+                                        id="accountPurchaseToolbar"
+                                    >
                                         <Title
+                                            id="accountPurchaseTitle"
                                             text="{= ${i18n>purchaseTitle} + ': ' + ${userModel>date} }"
                                             level="H5"
                                         />
                                     </OverflowToolbar>
                                 </headerToolbar>
                                 <columns>
-                                    <Column width="100%">
-                                        <Text text="{i18n>product}" />
+                                    <Column
+                                        id="accountProductColumn"
+                                        width="100%"
+                                    >
+                                        <Text
+                                            id="accountProductText"
+                                            text="{i18n>product}"
+                                        />
                                     </Column>
                                     <Column
+                                        id="accountQuantityColumn"
                                         width="100%"
                                         hAlign="Center"
                                     >
-                                        <Text text="{i18n>quantity}" />
+                                        <Text
+                                            id="accountQuantityText"
+                                            text="{i18n>quantity}"
+                                        />
                                     </Column>
                                     <Column
+                                        id="accountPriceColumn"
                                         width="100%"
                                         hAlign="End"
                                     >
-                                        <Text text="{i18n>price}" />
+                                        <Text
+                                            id="accountPriceText"
+                                            text="{i18n>price}"
+                                        />
                                     </Column>
                                 </columns>
                                 <items>
-                                    <ColumnListItem vAlign="Middle">
+                                    <ColumnListItem
+                                        id="accountPurchaseItem"
+                                        vAlign="Middle"
+                                    >
                                         <cells>
                                             <ObjectIdentifier
+                                                id="accountPurchaseProduct"
                                                 title="{userModel>name}"
                                             />
-                                            <Text text="{userModel>quantity}" />
+                                            <Text
+                                                id="accountPurchaseQuantity"
+                                                text="{userModel>quantity}"
+                                            />
                                             <ObjectNumber
+                                                id="accountPurchasePrice"
                                                 number="{userModel>price}"
                                                 unit="$"
                                             />
@@ -108,8 +152,12 @@
                                     </ColumnListItem>
                                 </items>
                             </Table>
-                            <HBox justifyContent="End">
+                            <HBox
+                                id="accountTotalHBox"
+                                justifyContent="End"
+                            >
                                 <Text
+                                    id="accountTotalText"
                                     text="{= ${i18n>total} + ': ' + ${userModel>total} + ' $' }"
                                 />
                             </HBox>

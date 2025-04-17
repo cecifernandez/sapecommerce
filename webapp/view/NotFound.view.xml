@@ -7,11 +7,13 @@
         illustrationType="sapIllus-PageNotFound"
         title="{i18n>NotFound}"
         description="{i18n>NotFound.description}"
+        id="notFoundMessage"
     >
         <additionalContent>
             <Button
                 text="{i18n>NotFound.backToHome}"
                 press=".onNavToHome"
+                id="notFoundButton"
             />
         </additionalContent>
     </IllustratedMessage>
