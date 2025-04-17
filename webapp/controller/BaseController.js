@@ -11,6 +11,24 @@ sap.ui.define(
     return Controller.extend(
       "ui5.starwarsecommerce.controller.BaseController",
       {
+        onInit: function () {
+          if (Device.system.phone) {
+            const oFooterBox = this.byId("footerContentBox");
+            if (oFooterBox) {
+              oFooterBox.addStyleClass("footerContentPhone");
+            }
+
+            const oFooterLogo = this.byId("footerLogo");
+            if (oFooterLogo) {
+              oFooterLogo.addStyleClass("footerLogoPhone");
+            }
+
+            const oFooterText = this.byId("footerText");
+            if (oFooterText) {
+              oFooterText.addStyleClass("footerTextPhone");
+            }
+          }
+        },
         getRouter: function () {
           return this.getOwnerComponent().getRouter();
         },

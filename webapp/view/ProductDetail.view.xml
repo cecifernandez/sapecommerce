@@ -214,7 +214,7 @@
             <!-- Escribir nueva reseña -->
             <VBox
                 id="writeReviewBox"
-                class="sapUiMediumMarginBegin sapUiLargeMarginBottom"
+                class="sapUiMediumMarginBegin sapUiLargeMarginBottom sapUiResponsiveMargin"
             >
                 <Text
                     id="writeReviewPrompt"

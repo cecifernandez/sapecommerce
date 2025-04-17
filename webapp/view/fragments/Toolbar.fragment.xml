@@ -5,7 +5,7 @@
     <Toolbar
         id="toolbar_fragment"
         width="90%"
-        class="toolbar"
+        class="toolbar sapUiResponsiveMargin"
     >
         <Button
             id="back_btn"
